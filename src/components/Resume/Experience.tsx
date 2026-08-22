@@ -54,7 +54,7 @@ export default function Experience({ data }: ExperienceProps) {
   return (
     <div className="experience">
       <div className="title">
-        <h2>Experience</h2>
+        <h2>Projects & Experience</h2>
       </div>
       <div className="experience-spine">
         {data.map((job) => (

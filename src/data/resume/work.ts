@@ -4,7 +4,7 @@
 export interface Position {
   name: string;
   position: string;
-  url: string;
+  url?: string;
   startDate: string;
   endDate?: string;
   summary?: string;
@@ -13,137 +13,102 @@ export interface Position {
 
 const work: Position[] = [
   {
-    name: 'OpenAI',
-    position: 'Member of the Technical Staff',
-    url: 'https://openai.com',
-    startDate: '2026-03-09',
-    summary: `Building Promptfoo and <a href='https://openai.com/index/codex-security-now-in-research-preview/'>Codex Security</a>
-    at OpenAI, with a focus on securing AI systems and applying AI to software security.`,
-  },
-  {
-    name: 'Promptfoo',
-    position: 'Co-founder & CTO',
-    url: 'https://promptfoo.dev',
-    startDate: '2024-07-01',
-    endDate: '2026-03-09',
-    summary: `Promptfoo started as a developer-first eval tool and grew into a platform
-    for AI security, red-teaming, and compliance. It reached more than 350,000 developers, 130,000
-    monthly active users, and teams at more than 25% of the Fortune 500 before joining OpenAI in 2026.`,
+    name: 'Intelligent Elevator Collaborative Modeling and Simulation',
+    position: 'Continuous Dynamics & PID Control Modeling',
+    startDate: '2026-07-01',
+    endDate: '2026-07-31',
+    summary: `A five-member course project using SysML and Simulink to model and verify an
+      intelligent elevator system from system requirements and state behavior to communication,
+      continuous dynamics, and motion control. I was responsible for the continuous elevator
+      dynamics and PID control model.`,
     highlights: [
-      'Owned company-wide technical strategy and product roadmap across open-source adoption, commercial product, and research investments.',
-      'Co-led Promptfoo through its acquisition by OpenAI in March 2026.',
-      'Helped turn Promptfoo from an open-source eval tool into an enterprise AI security product used by large companies and frontier labs.',
-      'Built and scaled the company from founding to 23 people across engineering, GTM, and operations.',
-      'Led technical due diligence and fundraising through $23.4M in venture financing from Insight Partners and Andreessen Horowitz.',
-      'Led development of core evaluation framework, vulnerability scanning, static analysis, and automated red-teaming capabilities.',
+      'Constructed the physical model of the elevator car and counterweight system based on force, mass, damping, displacement, velocity, and acceleration relationships.',
+      'Built the continuous dynamic model in Simulink using force calculation, PID control, acceleration, velocity, position, feedback, and output modules.',
+      'Designed and compared control behavior under different loading conditions to evaluate tracking accuracy and system stability.',
+      'Improved the semi-load final position error from 0.0163 m to 0.0062 m and reduced the maximum error from 0.1174 m to 0.0699 m through PID parameter adjustment.',
+      'Verified that the final position errors under the tested operating conditions remained below 0.01 m.',
     ],
   },
   {
-    name: 'Smile ID',
-    position: 'VP Engineering & Head of AI',
-    url: 'https://usesmileid.com',
-    startDate: '2022-01-01',
-    endDate: '2024-07-01',
-    summary: `Smile Identity provides ML-powered identity verification APIs used by banks, fintechs, and
-    telcos across Africa. Promoted from Director to VP Engineering to VP Engineering & Head of AI within one year,
-    leading teams building APIs that now process hundreds of millions of identity checks.`,
+    name: 'Dynamic High-Dimensional Vector Indexing System',
+    position: 'Algorithm Design & Performance Optimization',
+    startDate: '2026-03-01',
+    endDate: '2026-06-30',
+    summary: `A Mini-VDB course project focused on the indexing and retrieval core of a vector
+      database. The system supports dynamic insertion, deletion, Top-K search, and threshold-based
+      similarity queries over high-dimensional vectors.`,
     highlights: [
-      'Owned engineering org design, headcount planning, and hiring across backend and ML teams, growing to 20+ engineers.',
-      'Transformed engineering velocity from weekly releases to continuous deployment, migrating to TypeScript, adding tests in CI, and leading ceremonies.',
-      'Re-architected inference APIs on AWS Lambda, scaling from 1,000 to 1M+ users per day and cutting job time from 30+ seconds to 7 seconds.',
-      'Built computer vision pipelines for liveness detection certification.',
-      'Pitched, designed, and shipped a fraud detection product using 1-N facial recognition with embeddings and vector search.',
+      'Analyzed the computational bottlenecks of exhaustive similarity search under dynamic high-dimensional data.',
+      'Designed dynamic vector storage and indexing structures supporting insertion, deletion, traversal, and similarity retrieval.',
+      'Explored KD-tree-based partitioning, bounding-region pruning, heap-based candidate maintenance, and query-specific search strategies.',
+      'Optimized Top-K and threshold queries by reducing unnecessary distance calculations and improving pruning efficiency.',
+      'Evaluated algorithm behavior across different vector dimensions, dataset sizes, and query workloads, with dimensions below 2,000 and datasets ranging from 100 to 10,000 vectors.',
+      'Connected traditional data-structure concepts with modern embedding retrieval, semantic search, and vector-database applications.',
     ],
   },
   {
-    name: 'Skeptical Investments',
-    position: 'Co-founder',
-    url: 'http://skepticalinvestments.biz',
-    startDate: '2017-04-01',
-    summary: `Skeptical Investments is a micro-VC fund focused on early-stage technical founders,
-    with investments in ML, infrastructure, and space startups.`,
+    name: 'ScaffoldMind',
+    position: 'Independent Developer · Full-Stack Development',
+    url: 'https://github.com/Y-Sehnsucht/scaffoldmind',
+    startDate: '2026-06-01',
+    summary: `ScaffoldMind is a local-first learning workspace designed for computer
+      science courses such as CSAPP and Data Structures. I independently developed
+      the project from product concept to a functional full-stack MVP, covering
+      interface design, frontend implementation, backend APIs, LLM integration,
+      streaming responses, and local learning records.`,
     highlights: [
-      'Created InstaSafe, a tool that automates YC-standard investment documents.',
-      'Advise portfolio founders on ML, infrastructure, hiring, and fundraising strategy.',
+      'Designed the main learning flows across chat, practice, review, history, learner profiles, and local settings.',
+      'Built the React, Vite, and Tailwind CSS frontend together with a Node.js and Express backend.',
+      'Implemented Server-Sent Events for streaming responses and isolated LLM credentials behind the backend service.',
+      'Developed local learning records, question history, feedback memory, practice statistics, review planning, and data export.',
     ],
   },
   {
-    name: 'Arthena',
-    position: 'Co-founder & CTO',
-    url: 'https://arthena.com',
-    startDate: '2014-01-01',
-    endDate: '2022-01-01',
-    summary: `Arthena was a quantitative art investment platform backed by <a href='https://www.anthemis.com/'>Anthemis</a>,
-    <a href='https://foundationcapital.com'>Foundation Capital</a>, and <a href='https://ycombinator.com'>Y Combinator</a>.
-    Built Arthena from idea to acquisition by Masterworks in 2023.`,
+    name: 'Maple',
+    position: 'Backend Developer',
+    url: 'https://github.com/boyu-by/Maple_Backend',
+    startDate: '2026-02-01',
+    summary: `Maple is a local, no-login mind-map notebook with editing, version management,
+      and AI-assisted features. I was responsible for the backend foundation and worked through
+      a task-driven vibe-coding workflow with IntelliJ IDEA, Codex, and GitHub.`,
     highlights: [
-      'Co-founded Arthena and led technical strategy; sat on board and led fundraising, including debt financing for a 9-figure investment vehicle in the auction guarantee market.',
-      'Built and managed a cross-functional team of 20 engineers, data scientists, and analysts.',
-      'Built data pipelines, quantitative research tools, and visualization systems to scale investment research and augment analyst decision-making.',
-      'Developed valuation models on irregularly-sampled time series using graph embeddings, probabilistic forecasting with calibrated prediction intervals, and online learning with walk-forward validation.',
-      'Designed micro-service architecture for data collection, feature engineering, backtesting, and reporting.',
+      'Designed the database structure for mind maps, nodes, and edges, including their relationships and persistence requirements.',
+      'Initialized the Java 17 and Spring Boot backend project and established its controller, service, repository, DTO, configuration, and exception-handling structure.',
+      'Configured JPA persistence with H2 and SQLite support, and addressed database dialect and dependency compatibility issues.',
+      'Contributed to the planning and organization of RESTful APIs for mind-map data and core backend operations.',
+      'Collaborated through a task-based GitHub workflow using feature branches, pull requests, code review, and squash merges.',
     ],
   },
   {
-    name: 'Matroid',
-    position: 'Co-founder',
-    url: 'https://matroid.com',
-    startDate: '2015-09-01',
-    endDate: '2016-06-01',
-    summary: `Matroid is a computer vision platform for creating and deploying detectors, now funded by
-    <a href='https://www.nea.com'>NEA</a> and <a href='https://www.accel.com'>Accel</a>. I co-founded
-    the company and built the initial product through our first fundraise.`,
+    name: 'Zhiyi',
+    position: 'Technical & Functional Design Contributor',
+    startDate: '2025-07-01',
+    summary: `Zhiyi is an AI-enabled education project combining personalized learning software
+      with intelligent educational hardware. I was responsible for articulating its technical
+      approach, functional design, and the technology-related sections of the project proposal.`,
     highlights: [
-      'Defined company vision and product strategy.',
-      'Architected and built the initial detector platform for identifying objects, events, and patterns in video.',
-      'Led technical fundraising efforts for seed round.',
+      'Translated the project’s educational objectives into concrete software functions, interaction processes, and application scenarios.',
+      'Developed the technical and functional narrative for personalized learning, learning-state analysis, intelligent guidance, and educational hardware integration.',
+      'Explained how concepts such as AIGC, multimodal interaction, intelligent agents, and embodied AI could support the proposed educational experience.',
+      'Organized the project’s technical architecture, functional relationships, innovation points, and product advantages for competition materials.',
+      'Worked with team members from different disciplines to ensure that the technical description remained consistent with the product and educational objectives.',
     ],
   },
   {
-    name: 'Planet',
-    position: 'Avionics Intern',
-    url: 'https://planet.com',
-    startDate: '2014-06-01',
-    endDate: '2015-01-01',
+    name: 'Intelligent Water Quality Monitoring and Early-Warning System',
+    position: 'Team Lead · System & Technical Proposal Design',
+    startDate: '2026-07-01',
+    summary: `A multidimensional sensing system designed to transform conventional fixed-point
+      water monitoring into dynamic area-wide monitoring, integrating water-quality sensing,
+      edge intelligence, multimodal communication, and cloud-based warning capabilities.`,
     highlights: [
-      'Built models for cloud detection and optimal exposure using Earth albedo, incorporating sensor physics, astronomy, and optics.',
-      'Worked with optics and camera hardware; developed satellite software in C++ and Python (OpenCV, NumPy, SciPy).',
-    ],
-  },
-  {
-    name: 'Planetary Resources',
-    position: 'Avionics Intern',
-    url: 'https://www.planetaryresources.com',
-    startDate: '2014-01-01',
-    endDate: '2014-05-01',
-    highlights: [
-      'Developed simulations for Attitude Determination and Control Subsystem.',
-      'Built flight hardware for Electrical Power Subsystem in clean room; performed thermal vacuum chamber testing.',
-    ],
-  },
-  {
-    name: 'Facebook',
-    position: 'Software Engineering Intern',
-    url: 'https://facebook.com',
-    startDate: '2013-06-01',
-    endDate: '2013-09-01',
-    highlights: [
-      "Worked on Facebook's first GPU compute team, benchmarking NVIDIA GPUs for initial data center deployment.",
-      'Built log collection software and performed statistical analysis in Python, Hack, R, and HQL.',
-    ],
-  },
-  {
-    name: 'UB Nanosatellite Program',
-    position: 'Program Manager',
-    url: 'https://ubnl.space/',
-    startDate: '2011-06-01',
-    endDate: '2012-05-01',
-    summary:
-      'Led a 60-person student team through the satellite development lifecycle for the AFRL University Nanosatellite Program.',
-    highlights: [
-      'Co-authored grant proposal to design and build a multi-spectral imaging satellite.',
-      'Established budget and schedule from initial concept through design reviews.',
-      'Designed ADCS and worked on sensor integration.',
+      'Led the development of the overall technical proposal and organized the system around a monitoring–warning–response workflow.',
+      'Designed a multidimensional sensing architecture combining multi-parameter water-quality sensors, spectral sensing, visual sensing, and water-pressure data.',
+      'Proposed an embedded acquisition system based on STM32, RS485/Modbus communication, and 4G/BeiDou dual-mode data transmission.',
+      'Designed a layered data-fusion architecture incorporating ETL processing, priority-based fallback, LSTM forecasting, and WebGIS-based watershed evaluation.',
+      'Integrated edge-AI concepts for local pollution-source identification and structured second-level warning transmission.',
+      'Proposed a hybrid energy architecture combining wave and solar energy with lithium-battery and supercapacitor storage for long-term field deployment.',
+      'Extended the system proposal to include underwater visual perception and temporal motion analysis for abnormal human-behavior and drowning-risk detection.',
     ],
   },
 ];

@@ -47,13 +47,14 @@ export default function ProjectsPage() {
         <header className="projects-header">
           <h1 className="page-title">Archive</h1>
           <p className="page-subtitle">
-            Early projects and experiments from my student years
+            Selected work in algorithms, system modeling, full-stack development,
+            intelligent sensing, and educational technology.
           </p>
         </header>
 
         {featuredProjects.length > 0 && (
           <section className="projects-featured">
-            <h2 className="projects-section-title">Hackathons &amp; Awards</h2>
+            <h2 className="projects-section-title">Selected Projects</h2>
             <div className="projects-grid projects-grid--featured">
               {featuredProjects.map((project) => (
                 <Cell data={project} key={project.title} />
@@ -64,7 +65,7 @@ export default function ProjectsPage() {
 
         {otherProjects.length > 0 && (
           <section className="projects-other">
-            <h2 className="projects-section-title">Side Projects</h2>
+            <h2 className="projects-section-title">Additional Projects</h2>
             <div className="projects-grid">
               {otherProjects.map((project) => (
                 <Cell data={project} key={project.title} />

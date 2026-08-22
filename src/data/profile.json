@@ -1,11 +1,11 @@
 {
-  "name": "Michael D'Angelo",
-  "role": "Member of the Technical Staff",
-  "employer": "OpenAI",
-  "focus": "Promptfoo and Codex Security",
-  "birthDate": "1990-02-05T09:24:00-05:00",
-  "computingSince": 1993,
+  "name": "Zijun Yan",
+  "role": "Sophomore Undergraduate Student in Software Engineering",
+  "school": "East China Normal University",
+  "focus": "Software Engineering, Intelligent Agents & LLM Applications, and Algorithms",
+  "birthDate": "2007-04-24T00:00:00+08:00",
+  "computingSince": 2025,
   "countriesVisited": 53,
-  "currentCity": "New York, NY",
-  "email": "hi@mldangelo.com"
+  "currentCity": "Shanghai, China",
+  "email": "zijun1900@gmail.com"
 }
