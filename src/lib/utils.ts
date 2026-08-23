@@ -7,7 +7,8 @@ import profile from '@/data/profile.json';
 // Site configuration
 export const SITE_URL =
   'https://y-sehnsucht.github.io/personal-site';
-export const AUTHOR_NAME = profile.name;/**
+export const AUTHOR_NAME = profile.name;
+/**
  * The portrait. Used for JSON-LD `image`, where the value should be a picture
  * of the person, not a designed card.
  */
@@ -35,6 +36,7 @@ export const SHARE_IMAGE_DIMENSIONS = {
 // Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
 export const SITE_DESCRIPTION =
   'Software Engineering undergraduate at East China Normal University, interested in algorithms, intelligent agents, LLM applications, and reliable AI systems.';
+  
 // Image dimension constants
 export const PROJECT_IMAGE = {
   width: 600,
