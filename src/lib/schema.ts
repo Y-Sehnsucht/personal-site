@@ -1,6 +1,6 @@
+import profile from '@/data/profile.json';
 import contact from '@/data/contact';
 import degrees from '@/data/resume/degrees';
-import work from '@/data/resume/work';
 import type { Post } from '@/lib/posts';
 import {
   AUTHOR_NAME,
@@ -34,8 +34,8 @@ export const HOME_URL = `${SITE_URL}/`;
 
 // Shared so the /writing metadata and the Blog node stay in sync.
 export const WRITING_DESCRIPTION =
-  'Articles on AI security, LLM red teaming, and trust & safety.';
-
+  'Technical notes on software engineering, algorithms, systems, and intelligent applications.';
+  
 type SchemaNode = Record<string, unknown>;
 
 interface Crumb {
@@ -65,8 +65,6 @@ export function personNode(): SchemaNode {
   const emailItem = contact.find((item) => item.link.startsWith('mailto:'));
   const email = emailItem?.link.replace('mailto:', '');
 
-  const currentJob = work[0];
-
   const [givenName, ...familyParts] = AUTHOR_NAME.split(' ');
   const familyName = familyParts.join(' ');
 
@@ -86,13 +84,13 @@ export function personNode(): SchemaNode {
       caption: AUTHOR_NAME,
     },
     description: SITE_DESCRIPTION,
-    jobTitle: currentJob.position,
+    jobTitle: profile.role,
     ...(email && { email }),
     sameAs: socialLinks,
-    worksFor: {
-      '@type': 'Organization',
-      name: currentJob.name,
-      url: currentJob.url,
+    affiliation: {
+      '@type': 'CollegeOrUniversity',
+      name: profile.school,
+      url: degrees[0]?.link,
     },
     alumniOf: degrees.map((degree) => ({
       '@type': 'CollegeOrUniversity',
@@ -112,7 +110,7 @@ export function websiteNode(): SchemaNode {
     '@id': WEBSITE_ID,
     url: HOME_URL,
     name: AUTHOR_NAME,
-    alternateName: ['mldangelo.com', 'mldangelo'],
+    alternateName: ['Zijun Yan', 'Y-Sehnsucht'],
     description: SITE_DESCRIPTION,
     inLanguage: SITE_LANGUAGE,
     publisher: personRef(),

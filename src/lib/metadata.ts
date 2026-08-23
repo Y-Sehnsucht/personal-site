@@ -6,7 +6,6 @@ import {
   SHARE_IMAGE_DIMENSIONS,
   SHARE_IMAGE_PATH,
   SITE_URL,
-  TWITTER_HANDLE,
 } from './utils';
 
 interface PageMetadataOptions {
@@ -34,7 +33,7 @@ export const sharedOpenGraph: Metadata['openGraph'] = {
   siteName: AUTHOR_NAME,
   images: [
     {
-      url: SHARE_IMAGE_PATH,
+      url: `${SITE_URL}${SHARE_IMAGE_PATH}`,
       width: SHARE_IMAGE_DIMENSIONS.width,
       height: SHARE_IMAGE_DIMENSIONS.height,
       alt: SHARE_IMAGE_ALT,
@@ -44,9 +43,7 @@ export const sharedOpenGraph: Metadata['openGraph'] = {
 
 export const sharedTwitter: Metadata['twitter'] = {
   card: 'summary_large_image',
-  site: TWITTER_HANDLE,
-  creator: TWITTER_HANDLE,
-  images: [SHARE_IMAGE_PATH],
+  images: [`${SITE_URL}${SHARE_IMAGE_PATH}`],
 };
 
 export function createPageMetadata({
@@ -54,7 +51,11 @@ export function createPageMetadata({
   description,
   path,
 }: PageMetadataOptions): Metadata {
-  const absoluteUrl = path ? new URL(path, SITE_URL).toString() : undefined;
+  const normalizedPath = path?.replace(/^\/+/, '');
+  const absoluteUrl =
+    normalizedPath !== undefined
+      ? `${SITE_URL}/${normalizedPath}`
+      : undefined;
   const pageTitle = `${title} | ${AUTHOR_NAME}`;
 
   return {

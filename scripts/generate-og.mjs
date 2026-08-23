@@ -58,7 +58,7 @@ const HAIRLINE = 'rgba(35, 39, 46, 0.18)';
  * means something while that stays true.
  */
 const READOUT = [
-  { label: 'Countries visited', value: String(profile.countriesVisited) },
+  { label: 'Status', value: 'Undergraduate' },
   { label: 'Computing since', value: String(profile.computingSince) },
   { label: 'Based in', value: profile.currentCity },
 ];
@@ -171,10 +171,14 @@ function card() {
             display: 'flex',
           },
         },
-        h('span', { style: { color: ULTRAMARINE } }, profile.employer),
+       h('span', { style: { color: ULTRAMARINE } }, profile.school),
         // Satori collapses a leading space in a flex child, so the gap before
         // the em dash is set as spacing rather than as whitespace.
-        h('span', { style: { marginLeft: '0.5em' } }, `— ${profile.focus}`),
+        h(
+          'span',
+          { style: { marginLeft: '0.5em' } },
+          `— ${profile.focus.split(',')[0]}`,
+        ),
       ),
     ),
     h(
