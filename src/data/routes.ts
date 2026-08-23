@@ -22,6 +22,10 @@ const routes: Route[] = [
     path: '/projects',
   },
   {
+    label: 'Achievements',
+    path: '/achievements',
+  },
+  {
     label: 'Resume',
     path: '/resume',
   },
