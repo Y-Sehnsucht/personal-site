@@ -25,7 +25,8 @@ const courses: Course[] = [
     university: 'ECNU',
   },
   {
-    title: 'Mathematics for Software Engineering(Discrete Mathematics) · 4.0/4.0',
+    title:
+      'Mathematics for Software Engineering(Discrete Mathematics) · 4.0/4.0',
     number: 'ECNU',
     link: 'https://sei.ecnu.edu.cn/',
     university: 'ECNU',

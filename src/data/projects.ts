@@ -31,13 +31,7 @@ const data: Project[] = [
     image: '/images/projects/elevator-control.jpg',
     date: '2026-07-01',
     desc: 'Developed the continuous elevator dynamics and PID control model in a five-member SysML and Simulink project. PID adjustment reduced the semi-load final position error from 0.0163 m to 0.0062 m and the maximum error from 0.1174 m to 0.0699 m.',
-    tech: [
-      'MATLAB',
-      'Simulink',
-      'PID Control',
-      'Physical Modeling',
-      'SysML',
-    ],
+    tech: ['MATLAB', 'Simulink', 'PID Control', 'Physical Modeling', 'SysML'],
     featured: true,
   },
   {
@@ -47,14 +41,7 @@ const data: Project[] = [
     image: '/images/projects/scaffoldmind.jpg',
     date: '2026-06-01',
     desc: 'Independently developed a local-first learning workspace for CSAPP and Data Structures, covering chat, practice, review, history, learner profiles, and local settings. The system combines a React frontend, Express backend, SSE streaming, backend LLM integration, and local learning memory.',
-    tech: [
-      'React',
-      'TypeScript',
-      'Node.js',
-      'Express',
-      'SSE',
-      'LLM API',
-    ],
+    tech: ['React', 'TypeScript', 'Node.js', 'Express', 'SSE', 'LLM API'],
     featured: true,
   },
   {
@@ -80,14 +67,7 @@ const data: Project[] = [
     image: '/images/projects/maple.jpg',
     date: '2026-02-01',
     desc: 'Established the backend foundation for a local mind-map notebook with data editing, historical versions, and intelligent suggestions. Worked on persistence modeling, RESTful service structure, database integration, exception handling, and collaborative GitHub development.',
-    tech: [
-      'Java 17',
-      'Spring Boot',
-      'JPA',
-      'H2 / SQLite',
-      'REST API',
-      'Git',
-    ],
+    tech: ['Java 17', 'Spring Boot', 'JPA', 'H2 / SQLite', 'REST API', 'Git'],
   },
   {
     title: 'Zhiyi',

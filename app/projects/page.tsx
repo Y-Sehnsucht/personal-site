@@ -45,10 +45,10 @@ export default function ProjectsPage() {
       />
       <section className="projects-page">
         <header className="projects-header">
-          <h1 className="page-title">Archive</h1>
+          <h1 className="page-title">Projects</h1>
           <p className="page-subtitle">
-            Selected work in algorithms, system modeling, full-stack development,
-            intelligent sensing, and educational technology.
+            Selected work in algorithms, system modeling, full-stack
+            development, intelligent sensing, and educational technology.
           </p>
         </header>
 

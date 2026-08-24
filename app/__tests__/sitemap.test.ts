@@ -4,41 +4,28 @@ import { SITE_URL } from '@/lib/utils';
 import sitemap from '../sitemap';
 
 describe('sitemap', () => {
-  it('uses trailing slashes for exported page routes', () => {
-    const entries = sitemap();
+  it('contains every public page', () => {
+    const urls = sitemap().map((entry) => entry.url);
 
-    expect(entries).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({ url: `${SITE_URL}/` }),
-        expect.objectContaining({ url: `${SITE_URL}/about/` }),
-        expect.objectContaining({ url: `${SITE_URL}/resume/` }),
-        expect.objectContaining({ url: `${SITE_URL}/projects/` }),
-        expect.objectContaining({ url: `${SITE_URL}/writing/` }),
-        expect.objectContaining({ url: `${SITE_URL}/stats/` }),
-        expect.objectContaining({ url: `${SITE_URL}/contact/` }),
-      ]),
-    );
+    expect(urls).toEqual([
+      `${SITE_URL}/`,
+      `${SITE_URL}/about/`,
+      `${SITE_URL}/projects/`,
+      `${SITE_URL}/achievements/`,
+      `${SITE_URL}/resume/`,
+      `${SITE_URL}/contact/`,
+    ]);
   });
 
-  it('does not invent modification dates for static pages', () => {
-    const staticEntries = sitemap().filter(
-      (entry) => !entry.url.startsWith(`${SITE_URL}/writing/`),
-    );
+  it('does not expose removed routes', () => {
+    const urls = sitemap().map((entry) => entry.url);
 
-    expect(
-      staticEntries.every((entry) => entry.lastModified === undefined),
-    ).toBe(true);
+    expect(urls.some((url) => url.includes('/writing/'))).toBe(false);
+    expect(urls.some((url) => url.includes('/stats/'))).toBe(false);
+    expect(urls.some((url) => url.includes('/feed.xml'))).toBe(false);
   });
 
-  it('uses trailing slashes for post routes', () => {
-    const entries = sitemap();
-    const postEntries = entries.filter(
-      (entry) =>
-        entry.url.startsWith(`${SITE_URL}/writing/`) &&
-        entry.url !== `${SITE_URL}/writing/`,
-    );
-
-    expect(postEntries.length).toBeGreaterThan(0);
-    expect(postEntries.every((entry) => entry.url.endsWith('/'))).toBe(true);
+  it('uses trailing slashes', () => {
+    expect(sitemap().every((entry) => entry.url.endsWith('/'))).toBe(true);
   });
 });

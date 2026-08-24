@@ -29,10 +29,10 @@ export default function ResumePage() {
           <h1 className="resume-title">Resume</h1>
           <p className="resume-summary">
             Undergraduate student in Software Engineering at East China Normal
-            University. My coursework and projects focus on computer systems, data
-            structures, software development, and modeling and simulation. I am
-            interested in developing a stronger research foundation through practical
-            projects and systematic study.
+            University. My coursework and projects focus on computer systems,
+            data structures, software development, and modeling and simulation.
+            I am interested in developing a stronger research foundation through
+            practical projects and systematic study.
           </p>
           {/* Print-only, but real markup rather than CSS `content`, so it is
               selectable, linkable, and reads from the shared profile. The
@@ -42,9 +42,7 @@ export default function ResumePage() {
             <span aria-hidden="true"> · </span>
             <a href={`mailto:${profile.email}`}>{profile.email}</a>
             <span aria-hidden="true"> · </span>
-            <a href="https://github.com/Y-Sehnsucht">
-              github.com/Y-Sehnsucht
-            </a>
+            <a href="https://github.com/Y-Sehnsucht">github.com/Y-Sehnsucht</a>
           </address>
         </header>
 

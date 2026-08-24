@@ -41,6 +41,7 @@ describe('routes', () => {
     expect(paths).toContain('/resume');
     expect(paths).toContain('/projects');
     expect(paths).toContain('/contact');
+    expect(paths).toContain('/achievements');
   });
 
   it('has unique paths', () => {
@@ -65,11 +66,16 @@ describe('routes', () => {
     }
   });
 
-  it('keeps secondary destinations out of the primary navigation', () => {
-    const secondaryPaths = routes
-      .filter((route) => route.primary === false)
-      .map((route) => route.path);
+  it('contains only current destinations', () => {
+    const paths = routes.map((route) => route.path);
 
-    expect(secondaryPaths).toEqual(['/stats', '/projects']);
+    expect(paths).toEqual([
+      '/',
+      '/about',
+      '/projects',
+      '/achievements',
+      '/resume',
+      '/contact',
+    ]);
   });
 });

@@ -20,7 +20,7 @@ describe('AboutContent', () => {
 
 Hello from the intro.
 
-# Some History
+# Academic Interests
 
 - Built a thing.`}
       />,
@@ -31,11 +31,11 @@ Hello from the intro.
       screen.queryByRole('heading', { name: 'Intro' }),
     ).not.toBeInTheDocument();
     expect(
-      screen.getByRole('heading', { name: 'Some History' }),
+      screen.getByRole('heading', { name: 'Academic Interests' }),
     ).toBeInTheDocument();
   });
 
-  it('assigns section variants for compact and links sections', () => {
+  it('assigns section variants for compact and chronological sections', () => {
     const { container } = render(
       <AboutContent
         markdown={`# Intro
@@ -44,11 +44,11 @@ Lead paragraph.
 
 # I Like
 
-- Running
+- Fitness
 
-# Websites from People I Admire
+# Places & Journeys
 
-- [Example](https://example.com)`}
+- In 2026, I visited Chongqing.`}
       />,
     );
 
@@ -56,7 +56,7 @@ Lead paragraph.
 
     expect(sections).toHaveLength(2);
     expect(sections[0]).toHaveClass('about-section--compact');
-    expect(sections[1]).toHaveClass('about-section--links');
+    expect(sections[1]).toHaveClass('about-section--log');
   });
 
   it('adds stable heading ids for deep links', () => {
@@ -66,22 +66,22 @@ Lead paragraph.
 
 Lead paragraph.
 
-# Some History
+# Academic Interests
 
 - Built a thing.
 
-# Travel / Geography
+# Places & Journeys
 
 - Went somewhere.`}
       />,
     );
 
     expect(
-      screen.getByRole('heading', { name: 'Some History' }),
-    ).toHaveAttribute('id', 'some-history');
+      screen.getByRole('heading', { name: 'Academic Interests' }),
+    ).toHaveAttribute('id', 'academic-interests');
     expect(
-      screen.getByRole('heading', { name: 'Travel / Geography' }),
-    ).toHaveAttribute('id', 'travel-geography');
+      screen.getByRole('heading', { name: 'Places & Journeys' }),
+    ).toHaveAttribute('id', 'places-and-journeys');
   });
 
   it('renders section navigation and self-links for the real about markdown', () => {
@@ -111,10 +111,10 @@ Lead paragraph.
       <AboutContent markdown={aboutMarkdown} />,
     );
 
-    expect(html).toContain('href="#some-history"');
-    expect(html).toContain('id="some-history"');
-    expect(html).toContain('href="#travel-geography"');
-    expect(html).toContain('id="travel-geography"');
+    expect(html).toContain('href="#academic-interests"');
+    expect(html).toContain('id="academic-interests"');
+    expect(html).toContain('href="#places-and-journeys"');
+    expect(html).toContain('id="places-and-journeys"');
   });
 
   it('supports same-page hash navigation from section links', async () => {
@@ -124,30 +124,30 @@ Lead paragraph.
 
     const nav = screen.getByRole('navigation', { name: 'About sections' });
     const navLink = within(nav).getByRole('link', {
-      name: 'Travel / Geography',
+      name: 'Places & Journeys',
     });
 
     navLink.click();
 
     await waitFor(() => {
-      expect(window.location.hash).toBe('#travel-geography');
+      expect(window.location.hash).toBe('#places-and-journeys');
     });
     expect(document.querySelector(window.location.hash)).toHaveTextContent(
-      'Travel / Geography',
+      'Places & Journeys',
     );
 
-    const heading = screen.getByRole('heading', { name: 'Fun Facts' });
+    const heading = screen.getByRole('heading', { name: 'Current Focus' });
     const permalink = within(heading).getByRole('link', {
-      name: 'Fun Facts',
+      name: 'Current Focus',
     });
 
     permalink.click();
 
     await waitFor(() => {
-      expect(window.location.hash).toBe('#fun-facts');
+      expect(window.location.hash).toBe('#current-focus');
     });
     expect(document.querySelector(window.location.hash)).toHaveTextContent(
-      'Fun Facts',
+      'Current Focus',
     );
   });
 });

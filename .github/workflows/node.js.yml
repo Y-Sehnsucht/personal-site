@@ -198,9 +198,9 @@ jobs:
           fi
           echo "Static export successful. Found $(find out -type f | wc -l) files."
 
-      # Checks generated HTML/XML itself: leaked drafts, robots, duplicate ids,
+      # Checks generated HTML/XML itself: robots directives, duplicate ids,
       # fragment and route targets, canonical/share metadata, local images, and
-      # sitemap/RSS integrity. None of these are visible to component tests.
+      # sitemap integrity. None of these are visible to component tests.
       - name: Verify export
         run: npm run verify-export
 

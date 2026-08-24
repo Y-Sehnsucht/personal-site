@@ -1,6 +1,6 @@
 /* ========================================
    CONTENT PAGE STYLES
-   About, Contact, Stats, and Not Found pages
+   About, Contact, and Not Found pages
    ======================================== */
 
 /* ========================================
@@ -27,7 +27,7 @@
   line-height: 1.7;
 }
 
-/* Section index — mono labels on a rule, matching the resume. */
+/* Section index 鈥?mono labels on a rule, matching the resume. */
 .about-section-nav {
   position: sticky;
   top: var(--header-height);
@@ -158,7 +158,7 @@
 }
 
 /* ========================================
-   ABOUT — LOG SECTIONS
+   ABOUT 鈥?LOG SECTIONS
    The history and travel lists are a chronological record, so they
    are set as log entries hanging off a spine rather than as bullets.
    ======================================== */
@@ -340,7 +340,7 @@
   border-radius: 0;
   border-bottom: var(--rule-strong) solid var(--color-accent);
   text-decoration: none;
-  /* The animated alias runs long — "you-can-email-me-at-literally-anything!"
+  /* The animated alias runs long 鈥?"you-can-email-me-at-literally-anything!"
      pushed 438px of content into a 320px viewport. It has to be allowed to
      break, mid-token if necessary. */
   overflow-wrap: anywhere;
@@ -492,83 +492,6 @@
   }
 }
 
-/* ========================================
-   STATS PAGE
-   ======================================== */
-
-/* Readings, not a spreadsheet: the label annotates in mono and the
-   value is set large enough to be read off at a glance. */
-.stat-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-  background: transparent;
-  border-top: var(--rule) solid var(--color-fg-bold);
-}
-
-.stat-table tr {
-  background: transparent;
-}
-
-/* Both cells, not just `td`. Labels became `th[scope="row"]` for screen
-   readers, which dropped them out of this rule and left half-width row
-   rules and mismatched alignment. */
-.stat-table th,
-.stat-table td {
-  padding: 1rem 0;
-  background: transparent;
-  border-bottom: var(--rule) solid var(--color-border);
-  vertical-align: baseline;
-}
-
-/* A row label is the information, not annotation about it, so it sits at
-   the interactive/readable size rather than the 11px annotation size. */
-.stat-table-label {
-  width: 40%;
-  text-align: left;
-  font-family: var(--font-mono);
-  font-size: var(--text-ui);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-fg-light);
-}
-
-.stat-table-value {
-  width: 60%;
-  text-align: right;
-  font-family: var(--font-mono);
-  font-size: var(--text-2xl);
-  font-weight: var(--font-weight-medium);
-  font-variant-numeric: tabular-nums;
-  color: var(--color-fg-bold);
-  line-height: var(--leading-tight);
-  white-space: nowrap;
-}
-
-.stat-table-value a {
-  color: var(--color-accent);
-  background-image: none;
-}
-
-.stat-table-value a:hover {
-  color: var(--color-accent-hover);
-}
-
-/* The live reading — the same rule as the hero: amber means it moves. */
-.stat-live {
-  color: var(--color-signal);
-}
-
-.stats-source-note {
-  margin: 0.75rem 0 0;
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-fg-light);
-}
-
 /* Screen reader only - visually hidden but accessible */
 .sr-only {
   position: absolute;
@@ -582,63 +505,9 @@
   border-width: 0;
 }
 
-/* Stats page layout */
-.stats-page {
-  max-width: var(--measure-read);
-  margin: 0;
-}
-
-.stats-header {
-  text-align: left;
-  margin-bottom: 3rem;
-}
-
-.stats-title {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: var(--font-weight-black);
-  letter-spacing: var(--tracking-display);
-  margin-bottom: 0.5rem;
-  color: var(--color-fg-bold);
-}
-
-.stats-subtitle {
-  font-size: var(--text-md);
-  color: var(--color-fg-light);
-  margin: 0;
-}
-
-.stats-content {
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-}
-
-.stats-section-title {
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--color-fg-light);
-  margin-bottom: 0.75rem;
-}
-
-@media (max-width: 640px) {
-  .stat-table-value {
-    font-size: clamp(var(--text-md), 4vw, var(--text-xl));
-  }
-}
-
 @media (max-width: 480px) {
   .contact-email-link {
     font-size: var(--text-lg);
-  }
-
-  .stat-table-value {
-    font-size: var(--text-md);
-    white-space: normal;
-    overflow-wrap: anywhere;
   }
 }
 

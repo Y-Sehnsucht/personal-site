@@ -25,14 +25,14 @@ export default function HomePage() {
 
       <Hero />
 
-      <section className="home-writing" aria-labelledby="home-projects-title">
-        <div className="home-writing-header">
+      <section className="home-projects" aria-labelledby="home-projects-title">
+        <div className="home-projects-header">
           <div>
             <span className="home-section-kicker">Selected Work</span>
             <h2 id="home-projects-title">Featured Projects</h2>
           </div>
 
-          <Link href="/projects/" className="home-writing-all">
+          <Link href="/projects/" className="home-projects-all">
             View All
           </Link>
         </div>

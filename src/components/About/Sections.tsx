@@ -65,12 +65,11 @@ interface ParsedAboutSection {
  * The rest stay as plain lists, because order carries no meaning there.
  */
 const sectionVariants: Record<string, string> = {
-  'Some History': 'about-section--log',
-  'Travel / Geography': 'about-section--log',
-  'Fun Facts': 'about-section--compact',
+  'Academic Interests': 'about-section--compact',
   'I Like': 'about-section--compact',
+  'Places & Journeys': 'about-section--log',
   'I Dream Of': 'about-section--compact',
-  'Websites from People I Admire': 'about-section--links',
+  'Current Focus': 'about-section--compact',
 };
 
 function splitAboutMarkdown(markdown: string) {

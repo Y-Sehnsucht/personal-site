@@ -37,7 +37,7 @@ export const jetbrainsMono = localFont({
 });
 
 /**
- * Long-form writing is the only current surface that uses authored italics.
+ * Long-form prose is the only current surface that uses authored italics.
  * Its separate route-level instance avoids preloading a 64 KB face on every
  * page while preserving a real italic rather than browser synthesis.
  */

@@ -14,7 +14,8 @@ export default function Hero() {
           </h1>
 
           <p className="hero-tagline">
-            I&apos;m a sophomore undergraduate student in Software Engineering at{' '}
+            I&apos;m a sophomore undergraduate student in Software Engineering
+            at{' '}
             <a
               href="https://www.ecnu.edu.cn/"
               className="hero-highlight"
@@ -23,11 +24,11 @@ export default function Hero() {
             >
               East China Normal University
             </a>
-            . My interests lie at the intersection of artificial intelligence 
-            and software engineering. I am particularly interested in AI-assisted software development, 
-            LLM-based intelligent agents, and the design of reliable and efficient AI systems. 
-            I enjoy turning course knowledge into
-            structured and practical projects.
+            . My interests lie at the intersection of artificial intelligence
+            and software engineering. I am particularly interested in
+            AI-assisted software development, LLM-based intelligent agents, and
+            the design of reliable and efficient AI systems. I enjoy turning
+            course knowledge into structured and practical projects.
           </p>
 
           <div className="hero-cta">

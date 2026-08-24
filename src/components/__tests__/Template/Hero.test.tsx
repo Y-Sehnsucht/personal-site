@@ -15,44 +15,40 @@ describe('Hero', () => {
     render(<Hero />);
 
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toHaveTextContent("Michael D'Angelo");
+    expect(heading).toHaveTextContent('Zijun Yan');
   });
 
-  it('describes the current work and Promptfoo joining OpenAI', () => {
+  it('describes the current academic focus', () => {
     const { container } = render(<Hero />);
 
-    const openAiLink = screen.getByRole('link', { name: /openai/i });
-    expect(openAiLink).toHaveAttribute('href', 'https://openai.com');
-    expect(openAiLink).toHaveClass('hero-highlight');
-
-    const promptfooLink = screen.getByRole('link', { name: /promptfoo/i });
-    expect(promptfooLink).toHaveAttribute('href', 'https://promptfoo.dev');
-    expect(promptfooLink).toHaveClass('hero-highlight');
-
-    const codexSecurityLink = screen.getByRole('link', {
-      name: 'Codex Security',
+    const universityLink = screen.getByRole('link', {
+      name: /east china normal university/i,
     });
-    expect(codexSecurityLink).toHaveAttribute(
-      'href',
-      'https://openai.com/index/codex-security-now-in-research-preview/',
-    );
-    expect(codexSecurityLink).toHaveClass('hero-highlight');
 
-    expect(container.querySelector('.hero-tagline')).toHaveTextContent(
-      "I'm a Member of the Technical Staff at OpenAI, working on Promptfoo and Codex Security. I help secure AI systems and use AI to find software vulnerabilities. I co-founded Promptfoo before it joined OpenAI in 2026.",
+    expect(universityLink).toHaveAttribute('href', 'https://www.ecnu.edu.cn/');
+    expect(universityLink).toHaveClass('hero-highlight');
+
+    const tagline = container.querySelector('.hero-tagline');
+
+    expect(tagline).toHaveTextContent(
+      /sophomore undergraduate student in Software Engineering/i,
     );
+    expect(tagline).toHaveTextContent(/AI-assisted software development/i);
+    expect(tagline).toHaveTextContent(/LLM-based intelligent agents/i);
+
+    expect(tagline).not.toHaveTextContent(/Member of the Technical Staff/i);
+    expect(tagline).not.toHaveTextContent(/co-founded/i);
   });
 
-  it('keeps personal stats and incomplete credential lists off the homepage', () => {
+  it('keeps personal metrics and incomplete credential lists off the homepage', () => {
     const { container } = render(<Hero />);
 
-    expect(container.querySelector('.telemetry')).not.toBeInTheDocument();
     expect(container.querySelector('.hero-chips')).not.toBeInTheDocument();
     expect(screen.queryByText('Countries visited')).not.toBeInTheDocument();
     expect(screen.queryByText('Computing since')).not.toBeInTheDocument();
     expect(screen.queryByText('Based in')).not.toBeInTheDocument();
     expect(screen.queryByText('YC Alum')).not.toBeInTheDocument();
-    expect(screen.queryByText('Stanford ICME')).not.toBeInTheDocument();
+    expect(screen.queryByText('Graduate credential')).not.toBeInTheDocument();
   });
 
   it('renders one primary CTA and one quieter resume link', () => {

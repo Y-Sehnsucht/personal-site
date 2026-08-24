@@ -42,7 +42,7 @@ const skills: Skill[] = [
     competency: 4,
     category: ['Computer Science'],
   },
-  
+
   // Artificial Intelligence
   {
     title: 'LLM Application Development',
@@ -60,7 +60,7 @@ const skills: Skill[] = [
     category: ['Artificial Intelligence', 'Computer Science'],
   },
 
- // Modeling & Simulation
+  // Modeling & Simulation
   {
     title: 'MATLAB / Simulink',
     competency: 3,
