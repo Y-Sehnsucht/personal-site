@@ -85,4 +85,12 @@ describe('projects data', () => {
     const featured = projects.filter((p) => p.featured);
     expect(featured.length).toBeGreaterThanOrEqual(1);
   });
+
+  it('keeps Zhiyi as an image-preview project without an external link', () => {
+    const zhiyi = projects.find((project) => project.title === 'Zhiyi');
+
+    expect(zhiyi).toBeDefined();
+    expect(zhiyi).not.toHaveProperty('link');
+    expect(zhiyi?.image).toBe('/images/projects/zhiyi.jpg');
+  });
 });

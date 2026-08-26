@@ -6,6 +6,8 @@ import { useCallback, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import routes from '../../data/routes';
+import { useLanguage } from '../../i18n/LanguageProvider';
+import { routeLabel, t } from '../../i18n/translations';
 import { isActiveRoute } from '../../lib/routes';
 import SlideMenu from './SlideMenu';
 
@@ -13,6 +15,7 @@ const MENU_ID = 'mobile-nav-menu';
 
 export default function Hamburger() {
   const pathname = usePathname();
+  const { locale } = useLanguage();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -31,7 +34,7 @@ export default function Hamburger() {
         type="button"
         className="slide-menu-close"
         onClick={closeMenu}
-        aria-label="Close navigation menu"
+        aria-label={t('closeMenu', locale)}
       >
         <span aria-hidden="true">×</span>
       </button>
@@ -52,7 +55,7 @@ export default function Hamburger() {
                   aria-current={active ? 'page' : undefined}
                 >
                   <span className={l.index ? 'index-li' : undefined}>
-                    {l.label}
+                    {routeLabel(l.path, locale)}
                   </span>
                 </Link>
               </li>
@@ -73,7 +76,7 @@ export default function Hamburger() {
                 onClick={toggleMenu}
                 className="hamburger-button"
                 aria-label={
-                  open ? 'Close navigation menu' : 'Open navigation menu'
+                  open ? t('closeMenu', locale) : t('openMenu', locale)
                 }
                 aria-expanded={open}
                 aria-controls={MENU_ID}

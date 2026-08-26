@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 
-import AboutContent from '@/components/About/Sections';
+import AboutPageContent from '@/components/About/AboutPageContent';
 import { SchemaGraph } from '@/components/Schema';
 import PageWrapper from '@/components/Template/PageWrapper';
-import { aboutMarkdown } from '@/data/about';
 import profile from '@/data/profile.json';
 import { createPageMetadata } from '@/lib/metadata';
 import {
@@ -41,12 +40,7 @@ export default function AboutPage() {
           ]),
         ]}
       />
-      <section className="about-page">
-        <header className="about-header">
-          <h1 className="page-title">About</h1>
-        </header>
-        <AboutContent markdown={aboutMarkdown} />
-      </section>
+      <AboutPageContent />
     </PageWrapper>
   );
 }

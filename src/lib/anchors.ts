@@ -5,7 +5,7 @@ export function createHeadingId(title: string): string {
     .toLowerCase()
     .replace(/&/g, ' and ')
     .replace(/['’]/g, '')
-    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/[^a-z0-9\u4e00-\u9fff]+/g, '-')
     .replace(/^-+|-+$/g, '');
 
   return slug || 'section';

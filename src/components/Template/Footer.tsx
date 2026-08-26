@@ -1,14 +1,22 @@
+'use client';
+
 import Link from 'next/link';
 
 import ContactIcons from '@/components/Contact/ContactIcons';
 import profile from '@/data/profile.json';
 import routes from '@/data/routes';
+import { useLanguage } from '@/i18n/LanguageProvider';
+import { routeLabel, t } from '@/i18n/translations';
 import { AUTHOR_NAME } from '@/lib/utils';
 
 import ThemePortrait from './ThemePortrait';
 
 export default function Footer() {
-  const currentRole = `${profile.role} at ${profile.school}`;
+  const { locale } = useLanguage();
+  const currentRole =
+    locale === 'zh-CN'
+      ? '华东师范大学软件工程专业大二本科生'
+      : `${profile.role} at ${profile.school}`;
 
   return (
     <footer className="site-footer-new">
@@ -27,8 +35,8 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Source
-                <span className="sr-only"> (opens in new tab)</span>
+                {t('source', locale)}
+                <span className="sr-only">{t('opensNewTab', locale)}</span>
               </a>
             </p>
           </div>
@@ -37,14 +45,14 @@ export default function Footer() {
         <div className="footer-right">
           <nav className="footer-links" aria-labelledby="footer-links-heading">
             <span id="footer-links-heading" className="footer-links-label">
-              Explore
+              {t('explore', locale)}
             </span>
             <div className="footer-links-grid">
               {routes
                 .filter((route) => !route.index)
                 .map((route) => (
                   <Link key={route.path} href={route.path}>
-                    {route.label}
+                    {routeLabel(route.path, locale)}
                   </Link>
                 ))}
             </div>
@@ -55,7 +63,7 @@ export default function Footer() {
             aria-labelledby="footer-social-heading"
           >
             <span id="footer-social-heading" className="footer-social-label">
-              Connect
+              {t('connect', locale)}
             </span>
             <ContactIcons />
           </div>

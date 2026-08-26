@@ -3,6 +3,9 @@
 import { useCallback, useMemo, useState } from 'react';
 
 import type { Category, Skill } from '@/data/resume/skills';
+import { useLanguage } from '@/i18n/LanguageProvider';
+import { resumeText } from '@/i18n/resume';
+import { t } from '@/i18n/translations';
 
 import CategoryButton from './Skills/CategoryButton';
 import SkillTag from './Skills/SkillTag';
@@ -24,6 +27,7 @@ export const ALL_CATEGORY = 'All';
  */
 export default function Skills({ skills, categories }: SkillsProps) {
   const [activeCategory, setActiveCategory] = useState<string>(ALL_CATEGORY);
+  const { locale } = useLanguage();
 
   // Selecting the category that is already active returns to All, which keeps
   // the toggle affordance the buttons' pressed state implies.
@@ -36,12 +40,15 @@ export default function Skills({ skills, categories }: SkillsProps) {
       [ALL_CATEGORY, ...categories.map(({ name }) => name)].map((name) => (
         <CategoryButton
           label={name}
+          displayLabel={
+            name === ALL_CATEGORY ? t('all', locale) : resumeText(name, locale)
+          }
           key={name}
           isActive={activeCategory === name}
           handleClick={handleChildClick}
         />
       )),
-    [categories, activeCategory, handleChildClick],
+    [categories, activeCategory, handleChildClick, locale],
   );
 
   /**
@@ -70,9 +77,14 @@ export default function Skills({ skills, categories }: SkillsProps) {
   return (
     <div className="skills">
       <div className="title">
-        <h2>Skills</h2>
+        <h2>{t('resumeSkills', locale)}</h2>
       </div>
-      <div className="skill-button-container">{buttonElements}</div>
+      <div
+        className="skill-button-container"
+        aria-label={t('filterSkills', locale)}
+      >
+        {buttonElements}
+      </div>
       <div className="skill-groups">
         {groupedSkills.map(({ category, skills: categorySkills }) => {
           const isVisible =
@@ -84,13 +96,16 @@ export default function Skills({ skills, categories }: SkillsProps) {
               className="skill-group"
               hidden={!isVisible}
             >
-              <h3 className="skill-group-title">{category.name}</h3>
+              <h3 className="skill-group-title">
+                {resumeText(category.name, locale)}
+              </h3>
               <div className="skill-tags">
                 {categorySkills.map((skill) => (
                   <SkillTag
                     key={skill.title}
                     data={skill}
                     categories={categories}
+                    locale={locale}
                   />
                 ))}
               </div>

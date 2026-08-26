@@ -50,19 +50,30 @@
   }
 
   h1 {
-    font-size: var(--text-3xl);
-    font-weight: var(--font-weight-black);
+    font-size: var(--text-page-title);
+    font-weight: var(--font-weight-bold);
     letter-spacing: var(--tracking-display);
   }
 
   h2 {
-    font-size: var(--text-2xl);
+    font-size: var(--text-section-heading);
     font-weight: var(--font-weight-bold);
     letter-spacing: var(--tracking-display);
   }
 
   h3 {
-    font-size: var(--text-xl);
+    font-size: var(--text-subheading);
+  }
+
+  @media (max-width: 735px) {
+    h1 {
+      font-size: var(--text-page-title-mobile);
+      line-height: 1.05;
+    }
+
+    h2 {
+      font-size: var(--text-section-heading-mobile);
+    }
   }
 
   h4 {

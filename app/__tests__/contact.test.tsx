@@ -8,7 +8,11 @@ describe('contact page', () => {
     render(<ContactPage />);
 
     expect(screen.getByRole('main')).toHaveClass('page-main--contact');
+    expect(
+      screen.getByRole('heading', { name: 'Get in Touch' }).closest('section'),
+    ).toHaveClass('contact-page--centered');
     expect(screen.queryByRole('contentinfo')).not.toBeInTheDocument();
     expect(screen.getAllByRole('link', { name: /^Email/ })).toHaveLength(1);
+    expect(screen.getByRole('link', { name: /github/i })).toBeInTheDocument();
   });
 });

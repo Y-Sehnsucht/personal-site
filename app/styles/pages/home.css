@@ -47,13 +47,18 @@
 /* Tagline 鈥?set in the body serif at reading size, measure-constrained. */
 .hero-tagline {
   font-family: var(--font-body);
-  font-size: var(--text-lg);
+  font-size: var(--text-lead);
   color: var(--color-fg);
-  max-width: 46ch;
+  max-width: 62ch;
   margin: 0 0 2rem;
-  line-height: var(--leading-snug);
+  line-height: var(--leading-normal);
   font-weight: var(--font-weight-normal);
   text-wrap: pretty;
+}
+
+html[lang='zh-CN'] .hero-tagline {
+  font-family: inherit;
+  line-height: var(--leading-normal);
 }
 
 .hero-highlight {
@@ -136,24 +141,23 @@
 /* The source portrait sits on a white field. Multiply drops that field
    into the paper so the frame holds a photograph, not a white tile. */
 .hero-portrait img {
-  filter: grayscale(1) contrast(1.05);
-  mix-blend-mode: multiply;
+  filter: none;
   transition: filter var(--duration-normal) var(--ease-out);
 }
 
 .hero-portrait:hover img {
-  filter: grayscale(0) contrast(1);
+  filter: brightness(1.03) saturate(1.04);
 }
 
 /* On ink the portrait must not out-shout the name, so the white
    field is pulled well down rather than multiplied away. */
 [data-theme='dark'] .hero-portrait img {
   mix-blend-mode: normal;
-  filter: grayscale(1) brightness(0.66) contrast(1.08);
+  filter: brightness(0.9);
 }
 
 [data-theme='dark'] .hero-portrait:hover img {
-  filter: grayscale(0) brightness(0.78) contrast(1);
+  filter: brightness(0.96) saturate(1.03);
 }
 
 /* Touch users cannot reveal the portrait with hover. Keep it developed in
@@ -164,7 +168,7 @@
   }
 
   [data-theme='dark'] .hero-portrait img {
-    filter: brightness(0.78) contrast(1);
+    filter: brightness(0.9);
   }
 }
 
@@ -231,8 +235,9 @@
   }
 
   .hero-tagline {
-    font-size: var(--text-md);
+    font-size: var(--text-body-mobile);
   }
+
 }
 
 /* ========================================
@@ -291,7 +296,7 @@
 
 .home-projects-item {
   min-width: 0;
-  padding: 1.5rem;
+  padding: 2rem;
   color: inherit;
   text-decoration: none;
   background-image: none;
@@ -317,7 +322,7 @@
 .home-projects-item h3 {
   margin: 0.75rem 0 0.5rem;
   font-family: var(--font-display);
-  font-size: var(--text-md);
+  font-size: var(--text-card-title);
   font-weight: var(--font-weight-bold);
   line-height: var(--leading-snug);
   color: var(--color-fg-bold);
@@ -330,14 +335,18 @@
 
 .home-projects-item p {
   margin: 0;
-  font-size: var(--text-sm);
-  line-height: var(--leading-snug);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
   color: var(--color-fg-light);
 }
 
 @media (max-width: 760px) {
   .home-projects {
     margin-top: 3.5rem;
+  }
+
+  .home-projects h2 {
+    font-size: var(--text-section-heading-mobile);
   }
 
   .home-projects-list {
@@ -349,5 +358,9 @@
   .home-projects-item:last-child {
     padding: 1.25rem 0;
     border-right: 0;
+  }
+
+  .home-projects-item p {
+    font-size: var(--text-body-mobile);
   }
 }

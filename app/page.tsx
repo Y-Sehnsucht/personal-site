@@ -1,11 +1,9 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
-import Cell from '@/components/Projects/Cell';
+import HomeProjects from '@/components/Projects/HomeProjects';
 import { SchemaGraph } from '@/components/Schema';
 import Hero from '@/components/Template/Hero';
 import PageWrapper from '@/components/Template/PageWrapper';
-import projects from '@/data/projects';
 import { HOME_URL, profilePageNode } from '@/lib/schema';
 import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/utils';
 
@@ -15,8 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
-  const featuredProjects = projects.filter((project) => project.featured);
-
   return (
     <PageWrapper mainClassName="page-main--hero">
       <SchemaGraph
@@ -25,24 +21,7 @@ export default function HomePage() {
 
       <Hero />
 
-      <section className="home-projects" aria-labelledby="home-projects-title">
-        <div className="home-projects-header">
-          <div>
-            <span className="home-section-kicker">Selected Work</span>
-            <h2 id="home-projects-title">Featured Projects</h2>
-          </div>
-
-          <Link href="/projects/" className="home-projects-all">
-            View All
-          </Link>
-        </div>
-
-        <div className="projects-grid projects-grid--featured">
-          {featuredProjects.map((project) => (
-            <Cell data={project} key={project.title} />
-          ))}
-        </div>
-      </section>
+      <HomeProjects />
     </PageWrapper>
   );
 }

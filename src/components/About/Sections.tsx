@@ -65,11 +65,12 @@ interface ParsedAboutSection {
  * The rest stay as plain lists, because order carries no meaning there.
  */
 const sectionVariants: Record<string, string> = {
-  'Academic Interests': 'about-section--compact',
   'I Like': 'about-section--compact',
   'Places & Journeys': 'about-section--log',
   'I Dream Of': 'about-section--compact',
   'Current Focus': 'about-section--compact',
+  兴趣与日常: 'about-section--compact',
+  城市与经历: 'about-section--log',
 };
 
 function splitAboutMarkdown(markdown: string) {
@@ -136,6 +137,7 @@ function isLogSection(title: string) {
 
 export default function AboutContent({ markdown }: AboutContentProps) {
   const { intro, sections } = splitAboutMarkdown(markdown);
+  const isChinese = sections.some((section) => section.title === '学术兴趣');
 
   return (
     <article className="about-content">
@@ -145,7 +147,10 @@ export default function AboutContent({ markdown }: AboutContentProps) {
         </div>
       ) : null}
       {sections.length > 0 ? (
-        <nav className="about-section-nav" aria-label="About sections">
+        <nav
+          className="about-section-nav"
+          aria-label={isChinese ? '关于页面目录' : 'About sections'}
+        >
           {sections.map((section) => (
             <a
               key={section.id}

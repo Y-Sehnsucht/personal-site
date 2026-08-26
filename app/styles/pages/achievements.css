@@ -11,7 +11,7 @@
   grid-template-columns: 7rem minmax(0, 1fr) auto;
   gap: 1.5rem;
   align-items: start;
-  padding: 1.5rem 0;
+  padding: 2rem 0;
   border-bottom: var(--rule) solid var(--color-border);
 }
 
@@ -22,6 +22,7 @@
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-fg-light);
+  font-weight: var(--font-weight-medium);
 }
 
 .achievement-main h2 {
@@ -37,6 +38,8 @@
   margin: 0;
   color: var(--color-accent);
   font-weight: var(--font-weight-medium);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
 }
 
 .achievement-certificate {
@@ -57,5 +60,9 @@
 
   .achievement-certificate {
     width: fit-content;
+  }
+
+  .achievement-main p {
+    font-size: var(--text-body-mobile);
   }
 }

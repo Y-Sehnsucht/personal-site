@@ -23,13 +23,13 @@ npm test -- ComponentName                    # Test single component
 ## Project Structure
 
 ```
-app/                  鈫?Pages, layouts, global CSS
-app/styles/           鈫?Modular CSS (tokens, base, components, layout, pages)
-src/components/       鈫?React components (organized by feature)
-src/data/             鈫?Static data (resume, projects, contact)
-src/hooks/            鈫?Custom React hooks
-public/images/        鈫?Images and favicons
-docs/                 鈫?Documentation
+app/                  -> Pages, layouts, global CSS
+app/styles/           -> Modular CSS (tokens, base, components, layout, pages)
+src/components/       -> React components (organized by feature)
+src/data/             -> Static data (resume, projects, contact)
+src/hooks/            -> Custom React hooks
+public/images/        -> Images and favicons
+docs/                 -> Documentation
 ```
 
 ## Code Style
@@ -48,7 +48,7 @@ docs/                 鈫?Documentation
 
 - Add new dependencies without clear need
 - Create god components or monolithic files
-- Hard-code colors鈥攗se CSS variables (`var(--color-*)`)
+- Hard-code colors -- use CSS variables (`var(--color-*)`)
 - Skip type annotations on function parameters
 - Commit without running `npm run format` first
 
@@ -63,24 +63,24 @@ docs/                 鈫?Documentation
 
 ## Tech Stack
 
-Next.js 16 (App Router) 路 React 19 路 TypeScript 路 Tailwind CSS v4 路 Biome 路 Vitest
+Next.js 16 (App Router) | React 19 | TypeScript | Tailwind CSS v4 | Biome | Vitest
 
 ## Key Patterns
 
 - **Theming**: `data-theme` attribute on `<html>`, persisted to `window.localStorage` in client code/tests to avoid Node runtime globals leaking into browser-only paths
-- **Static export**: `output: 'export'` for GitHub Pages鈥攏o server features
-- **TypeScript 7 needs `experimental.useTypeScriptCli`**: TS 7 is the native compiler and does not expose the JavaScript compiler API Next uses for its build-time type check, so `next build` fails without that flag in `next.config.mjs`. The flag makes Next shell out to the TypeScript CLI instead. It still gates the build 鈥?verified by injecting `const x: number = 'string'` and confirming a non-zero exit with no `out/` produced. Re-verify that if the flag ever changes, because a silently-skipped type check is worse than an old compiler
+- **Static export**: `output: 'export'` for GitHub Pages -- no server features
+- **TypeScript 7 needs `experimental.useTypeScriptCli`**: TS 7 is the native compiler and does not expose the JavaScript compiler API Next uses for its build-time type check, so `next build` fails without that flag in `next.config.mjs`. The flag makes Next shell out to the TypeScript CLI instead. It still gates the build -- verified by injecting `const x: number = 'string'` and confirming a non-zero exit with no `out/` produced. Re-verify that if the flag ever changes, because a silently-skipped type check is worse than an old compiler
 - **Biome upgrades need `biome migrate`**: Biome errors, not warns, when `biome.json`'s `$schema` version disagrees with the CLI, so a version bump alone fails `npm run lint`. Run `npx biome migrate --write` with the upgrade. `linter.rules.preset` replaced the deprecated `recommended` field; this repo uses `"none"` and opts into rules explicitly
 - **FontAwesome packages move together**: each carries its own `@fortawesome/fontawesome-common-types`, where `IconName` is a string-literal union that grows every release. Bumping one package leaves multiple copies and `IconDefinition` stops being assignable across them. Bump `fontawesome-svg-core`, `free-regular-svg-icons`, and `free-brands-svg-icons` in lockstep
 - **The artifact actions are coupled pairs**: `upload-artifact` feeds `download-artifact`, and `upload-pages-artifact` feeds `deploy-pages`, both on the path that publishes the site. Dependabot proposes them individually; bump each pair together
-- **`overrides` exist to reach security patches upstream pins away from**: `next` pins `postcss` to an exact version and declares `sharp` as an optional `^0.34.x`, so neither can reach its patched release through normal resolution 鈥?`package.json` `overrides` lift them. Re-check these on every `next` upgrade: once Next ships a range that already includes the fix, drop the override rather than leaving it to pin something backwards. The postcss override was verified inert by building before and after and diffing the emitted CSS byte-for-byte. `sharp` is never imported here (`images.unoptimized` plus static export means Next's optimizer never runs), so it is patched rather than exercised
-- **Node baseline lives in three places**: `.nvmrc` (development plus the install/quality/test jobs), `engines.node` in `package.json` (what forks are told they can use), and the `build` matrix in `.github/workflows/node.js.yml` (literals 鈥?a matrix cannot read `.nvmrc`). The deployed leg is named once as the workflow-level `DEPLOY_NODE` env so the Pages-configure and artifact-upload gates cannot drift apart; a build step asserts `DEPLOY_NODE` still matches `.nvmrc`. Derive the `engines` floor from the tightest transitive requirement rather than guessing 鈥?`jsdom` currently forces `^22.13.0`, and `@testing-library/jest-dom` requires `>=22`, which is why Node 20 had to go
+- **`overrides` exist to reach security patches upstream pins away from**: `next` pins `postcss` to an exact version and declares `sharp` as an optional `^0.34.x`, so neither can reach its patched release through normal resolution -- `package.json` `overrides` lift them. Re-check these on every `next` upgrade: once Next ships a range that already includes the fix, drop the override rather than leaving it to pin something backwards. The postcss override was verified inert by building before and after and diffing the emitted CSS byte-for-byte. `sharp` is never imported here (`images.unoptimized` plus static export means Next's optimizer never runs), so it is patched rather than exercised
+- **Node baseline lives in three places**: `.nvmrc` (development plus the install/quality/test jobs), `engines.node` in `package.json` (what forks are told they can use), and the `build` matrix in `.github/workflows/node.js.yml` (literals -- a matrix cannot read `.nvmrc`). The deployed leg is named once as the workflow-level `DEPLOY_NODE` env so the Pages-configure and artifact-upload gates cannot drift apart; a build step asserts `DEPLOY_NODE` still matches `.nvmrc`. Derive the `engines` floor from the tightest transitive requirement rather than guessing -- `jsdom` currently forces `^22.13.0`, and `@testing-library/jest-dom` requires `>=22`, which is why Node 20 had to go
 - **Production compiler**: `npm run build` intentionally passes `--webpack`. Keep production builds on Webpack unless the complete static export and deployment checks have been verified with another compiler
 - **Canonical/export URLs**: When generating absolute URLs for metadata, sitemap, or schema, match `trailingSlash: true` output (`/about/`, `/projects/`) instead of non-canonical no-slash variants; file-like routes such as `/sitemap.xml` stay file-like
 - **Page metadata**: Route-level `metadata` exports and `generateMetadata` should override `openGraph` and `twitter`, not just `title`/`description`, otherwise subpages inherit the homepage share card from `app/layout.tsx`; for `app/not-found.tsx`, omit `openGraph.url` because there is no stable canonical 404 route in the static export
 - **Metadata objects replace, they do not merge**: a route-level `openGraph`, `twitter`, or `alternates` object wholly replaces the inherited one, so anything omitted vanishes from that page. Spread `sharedOpenGraph` and `sharedTwitter` from `src/lib/metadata.ts` when defining page metadata. `app/__tests__/page-metadata.test.ts` keeps these values consistent
 - **Share images**: The card is `public/og.png`, regenerated with `npm run og`; commit it together with `public/og.meta.json`, which binds the image to its generator and profile inputs. Do **not** convert this to an `app/opengraph-image.tsx` metadata route: it emits an extensionless file that GitHub Pages serves as `application/octet-stream`, which scrapers reject, and the file convention only reaches routes that do not declare their own `openGraph`
-- **robots**: never emit a positive `index, follow` globally. It is already the default, and it contradicts any page that sets `noindex` 鈥?the 404 shipped carrying both
+- **robots**: never emit a positive `index, follow` globally. It is already the default, and it contradicts any page that sets `noindex` -- the 404 shipped carrying both
 - **Static export constrains data fetching**: `output: 'export'` requires every route to be statically renderable, so build-time fetches must stay cacheable (`revalidate: false`). An uncached fetch silently forces the route dynamic, which makes it fall back on every build. Cache staleness is handled in the Pages workflow instead, which deliberately does not restore `.next/cache`
 - **Filtering hides, it does not unmount**: `Skills` keeps every group in the DOM behind `hidden` so `print.css` can restore them. Removing filtered content from the DOM means a printed resume silently reflects whatever filter was selected
 - **Theme images**: Use `ThemePortrait` component for light/dark variants
@@ -88,14 +88,14 @@ Next.js 16 (App Router) 路 React 19 路 TypeScript 路 Tailwind CSS v4 路 Biom
 - **Long-form markdown pages**: Prefer a dedicated renderer component that can parse markdown into semantic sections instead of styling raw headings globally; if `markdown-to-jsx` causes dev/runtime issues in App Router, a `'use client'` boundary may still be required even without hooks. Preserve stable heading ids when converting markdown headings so deep links and `scroll-margin-top` behavior keep working, prefer a shared helper over duplicating slug logic in each page component, and expose those anchors in the UI with section nav or self-links if readers are expected to use them
 - **Design system**: Three type roles, and every element should pick one deliberately: `--font-display` (Bricolage Grotesque) for names and headings, `--font-body` (Newsreader) for prose, and `--font-mono` (JetBrains Mono) for data, dates, labels, and buttons. Structure is carried by hairlines (`--rule`) and near-square radii, not by shadow and float. A heavy `--color-fg-bold` rule opens a section; a `--color-border` hairline divides within one
 - **Page measures are semantic**: use `--measure-wide` for split hero compositions, `--measure-page` for default pages/lists/footer, and `--measure-read` for continuous prose and compact data views. Component constraints such as portraits, controls, and short status messages may still use their own intrinsic measure; do not create a new page width for each route
-- **Signal colour discipline**: `--color-accent` (ultramarine) is for structure and links. `--color-signal` (amber) is reserved for values that are live or in progress 鈥?the ticking age, a role with no end date. Using it decoratively is what makes the rest of it stop meaning anything. `--color-signal` is the text-safe value; use `--color-signal-mark` for non-text marks only
+- **Signal colour discipline**: `--color-accent` (ultramarine) is for structure and links. `--color-signal` (amber) is reserved for values that are live or in progress -- the ticking age, a role with no end date. Using it decoratively is what makes the rest of it stop meaning anything. `--color-signal` is the text-safe value; use `--color-signal-mark` for non-text marks only
 - **Link accents and button fills are different tokens**: `--color-accent` is tuned for text on the page background and is far too light in dark mode to sit behind white text (it measured 2.67:1). Filled controls use `--color-accent-fill` / `--color-accent-fill-hover` with `--color-on-accent`
-- **Interactive labels use `--text-ui` (13px)**, not `--text-2xs` (11px). 11px is for genuinely secondary annotation only 鈥?dates, gutter markers, category labels
+- **Interactive labels use `--text-ui` (13px)**, not `--text-2xs` (11px). 11px is for genuinely secondary annotation only -- dates, gutter markers, category labels
 - **Fonts must be variable and self-hosted**: `app/fonts.ts` feeds versioned Fontsource variable files to `next/font/local`, preserving metric-adjusted fallbacks and critical preloads without a Google build dependency. The weight tokens only render as distinct weights because those files remain variable.
 - **Type sizes are rem**: `--text-*` are absolute so nesting never compounds. Avoid reintroducing `em` sizes
-- **Hierarchy from data**: Where a list needs varying visual weight (e.g. `tierFor` in `src/components/Resume/Experience.tsx`), derive it from the data 鈥?dates, role titles 鈥?rather than hardcoding per-item styling, so new entries place themselves
+- **Hierarchy from data**: Where a list needs varying visual weight (e.g. `tierFor` in `src/components/Resume/Experience.tsx`), derive it from the data -- dates, role titles -- rather than hardcoding per-item styling, so new entries place themselves
 - **Motion**: Anything that animates continuously must check `prefers-reduced-motion` through the shared `usePrefersReducedMotion` hook, as demonstrated by `EmailLink`, rather than reading `matchMedia` independently. Shared handling keeps reduced-motion behavior consistent across components
-- **Opting out of base link styles**: `app/styles/base/links.css` paints an accent underline on every `p a` / `li a`. Navigation-like links must set `background-image: none` or they pick up a rule that appears nowhere else 鈥?this is what made the mobile menu look broken
+- **Opting out of base link styles**: `app/styles/base/links.css` paints an accent underline on every `p a` / `li a`. Navigation-like links must set `background-image: none` or they pick up a rule that appears nowhere else -- this is what made the mobile menu look broken
 - **Print**: `app/styles/print.css` is imported last so it can override both themes. The resume is the page people print; check it there after changing resume layout
 
 ## Testing
@@ -110,10 +110,10 @@ npm test -- ComponentName       # Run specific test
 
 ## Further Reading
 
-- [README.md](./README.md) 鈥?Setup and deployment
-- [docs/design-goals.md](./docs/design-goals.md) 鈥?Architecture principles
-- [docs/contributing.md](./docs/contributing.md) 鈥?Contribution guidelines
+- [README.md](./README.md) -- Setup and deployment
+- [docs/design-goals.md](./docs/design-goals.md) -- Architecture principles
+- [docs/contributing.md](./docs/contributing.md) -- Contribution guidelines
 
 ## Maintaining This Document
 
-When creating a PR, audit this file and make small, targeted improvements based on your learnings鈥攏ew patterns discovered, outdated references, or missing guidance that would have helped.
+When creating a PR, audit this file and make small, targeted improvements based on your learnings -- new patterns discovered, outdated references, or missing guidance that would have helped.

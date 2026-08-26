@@ -1,10 +1,17 @@
+'use client';
+
 import Link from 'next/link';
 
 import profile from '@/data/profile.json';
+import { useLanguage } from '@/i18n/LanguageProvider';
+import { heroCopy, t } from '@/i18n/translations';
 
 import ThemePortrait from './ThemePortrait';
 
 export default function Hero() {
+  const { locale } = useLanguage();
+  const copy = locale === 'zh-CN' ? heroCopy.zh : heroCopy.en;
+
   return (
     <section className="hero">
       <div className="hero-grid">
@@ -14,29 +21,24 @@ export default function Hero() {
           </h1>
 
           <p className="hero-tagline">
-            I&apos;m a sophomore undergraduate student in Software Engineering
-            at{' '}
+            {copy.firstBeforeSchool}
             <a
               href="https://www.ecnu.edu.cn/"
               className="hero-highlight"
               target="_blank"
               rel="noreferrer"
             >
-              East China Normal University
+              {copy.school}
             </a>
-            . My interests lie at the intersection of artificial intelligence
-            and software engineering. I am particularly interested in
-            AI-assisted software development, LLM-based intelligent agents, and
-            the design of reliable and efficient AI systems. I enjoy turning
-            course knowledge into structured and practical projects.
+            {copy.rest}
           </p>
 
           <div className="hero-cta">
             <Link href="/about" className="button">
-              About Me
+              {t('aboutMe', locale)}
             </Link>
             <Link href="/resume" className="hero-resume-link">
-              View Resume
+              {t('viewResume', locale)}
               <span aria-hidden="true">→</span>
             </Link>
           </div>

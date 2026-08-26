@@ -16,6 +16,8 @@ describe('createHeadingId', () => {
     ['Travel / Geography', 'travel-geography'],
     ['Research & Development', 'research-and-development'],
     ["Zijun's Notes", 'zijuns-notes'],
+    ['学术兴趣', '学术兴趣'],
+    ['城市与经历', '城市与经历'],
     ['Café Crème', 'cafe-creme'],
   ])('creates stable ids for %s', (title, expected) => {
     expect(createHeadingId(title)).toBe(expected);

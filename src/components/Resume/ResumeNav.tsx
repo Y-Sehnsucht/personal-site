@@ -2,12 +2,15 @@
 
 import { useEffect, useState } from 'react';
 
+import { useLanguage } from '@/i18n/LanguageProvider';
+import { t } from '@/i18n/translations';
+
 const sections = [
-  { name: 'Projects', id: 'experience' },
-  { name: 'Education', id: 'education' },
-  { name: 'Skills', id: 'skills' },
-  { name: 'Courses', id: 'courses' },
-  { name: 'References', id: 'references' },
+  { nameKey: 'resumeProjects', id: 'experience' },
+  { nameKey: 'resumeEducation', id: 'education' },
+  { nameKey: 'resumeSkills', id: 'skills' },
+  { nameKey: 'resumeCourses', id: 'courses' },
+  { nameKey: 'resumeReferences', id: 'references' },
 ] as const;
 
 type SectionId = (typeof sections)[number]['id'];
@@ -17,6 +20,7 @@ const INTERSECTION_MARGIN = '-20% 0px -75% 0px';
 
 export default function ResumeNav() {
   const [activeSection, setActiveSection] = useState<SectionId>('experience');
+  const { locale } = useLanguage();
 
   useEffect(() => {
     // Check if IntersectionObserver is available (not in test environment)
@@ -75,7 +79,7 @@ export default function ResumeNav() {
   }, []);
 
   return (
-    <nav className="resume-nav" aria-label="Resume sections">
+    <nav className="resume-nav" aria-label={t('resumeSections', locale)}>
       {sections.map((section) => (
         <a
           key={section.id}
@@ -83,7 +87,7 @@ export default function ResumeNav() {
           className={`resume-nav-link ${activeSection === section.id ? 'active' : ''}`}
           aria-current={activeSection === section.id ? 'location' : undefined}
         >
-          {section.name}
+          {t(section.nameKey, locale)}
         </a>
       ))}
     </nav>

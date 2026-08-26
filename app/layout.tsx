@@ -6,6 +6,7 @@ import GoogleAnalytics from '@/components/Template/GoogleAnalytics';
 import Navigation from '@/components/Template/Navigation';
 import { MAIN_CONTENT_ID } from '@/components/Template/PageWrapper';
 import ScrollToTop from '@/components/Template/ScrollToTop';
+import { LanguageProvider } from '@/i18n/LanguageProvider';
 import { sharedOpenGraph, sharedTwitter } from '@/lib/metadata';
 import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/utils';
 import { bricolage, jetbrainsMono, newsreader } from './fonts';
@@ -88,10 +89,12 @@ export default function RootLayout({
           Skip to content
         </a>
         <ScrollToTop />
-        <div className="site-wrapper">
-          <Navigation />
-          {children}
-        </div>
+        <LanguageProvider>
+          <div className="site-wrapper">
+            <Navigation />
+            {children}
+          </div>
+        </LanguageProvider>
         <GoogleAnalytics />
       </body>
     </html>

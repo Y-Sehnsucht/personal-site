@@ -96,4 +96,14 @@ describe('Navigation', () => {
     const navActions = document.querySelector('.nav-actions');
     expect(navActions).toBeInTheDocument();
   });
+
+  it('places the language toggle before the theme toggle', () => {
+    render(<Navigation />);
+
+    const navActions = document.querySelector('.nav-actions');
+    const buttons = Array.from(navActions?.querySelectorAll('button') ?? []);
+
+    expect(buttons[0]).toHaveClass('language-toggle');
+    expect(buttons[1]).toHaveClass('theme-toggle');
+  });
 });
