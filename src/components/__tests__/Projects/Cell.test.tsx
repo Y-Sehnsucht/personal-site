@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 
 import projects from '@/data/projects';
 import Cell from '../../Projects/Cell';
@@ -14,7 +14,13 @@ describe('Cell', () => {
     link: 'https://example.com',
   };
 
+  afterEach(() => {
+    vi.unstubAllEnvs();
+  });
+
   it('renders project as a clickable card with link', () => {
+    vi.stubEnv('NEXT_PUBLIC_BASE_PATH', '/personal-site');
+
     render(<Cell data={mockProject} />);
     const link = screen.getByRole('link', { name: mockProject.title });
     expect(link).toHaveAttribute('href', mockProject.link);
@@ -35,11 +41,13 @@ describe('Cell', () => {
   });
 
   it('treats the thumbnail as decorative beside its matching heading', () => {
+    vi.stubEnv('NEXT_PUBLIC_BASE_PATH', '/personal-site');
+
     render(<Cell data={mockProject} />);
     const image = document.querySelector('.project-card-image img');
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute('alt', '');
-    expect(image).toHaveAttribute('src', expect.stringContaining('test.jpg'));
+    expect(image).toHaveAttribute('src', '/personal-site/images/test.jpg');
   });
 
   it('does not imply that a static archive card is clickable', () => {
@@ -60,6 +68,8 @@ describe('Cell', () => {
   });
 
   it('opens image preview for projects without a URL and closes with Escape', async () => {
+    vi.stubEnv('NEXT_PUBLIC_BASE_PATH', '/personal-site/');
+
     render(<Cell data={{ ...mockProject, link: undefined }} />);
 
     const trigger = screen.getByRole('button', {
@@ -71,7 +81,7 @@ describe('Cell', () => {
     expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(
       screen.getByRole('img', { name: mockProject.title }),
-    ).toHaveAttribute('src', expect.stringContaining('test.jpg'));
+    ).toHaveAttribute('src', '/personal-site/images/test.jpg');
 
     fireEvent.keyDown(document, { key: 'Escape' });
 

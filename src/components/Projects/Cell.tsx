@@ -7,6 +7,7 @@ import type { Project } from '@/data/projects';
 import { formatDate } from '@/i18n/format';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { t } from '@/i18n/translations';
+import { withBasePath } from '@/lib/assetPath';
 import { PROJECT_IMAGE } from '@/lib/utils';
 
 interface CellProps {
@@ -24,6 +25,7 @@ export default function Cell({ data }: CellProps) {
   const subtitle =
     locale === 'zh-CN' ? (data.subtitleZh ?? data.subtitle) : data.subtitle;
   const desc = locale === 'zh-CN' ? (data.descZh ?? data.desc) : data.desc;
+  const imageSrc = withBasePath(data.image);
 
   useEffect(() => {
     if (!previewOpen) return;
@@ -51,7 +53,7 @@ export default function Cell({ data }: CellProps) {
     <>
       <div className="project-card-image">
         <Image
-          src={data.image}
+          src={imageSrc}
           alt=""
           width={PROJECT_IMAGE.width}
           height={PROJECT_IMAGE.height}
@@ -141,7 +143,7 @@ export default function Cell({ data }: CellProps) {
             </header>
             <div className="project-preview-image-wrap">
               <Image
-                src={data.image}
+                src={imageSrc}
                 alt={title}
                 fill
                 sizes="100vw"
