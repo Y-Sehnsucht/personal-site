@@ -1,10 +1,17 @@
+'use client';
+
 import Link from 'next/link';
 
 import profile from '@/data/profile.json';
+import { useLanguage } from '@/i18n/LanguageProvider';
+import { heroCopy, t } from '@/i18n/translations';
 
 import ThemePortrait from './ThemePortrait';
 
 export default function Hero() {
+  const { locale } = useLanguage();
+  const copy = locale === 'zh-CN' ? heroCopy.zh : heroCopy.en;
+
   return (
     <section className="hero">
       <div className="hero-grid">
@@ -14,32 +21,24 @@ export default function Hero() {
           </h1>
 
           <p className="hero-tagline">
-            I&apos;m a {profile.role} at{' '}
-            <a href="https://openai.com" className="hero-highlight">
-              {profile.employer}
-            </a>
-            , working on{' '}
-            <a href="https://promptfoo.dev" className="hero-highlight">
-              Promptfoo
-            </a>{' '}
-            and{' '}
+            {copy.firstBeforeSchool}
             <a
-              href="https://openai.com/index/codex-security-now-in-research-preview/"
+              href="https://www.ecnu.edu.cn/"
               className="hero-highlight"
+              target="_blank"
+              rel="noreferrer"
             >
-              Codex Security
+              {copy.school}
             </a>
-            . I help secure AI systems and use AI to find software
-            vulnerabilities. I co-founded Promptfoo before it joined OpenAI in
-            2026.
+            {copy.rest}
           </p>
 
           <div className="hero-cta">
             <Link href="/about" className="button">
-              About Me
+              {t('aboutMe', locale)}
             </Link>
             <Link href="/resume" className="hero-resume-link">
-              View Resume
+              {t('viewResume', locale)}
               <span aria-hidden="true">→</span>
             </Link>
           </div>

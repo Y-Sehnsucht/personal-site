@@ -1,14 +1,22 @@
+'use client';
+
 import Link from 'next/link';
 
 import ContactIcons from '@/components/Contact/ContactIcons';
-import work from '@/data/resume/work';
+import profile from '@/data/profile.json';
 import routes from '@/data/routes';
+import { useLanguage } from '@/i18n/LanguageProvider';
+import { routeLabel, t } from '@/i18n/translations';
 import { AUTHOR_NAME } from '@/lib/utils';
 
 import ThemePortrait from './ThemePortrait';
 
 export default function Footer() {
-  const currentRole = `${work[0].position} at ${work[0].name}`;
+  const { locale } = useLanguage();
+  const currentRole =
+    locale === 'zh-CN'
+      ? '华东师范大学软件工程专业大二本科生'
+      : `${profile.role} at ${profile.school}`;
 
   return (
     <footer className="site-footer-new">
@@ -23,32 +31,28 @@ export default function Footer() {
             <p className="footer-copyright">
               &copy; {new Date().getFullYear()} ·{' '}
               <a
-                href="https://github.com/mldangelo/personal-site"
+                href="https://github.com/Y-Sehnsucht/personal-site"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Source
-                <span className="sr-only"> (opens in new tab)</span>
+                {t('source', locale)}
+                <span className="sr-only">{t('opensNewTab', locale)}</span>
               </a>
             </p>
           </div>
         </div>
 
         <div className="footer-right">
-          {/* Driven from the same route registry as the header, which had
-              drifted: the footer was missing Writing and Stats entirely.
-              These are group labels, not document sections, so they are
-              spans rather than headings. */}
           <nav className="footer-links" aria-labelledby="footer-links-heading">
             <span id="footer-links-heading" className="footer-links-label">
-              Explore
+              {t('explore', locale)}
             </span>
             <div className="footer-links-grid">
               {routes
                 .filter((route) => !route.index)
                 .map((route) => (
                   <Link key={route.path} href={route.path}>
-                    {route.label}
+                    {routeLabel(route.path, locale)}
                   </Link>
                 ))}
             </div>
@@ -59,7 +63,7 @@ export default function Footer() {
             aria-labelledby="footer-social-heading"
           >
             <span id="footer-social-heading" className="footer-social-label">
-              Connect
+              {t('connect', locale)}
             </span>
             <ContactIcons />
           </div>

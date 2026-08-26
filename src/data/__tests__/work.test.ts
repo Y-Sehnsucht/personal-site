@@ -12,12 +12,10 @@ describe('work data', () => {
     for (const job of work) {
       expect(job).toHaveProperty('name');
       expect(job).toHaveProperty('position');
-      expect(job).toHaveProperty('url');
       expect(job).toHaveProperty('startDate');
 
       expect(typeof job.name).toBe('string');
       expect(typeof job.position).toBe('string');
-      expect(typeof job.url).toBe('string');
       expect(typeof job.startDate).toBe('string');
     }
   });
@@ -43,23 +41,26 @@ describe('work data', () => {
       if (job.endDate) {
         const start = new Date(job.startDate);
         const end = new Date(job.endDate);
+
         expect(end.getTime()).toBeGreaterThan(start.getTime());
       }
     }
   });
 
-  it('urls are valid', () => {
+  it('urls are valid when present', () => {
     const urlRegex = /^https?:\/\/.+/;
 
     for (const job of work) {
-      expect(job.url).toMatch(urlRegex);
+      if (job.url) {
+        expect(job.url).toMatch(urlRegex);
+      }
     }
   });
 
-  // Resume should show at least one current/active position
-  it('has at least one current position (no endDate)', () => {
-    const currentJobs = work.filter((job) => !job.endDate);
-    expect(currentJobs.length).toBeGreaterThanOrEqual(1);
+  it('has at least one current position', () => {
+    const currentPositions = work.filter((job) => !job.endDate);
+
+    expect(currentPositions.length).toBeGreaterThanOrEqual(1);
   });
 
   it('highlights are arrays when present', () => {
@@ -75,11 +76,10 @@ describe('work data', () => {
     const years = work.map((job) => new Date(job.startDate).getFullYear());
     const uniqueYears = new Set(years);
 
-    // Resume should contain work from multiple years
     expect(uniqueYears.size).toBeGreaterThan(1);
   });
 
-  it('company names are non-empty', () => {
+  it('project names are non-empty', () => {
     for (const job of work) {
       expect(job.name.trim().length).toBeGreaterThan(0);
     }

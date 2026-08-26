@@ -13,7 +13,7 @@ export type ImageSizeErrorCode =
   | 'UNREADABLE'
   | 'UNSUPPORTED_OR_MALFORMED';
 
-/** A local article image that cannot be safely measured at build time. */
+/** A local image that cannot be safely measured at build time. */
 export class ImageSizeError extends Error {
   readonly code: ImageSizeErrorCode;
   readonly publicPath: string;
@@ -293,30 +293,6 @@ function jpeg(buffer: Buffer): ImageSize | null {
   }
 
   return null;
-}
-
-/**
- * Extracts root-local Markdown images, including optional CommonMark titles.
- *
- * Remote, protocol-relative, and data URLs are left to the renderer. Local
- * images are build inputs, so every one must exist and have a supported,
- * measurable header.
- */
-export function readPostImageSizes(
-  markdown: string,
-): Record<string, ImageSize> {
-  const sizes: Record<string, ImageSize> = {};
-  const imagePattern =
-    /!\[(?:\\.|[^\]\\])*\]\(\s*(?:<([^>\r\n]+)>|((?:\\.|[^\s()])+))(?:\s+(?:"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\((?:\\.|[^)\\])*\)))?\s*\)/g;
-
-  for (const match of markdown.matchAll(imagePattern)) {
-    const src = match[1] ?? match[2];
-    if (isRootLocalImage(src)) {
-      sizes[src] = readImageSize(src);
-    }
-  }
-
-  return sizes;
 }
 
 export function isRootLocalImage(src: string): boolean {

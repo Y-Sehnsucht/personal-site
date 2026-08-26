@@ -4,14 +4,14 @@ import { isActiveRoute } from '../routes';
 
 describe('isActiveRoute', () => {
   it('matches exact routes and nested routes', () => {
-    expect(isActiveRoute('/writing', '/writing')).toBe(true);
-    expect(isActiveRoute('/writing/', '/writing')).toBe(true);
-    expect(isActiveRoute('/writing/post-slug', '/writing')).toBe(true);
+    expect(isActiveRoute('/projects', '/projects')).toBe(true);
+    expect(isActiveRoute('/projects/', '/projects')).toBe(true);
+    expect(isActiveRoute('/projects/featured', '/projects')).toBe(true);
   });
 
   it('does not match a route-name prefix', () => {
     expect(isActiveRoute('/aboutness', '/about')).toBe(false);
-    expect(isActiveRoute('/stats-old', '/stats')).toBe(false);
+    expect(isActiveRoute('/resume-old', '/resume')).toBe(false);
   });
 
   it('only marks the homepage for the root route', () => {

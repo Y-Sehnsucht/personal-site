@@ -21,34 +21,53 @@
 
 /* Main content area */
 .page-main {
+  box-sizing: border-box;
   flex: 1;
-  width: 100%;
-  max-width: var(--measure-page);
+  width: min(100%, var(--measure-page));
+  max-width: none;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem 5rem;
 }
 
 /* The hero grid needs room for a full-measure readout strip
    alongside its portrait. */
 .page-main--hero {
-  max-width: var(--measure-wide);
+  width: min(100%, var(--measure-wide));
+}
+
+.page-main--wide {
+  width: min(100%, var(--measure-wide));
+}
+
+.page-main--read {
+  width: min(100%, var(--measure-read));
 }
 
 @media screen and (min-width: 736px) {
   .page-main {
-    padding: 3rem 2rem;
+    padding: 4.5rem 2rem 6rem;
+  }
+
+  .page-main--hero {
+    padding-top: 1rem;
   }
 }
 
 /* Page header styles */
 .page-title {
-  font-size: var(--text-3xl);
-  font-weight: var(--font-weight-black);
   margin-bottom: 0.5rem;
 }
 
 .page-subtitle {
-  font-size: var(--text-lg);
+  max-width: var(--measure-read);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
   color: var(--color-fg-light);
   margin-bottom: 2rem;
+}
+
+@media (max-width: 735px) {
+  .page-subtitle {
+    font-size: var(--text-body-mobile);
+  }
 }

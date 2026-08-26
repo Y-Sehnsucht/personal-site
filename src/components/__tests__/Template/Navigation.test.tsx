@@ -31,9 +31,11 @@ describe('Navigation', () => {
 
   it('renders the logo link to home', () => {
     render(<Navigation />);
+
     const logo = screen.getByRole('link', {
-      name: /michael d'angelo.*home/i,
+      name: /zijun yan.*home/i,
     });
+
     expect(logo).toHaveAttribute('href', '/');
   });
 
@@ -49,14 +51,15 @@ describe('Navigation', () => {
     render(<Navigation />);
 
     expect(screen.getByRole('link', { name: /about/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /projects/i })).toBeInTheDocument();
+    expect(
+      screen.getByRole('link', { name: /achievements/i }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /resume/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /writing/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
+
     expect(
       screen.queryByRole('link', { name: /archive/i }),
-    ).not.toBeInTheDocument();
-    expect(
-      screen.queryByRole('link', { name: /stats/i }),
     ).not.toBeInTheDocument();
   });
 
@@ -92,5 +95,15 @@ describe('Navigation', () => {
     // Theme toggle should be present (placeholder initially due to SSR)
     const navActions = document.querySelector('.nav-actions');
     expect(navActions).toBeInTheDocument();
+  });
+
+  it('places the language toggle before the theme toggle', () => {
+    render(<Navigation />);
+
+    const navActions = document.querySelector('.nav-actions');
+    const buttons = Array.from(navActions?.querySelectorAll('button') ?? []);
+
+    expect(buttons[0]).toHaveClass('language-toggle');
+    expect(buttons[1]).toHaveClass('theme-toggle');
   });
 });

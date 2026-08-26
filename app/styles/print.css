@@ -52,10 +52,8 @@
   .slide-menu-overlay,
   .hamburger-container,
   .theme-toggle,
-  .reading-progress,
   .resume-nav,
   .hero-bg,
-  .writing-rss-link,
   .about-section-nav,
   .about-section-heading-hash {
     display: none !important;
@@ -64,9 +62,7 @@
   .page-main,
   .page-main--hero,
   .resume-page,
-  .about-page,
-  .writing-page,
-  .post-page {
+  .about-page {
     max-width: none;
     margin: 0;
     padding: 0;
@@ -97,7 +93,6 @@
   }
 
   .resume-title,
-  .stats-title,
   .page-title {
     font-size: 22pt;
   }
@@ -116,7 +111,6 @@
   .jobs-container,
   .degree-container,
   .about-section--log li,
-  .writing-item,
   .course-container {
     break-inside: avoid;
     page-break-inside: avoid;
@@ -182,10 +176,6 @@
     font-size: 10pt;
   }
 
-  .stat-table-value {
-    font-size: 14pt;
-  }
-
   /* Section headers should not be stranded at the foot of a page. */
   .resume-section,
   .about-section {
@@ -193,8 +183,7 @@
   }
 
   .resume-page .title h2,
-  .about-section h2,
-  .stats-section-title {
+  .about-section h2 {
     break-after: avoid;
     page-break-after: avoid;
   }

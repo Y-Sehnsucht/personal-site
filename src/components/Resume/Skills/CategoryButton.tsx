@@ -1,10 +1,12 @@
 interface CategoryButtonProps {
+  displayLabel?: string;
   label: string;
   handleClick: (label: string) => void;
   isActive: boolean;
 }
 
 export default function CategoryButton({
+  displayLabel,
   handleClick,
   isActive,
   label,
@@ -24,7 +26,7 @@ export default function CategoryButton({
       onClick={() => handleClick(label)}
       aria-pressed={isActive}
     >
-      {label}
+      {displayLabel ?? label}
     </button>
   );
 }

@@ -3,7 +3,7 @@
    Supports both system preference and manual toggle
    ======================================== */
 
-/* Night shift — the same instrument, backlit.
+/* Night shift 鈥?the same instrument, backlit.
    Ink and paper invert; amber holds its position as the
    only colour permitted to carry a live value. */
 [data-theme='dark'] {
@@ -17,7 +17,7 @@
   /* Overlay colors for dark mode */
   --color-overlay-darker: rgba(0, 0, 0, 0.6);
 
-  /* Accent — ultramarine lifted to hold contrast on ink.
+  /* Accent 鈥?ultramarine lifted to hold contrast on ink.
      This value is for text and rules on the page background; it is far too
      light to sit behind white text (2.67:1), so filled controls keep a deep
      fill and light text of their own. */
@@ -32,7 +32,7 @@
   --color-accent-underline: color-mix(in srgb, var(--color-accent) 40%, transparent);
   --color-accent-underline-strong: color-mix(in srgb, var(--color-accent) 55%, transparent);
 
-  /* Signal — amber needs no correction against ink */
+  /* Signal 鈥?amber needs no correction against ink */
   --color-signal: #f0a202;
   --color-signal-mark: #f0a202;
 
@@ -53,19 +53,19 @@
 }
 
 /* Header, navigation, hero, and the experience spine read their
-   dark values straight from the tokens above — no overrides needed. */
+   dark values straight from the tokens above 鈥?no overrides needed. */
 
 [data-theme='dark'] .site-footer-new {
   background: var(--color-bg-alt);
 }
 
-/* Portrait — soften the white field for dark mode.
+/* Portrait 鈥?soften the white field for dark mode.
    Scoped with :where() so it carries zero specificity and cannot override
    the per-context treatments in home.css and footer.css. Unscoped, this rule
    won on source order and silently reduced the hero portrait to
    brightness(0.85), discarding its greyscale entirely. */
 [data-theme='dark'] :where(.theme-portrait) img {
-  filter: brightness(0.85);
+  filter: brightness(0.92);
 }
 
 /* Course rows, skill tags, and the contact readout are all transparent and
@@ -88,7 +88,7 @@
   border-left-color: var(--color-border-alt);
 }
 
-/* Link underlines — scoped to `p` to match base/links.css */
+/* Link underlines 鈥?scoped to `p` to match base/links.css */
 [data-theme='dark'] p a:not(.hero-highlight) {
   background-image: linear-gradient(
     transparent calc(100% - 1.5px),

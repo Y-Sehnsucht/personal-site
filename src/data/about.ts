@@ -1,96 +1,142 @@
 export const aboutMarkdown = `# Intro
 
-I build products, companies, and teams across AI, security, and infrastructure. Today, I am a Member of the Technical Staff at [OpenAI](https://openai.com), working on [Promptfoo](https://promptfoo.dev) and [Codex Security](https://openai.com/index/codex-security-now-in-research-preview/). I help secure AI systems and use AI to find software vulnerabilities.
+I am a Software Engineering undergraduate at [East China Normal University](https://www.ecnu.edu.cn/). I am still early in my academic journey, and I am building my foundation through coursework, technical projects, competitions, and independent study.
 
-I co-founded [Promptfoo](https://promptfoo.dev) before it joined OpenAI in 2026. I also co-founded [Arthena](https://arthena.com) (acquired by Masterworks) and [Matroid](https://matroid.com), led engineering at [Smile ID](https://usesmileid.com), and helped build satellites at [Planet](https://planet.com) and [Planetary Resources](https://en.wikipedia.org/wiki/Planetary_Resources).
+My current work spans algorithms, computer systems, full-stack development, system modeling, and intelligent applications. I am especially interested in how algorithms and software engineering methods can be developed into reliable, usable systems.
 
-In my spare time, I enjoy investing in people and ideas through a [small venture fund](https://skepticalinvestments.biz), focusing on projects with high social impact. If you think I can be helpful to you or your cause, or if you're interested in collaborating, feel free to get in touch.
+# Academic Interests
 
-# Some History
+- **Software Architecture and Backend Engineering.** I am interested in modular service design, clear API boundaries, data persistence, failure handling, and testing—the engineering foundations behind reliable and maintainable software.
 
-- My parents put a computer in my bedroom in 1993 when I was 3. It was an old Tandy that ran MS-DOS. My favorite games were Street Rod 2, Wolfenstein 3D, and Tom and Jerry. It had a mechanical keyboard and a turbo button. To this day, I still don't know what pressing the turbo button really did.
-- We subscribed to AOL in 1995. I still remember installing it from a floppy disk onto our brand-new Packard Bell. It took years for me to send my first email.
-- In the summer of 1996, my uncle purchased [MegaRace](https://en.wikipedia.org/wiki/MegaRace) from [Media Play](https://en.wikipedia.org/wiki/Media_Play) and installed it on my mom's work computer. I might have endangered her business by using her computer too much.
-- At 7, I discovered the mini-games hidden in Microsoft Office. I also beat Minesweeper on expert for the first time.
-- At 8, my parents bought me a Sony Mavica MVC-FD71 digital camera after I stole their SLR one too many times. It could fit 10 images to a floppy disk at a 0.3MP resolution. I still have it, and it still works. I've been taking photographs ever since, now with a Nikon D750, D800, and occasionally with a Mamiya 6II.
-- At 10, I built my first website with Microsoft FrontPage on our Pentium III [Gateway](https://en.wikipedia.org/wiki/Gateway,_Inc.). My website was terrible.
-- I was 11 when I built my first [Tesla Coil](https://en.wikipedia.org/wiki/Tesla_coil) (without my parents' permission). Over the next few years, I built several more, including one of the first audio modulated coils and one of the first DRSSTCs.
-- When I was 12, I set the all-time high record at my local laser tag facility by reverse engineering the charging station and weapon protocols with a photo-resistor, micro-cassette recorder, and a lot of patience. I was unstoppable.
-- At 13, I went to space camp and fell in love. I went back two more times and promised myself that I'd work in space. I've since helped build three generations of satellites and have contributed to two more.
-- At 14, I was almost expelled for finding a backdoor into my high school's file server and telling everyone but the faculty members about it. Later that year, I figured out how to turn off the internet firewall by editing system registry keys. I anonymously shared my work months later.
-- At 16, I participated in a foreign exchange program in Dortmund, Germany. Since then, I've gone back almost every year.
-- 14 - 17, I played a lot of video games. My favorites included Counter-Strike Source, Command and Conquer 3, Halo 2, and Age of Empires II.
-- At 18, in the summer before college, my friends and I started playing [Muggle Quidditch](<https://en.wikipedia.org/wiki/Quidditch_(sport)>). We went on to start over 8 teams in the [International Quidditch Association](https://en.wikipedia.org/wiki/International_Quidditch_Association), including the [Buffalo Quidditch Society](https://www.facebook.com/buffaloquidditch/). At our height, we were ranked third in the IQA. Although I don't play anymore, you can still see pictures of me holding a broom while wearing a chess camp t-shirt on Facebook.
-- At 19, I took my first graduate course and published my first academic paper.
-- At 20, I co-authored a grant to build a satellite and managed a 60+ person team for the next two years. You can read more about [that project](https://ubnl.space/glados/).
+- **Systems and Performance Engineering.** My work in C/C++, data structures, computer systems, and dynamic vector indexing has led me to study how algorithms, memory behavior, and implementation choices shape real-world performance.
 
-Ask me in person for other stories that I'm afraid to share with the internet.
+- **Retrieval Systems for AI.** I am interested in dynamic high-dimensional vector indexing, nearest-neighbor search, pruning strategies, and the trade-offs among retrieval quality, query latency, and online updates.
+
+- **LLM Application Engineering and Evaluation.** Building ScaffoldMind has led me to focus on context organization, structured outputs, streaming interaction, evaluation, and fallback behavior for dependable learning and software-development tools.
+
+# Education and Learning
+
+I study Software Engineering at East China Normal University. My coursework currently focuses on data structures and algorithms, computer systems, object-oriented programming, software development, and modeling and simulation.
+
+I prefer to learn by first understanding the overall structure of a subject, then connecting individual concepts through implementation, experiments, and explanation.
+
+# Projects and Practice
+
+My recent work includes a dynamic high-dimensional vector indexing system, continuous elevator dynamics and PID control modeling, the ScaffoldMind learning workspace, the Maple mind-map notebook backend, and an intelligent water-quality monitoring proposal.
+
+More details are available on the [Projects](/projects/) page.
+
+# Competitions and Awards
+
+I have received awards in programming, engineering, innovation, and interdisciplinary competitions at national, municipal, university, and student-organization levels.
+
+The complete list is available on the [Achievements](/achievements/) page.
 
 # I Like
 
-- Running.
-- Skiing.
-- Sailing and the sea.
-- Space.
-- Summer.
-- [Books](https://www.goodreads.com/mdangelo).
-- Colored pencils ([Faber-Castell Polychromos](https://www.faber-castell.com/products/art-and-graphic/polychromos)).
-- Podcasts ([The Daily](https://www.nytimes.com/column/the-daily), [The Ezra Klein Show](https://www.nytimes.com/column/ezra-klein-podcast), [Planet Money](https://www.npr.org/sections/money/), [Dwarkesh Podcast](https://www.dwarkesh.com/about/), [The a16z Show](https://a16z.com/podcasts/a16z-podcast/), [The MAD Podcast with Matt Turck](https://firstmark.com/community/the-mad-podcast/), [Uncapped with Jack Altman](https://podcasts.apple.com/us/podcast/uncapped-with-jack-altman/id1801867202), [Darknet Diaries](https://darknetdiaries.com/), and others).
-- [Good design](/).
-- [Photography](https://instagram.com/dangelosaurus).
+- Fitness.
+- Films.
+- Table tennis.
+- Listening to music.
+- Traveling.
+- Winter and snow.
+- Photography.
+- Reading.
+- Fluffy cats and dogs.
+- Trying new things.
+- Hanging out and feeling the vibe.
+- Anime.
+- Podcasts.
+- Piano.
 
-# Travel / Geography
+# Places & Journeys
 
-- I am originally from Buffalo, New York. I have since lived in Palo Alto, Mountain View, San Francisco, Seattle, and New York City.
-- I've been to approximately 50 countries, some of which I have forgotten, many of which I would like to revisit.
-- In 2016, I visited Canada, Ethiopia, Austria, Germany, Belgium, Ireland, Northern Ireland, Italy, Romania, Sweden, Norway, Svalbard, Panama, Costa Rica, Uganda, Japan, and the UAE, mostly in that order.
-- In 2017, I visited Canada, Japan, Denmark, Germany, Sweden, Estonia, Russia, the Netherlands, Belgium, the UK, Spain, Iceland, France, Switzerland, Ethiopia, and Luxembourg.
-- In 2018, I visited Canada, France, Italy, Israel, and the UK.
-- In 2019, I visited Canada, the UK, France, and Switzerland.
-- In 2020, I traveled barely 20 blocks. I stayed in New York and remodeled an apartment.
-- In 2021, I continued remodeling an apartment.
-- In 2022, I switched jobs and visited the UK, France, Greece, Belgium, Luxembourg, Germany, and Kenya.
-- In 2023, I visited France, the UK, Ireland, and Rwanda.
-- I am an Oregon Trail II enthusiast.
-
-# Fun Facts
-
-- I have a list of thousands of ideas, like creating matching bow ties for cats and humans.
-- I almost always have a sketchbook with me and a [01 Sakura Pigma Micron Pen](https://www.sakuraofamerica.com/product/pigma-micron/).
-- I can't locate every country on a map.
-- I operate a [small angel fund](http://skepticalinvestments.biz/) with terrible returns.
-- I break about 30 traffic laws on a skateboard or [bicycle](https://www.citibikenyc.com/) every single day.
-- I stack-rank coffee shops, restaurants, and every dog I see in New York.
-- I added this page because many people complained that my site was just my resume.
+- I am originally from Siyang, a county in Suqian, Jiangsu.
+- One of my earliest trips was to Beijing when I was a child.
+- From 2019 to 2025, I studied in Huai'an, where I spent much of my secondary-school years.
+- In 2025, I moved to Shanghai to begin university. During the year, I visited Yangzhou, Suzhou, Hong Kong, and Nanjing.
+- In 2026, I visited Chongqing and continued adding new places to my travel list.
+- Harbin, Northeast China, Japan, Europe, and New York remain places I hope to visit.
 
 # I Dream Of
 
-- Inspiring and feeling inspired.
-- Enabling a brighter future for everyone, regardless of political or socioeconomic status.
+- Inspiring others and feeling inspired.
 - Treating every individual with genuine kindness and respect.
-- Staying curious.
-- Continually improving.
-- You not checking the commit history for earlier drafts of this file.
+- Letting go of unnecessary ego, embracing uncertainty, and maintaining curiosity.
+- Living in the present and valuing tangible experiences.
+- Continually improving without losing sight of happiness.
+- Gaining the things I long for through my own effort.
 
-# Websites from People I Admire
+# Current Focus
 
-- [Alex Peysakhovich](http://alexpeys.github.io/)
-- [Chris Lengerich](http://www.chrislengerich.com/)
-- [Chris Saad](https://www.chrissaad.com/)
-- [Duncan Tomlin](http://duncantomlin.com/)
-- [Ed Kearney](https://edkearney.com/)
-- [Gia Jung](http://giajung.com/)
-- [Hawley Moore](http://hawleymoore.com/)
-- [Holman Gao](https://golmansax.com/)
-- [Ian Webster](http://ianww.com/)
-- [Johanna Flato](https://www.johannaflato.com/)
-- [Judy Mou](http://www.judymou.com/)
-- [Judy Suh](https://www.judysuh.com/)
-- [Kristina Monakhova](https://kristinamonakhova.com/)
-- [Noah Trueblood](http://notrueblood.com/)
-- [Ruoxi Wang](http://ruoxiw.com/)
-- [Tom Sachs](https://www.tomsachs.org/)
-- [Will Holley](https://willholley.com/)
+- Strengthening my foundations in algorithms and computer systems.
+- Developing a deeper understanding of the technologies used in my projects.
+- Improving my ability to turn technical ideas into complete, maintainable implementations.
+- Exploring intelligent agents and AI-assisted software development.
 
-If we are friends and you feel like you belong on this list, you're probably right. Submit a PR, or ask me, and I'll add you.
+# Future Directions
+
+I hope to deepen my study of software design, systems, algorithms, and engineering practice, while exploring how AI can improve software development. I am particularly interested in intelligent agents, information retrieval, reliable AI systems, and intelligent software for edge or resource-constrained devices.
+`;
+
+export const aboutMarkdownZh = `# Intro
+
+[华东师范大学](https://www.ecnu.edu.cn/)软件工程专业本科在读。当前学习与实践主要围绕数据结构与算法、计算机系统、软件设计、系统建模和工程实现展开，也在项目中接触全栈开发、智能应用与教育技术相关问题。
+
+本科阶段仍以基础训练为主：通过课程、技术项目、竞赛材料和独立实践，把抽象概念落实到可运行、可解释、可维护的系统中。
+
+# 学术兴趣
+
+- **软件架构与后端工程。** 关注模块边界、API 设计、数据持久化、异常处理与测试，重视在完整项目中建立可靠、可维护的工程结构。
+
+- **系统与性能工程。** 结合 C/C++、数据结构、计算机系统和动态高维向量索引的学习与实践，进一步理解算法、内存行为和实现方式对软件性能的影响。
+
+- **面向 AI 的检索系统。** 关注动态高维向量索引、近邻检索与剪枝策略，以及检索质量、查询延迟和在线更新之间的权衡。
+
+- **LLM 应用工程与评测。** 以 ScaffoldMind 的开发为基础，继续研究上下文组织、结构化输出、流式交互、结果评测与失败回退，提升学习工具和软件开发工具的可靠性。
+
+# 教育与学习
+
+本科阶段的课程重点包括数据结构与算法、计算机系统、面向对象程序设计、软件开发、建模与仿真，以及软件工程相关数学基础。学习时更倾向于先建立知识结构，再通过实现、实验和复盘把概念连接起来。
+
+目前的训练目标不是堆叠工具名，而是理解系统如何被拆分、验证和维护：从 C++ 程序设计到计算机系统，从 Simulink/PID 建模到后端服务结构，都尽量回到问题本身。
+
+# 项目实践
+
+项目实践主要围绕算法检索、系统建模、全栈学习工具、后端服务和智能感知方案展开。动态高维向量索引系统聚焦 Mini-VDB 的索引与检索核心；智能电梯项目负责连续动力学与 PID 控制建模，并保留了明确的位置误差优化结果。
+
+ScaffoldMind 是面向 CSAPP 和数据结构学习的本地优先工作区，覆盖 React 前端、Express 后端、SSE 流式响应和本地学习记录；Maple 思维导图笔记项目中主要负责 Spring Boot 后端基础；智能水质监测方案则围绕多维传感、边缘智能、通信、数据融合和预警流程组织技术方案。更多细节见[项目](/projects/)页面。
+
+# 竞赛与获奖
+
+已有获奖记录覆盖编程、工程、创新和交叉学科竞赛，级别包括国家级、市级、校级和学生组织赛事。该部分只保留可核验条目，完整列表见[获奖](/achievements/)页面。
+
+# 兴趣与日常
+
+- 健身。
+- 电影。
+- 乒乓球。
+- 听音乐。
+- 旅行。
+- 冬天和雪。
+- 摄影。
+- 阅读。
+- 毛茸茸的猫和狗。
+- 尝试新事物。
+- 闲逛，感受氛围。
+- 动漫。
+- 播客。
+- 钢琴。
+
+# 城市与经历
+
+- 来自江苏宿迁泗阳。
+- 小时候较早的一次旅行是去北京。
+- 2019 年至 2025 年在淮安学习，度过了大部分中学阶段。
+- 2025 年来到上海开始大学生活，同年去过扬州、苏州、香港和南京。
+- 2026 年去过重庆；哈尔滨、东北、日本、欧洲和纽约仍在旅行清单上。
+
+# 后续方向
+
+后续将继续加强软件设计、系统、算法与工程实践训练，并进一步探索 AI 在软件开发中的实际应用，重点关注智能体、信息检索、可靠 AI 系统，以及面向边缘设备和资源受限环境的智能软件。
 `;

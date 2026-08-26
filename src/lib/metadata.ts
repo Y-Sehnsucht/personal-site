@@ -6,7 +6,6 @@ import {
   SHARE_IMAGE_DIMENSIONS,
   SHARE_IMAGE_PATH,
   SITE_URL,
-  TWITTER_HANDLE,
 } from './utils';
 
 interface PageMetadataOptions {
@@ -19,23 +18,22 @@ interface PageMetadataOptions {
  * The share card is a fixed design that does not render the page title, so
  * the alt text describes the card rather than claiming the title appears in
  * the image. Role and employer come from the profile so they change in one
- * place, just as the stats page and OG script read shared profile facts.
+ * place, just as the OG script reads shared profile facts.
  */
-export const SHARE_IMAGE_ALT = `${AUTHOR_NAME} — ${profile.role} at ${profile.employer}`;
-
+export const SHARE_IMAGE_ALT = `${AUTHOR_NAME} — ${profile.role} at ${profile.school}`;
 /**
  * The OpenGraph and Twitter blocks every page needs.
  *
  * A route-level `openGraph` object replaces the inherited one wholesale
  * rather than merging, so anything omitted here vanishes from that page.
- * Callers that build their own metadata (blog posts) should spread these.
+ * Callers that build their own metadata should spread these.
  */
 export const sharedOpenGraph: Metadata['openGraph'] = {
   locale: 'en_US',
   siteName: AUTHOR_NAME,
   images: [
     {
-      url: SHARE_IMAGE_PATH,
+      url: `${SITE_URL}${SHARE_IMAGE_PATH}`,
       width: SHARE_IMAGE_DIMENSIONS.width,
       height: SHARE_IMAGE_DIMENSIONS.height,
       alt: SHARE_IMAGE_ALT,
@@ -45,9 +43,7 @@ export const sharedOpenGraph: Metadata['openGraph'] = {
 
 export const sharedTwitter: Metadata['twitter'] = {
   card: 'summary_large_image',
-  site: TWITTER_HANDLE,
-  creator: TWITTER_HANDLE,
-  images: [SHARE_IMAGE_PATH],
+  images: [`${SITE_URL}${SHARE_IMAGE_PATH}`],
 };
 
 export function createPageMetadata({
@@ -55,7 +51,9 @@ export function createPageMetadata({
   description,
   path,
 }: PageMetadataOptions): Metadata {
-  const absoluteUrl = path ? new URL(path, SITE_URL).toString() : undefined;
+  const normalizedPath = path?.replace(/^\/+/, '');
+  const absoluteUrl =
+    normalizedPath !== undefined ? `${SITE_URL}/${normalizedPath}` : undefined;
   const pageTitle = `${title} | ${AUTHOR_NAME}`;
 
   return {

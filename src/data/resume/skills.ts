@@ -10,115 +10,71 @@ export interface Category {
 }
 
 const skills: Skill[] = [
-  // Languages
+  {
+    title: 'C++',
+    competency: 4,
+    category: ['Programming Languages'],
+  },
+  {
+    title: 'C',
+    competency: 4,
+    category: ['Programming Languages'],
+  },
   {
     title: 'Python',
-    competency: 5,
-    category: ['Languages', 'ML Engineering'],
+    competency: 3,
+    category: ['Programming Languages'],
   },
+
+  //Computer Science
   {
-    title: 'TypeScript',
-    competency: 5,
-    category: ['Languages', 'Web Development'],
-  },
-  {
-    title: 'SQL',
+    title: 'Data Structures & Algorithms',
     competency: 4,
-    category: ['Languages', 'Databases'],
-  },
-  // AI & LLM
-  {
-    title: 'AI Agents',
-    competency: 5,
-    category: ['ML Engineering'],
+    category: ['Computer Science'],
   },
   {
-    title: 'LLM Evaluation',
-    competency: 5,
-    category: ['ML Engineering'],
+    title: 'Computer Systems',
+    competency: 3,
+    category: ['Computer Science'],
   },
   {
-    title: 'AI Red-teaming',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'LLM APIs',
-    competency: 5,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'RAG',
+    title: 'Object-Oriented Programming',
     competency: 4,
-    category: ['ML Engineering'],
+    category: ['Computer Science'],
+  },
+
+  // Artificial Intelligence
+  {
+    title: 'LLM Application Development',
+    competency: 3,
+    category: ['Artificial Intelligence'],
   },
   {
     title: 'Prompt Engineering',
-    competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Vector Databases',
-    competency: 4,
-    category: ['ML Engineering', 'Databases'],
-  },
-  {
-    title: 'PyTorch',
-    competency: 4,
-    category: ['ML Engineering'],
-  },
-  {
-    title: 'Pandas',
-    competency: 5,
-    category: ['ML Engineering', 'Data Engineering'],
-  },
-  // Web Development
-  {
-    title: 'Node.js',
-    competency: 5,
-    category: ['Web Development'],
-  },
-  {
-    title: 'FastAPI',
-    competency: 4,
-    category: ['Web Development'],
-  },
-  {
-    title: 'Next.js',
     competency: 3,
-    category: ['Web Development'],
-  },
-  // Databases
-  {
-    title: 'PostgreSQL',
-    competency: 4,
-    category: ['Databases'],
+    category: ['Artificial Intelligence'],
   },
   {
-    title: 'Redis',
+    title: 'Vector Search & Similarity Retrieval',
+    competency: 2,
+    category: ['Artificial Intelligence', 'Computer Science'],
+  },
+
+  // Modeling & Simulation
+  {
+    title: 'MATLAB / Simulink',
     competency: 3,
-    category: ['Databases'],
-  },
-  // Infrastructure
-  {
-    title: 'AWS',
-    competency: 4,
-    category: ['Infrastructure'],
+    category: ['Modeling & Simulation'],
   },
   {
-    title: 'Docker',
-    competency: 4,
-    category: ['Infrastructure'],
-  },
-  {
-    title: 'Kubernetes',
+    title: 'Dynamic System Modeling & Simulation',
     competency: 3,
-    category: ['Infrastructure'],
+    category: ['Modeling & Simulation'],
   },
   {
-    title: 'Observability',
-    competency: 4,
-    category: ['Infrastructure', 'ML Engineering'],
+    title: 'SysML',
+    competency: 3,
+    category: ['Modeling & Simulation'],
   },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 

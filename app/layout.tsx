@@ -6,6 +6,7 @@ import GoogleAnalytics from '@/components/Template/GoogleAnalytics';
 import Navigation from '@/components/Template/Navigation';
 import { MAIN_CONTENT_ID } from '@/components/Template/PageWrapper';
 import ScrollToTop from '@/components/Template/ScrollToTop';
+import { LanguageProvider } from '@/i18n/LanguageProvider';
 import { sharedOpenGraph, sharedTwitter } from '@/lib/metadata';
 import { AUTHOR_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/utils';
 import { bricolage, jetbrainsMono, newsreader } from './fonts';
@@ -19,21 +20,22 @@ export const metadata: Metadata = {
   description: SITE_DESCRIPTION,
   keywords: [
     AUTHOR_NAME,
-    'OpenAI',
-    'Promptfoo',
-    'Codex Security',
-    'AI security',
-    'application security',
-    'LLM security',
-    'machine learning',
-    'startup founder',
-    'YC',
+    'Software Engineering',
+    'East China Normal University',
+    'Undergraduate Student',
+    'Academic Portfolio',
+    'Software Systems',
+    'AI for Software Engineering',
+    'LLM-based Intelligent Agents',
+    'Reliable and Efficient AI Systems',
+    'Projects',
+    'Coursework',
   ],
   authors: [{ name: AUTHOR_NAME }],
   creator: AUTHOR_NAME,
   metadataBase: new URL(SITE_URL),
   // The root is the origin of the share metadata, so it uses the same shared
-  // blocks as every other page. Hand-writing them here is what left the
+  // blocks as every other page. Composing them manually here is what left the
   // homepage advertising a different og:image:alt from the rest of the site
   // for the identical image.
   openGraph: {
@@ -87,10 +89,12 @@ export default function RootLayout({
           Skip to content
         </a>
         <ScrollToTop />
-        <div className="site-wrapper">
-          <Navigation />
-          {children}
-        </div>
+        <LanguageProvider>
+          <div className="site-wrapper">
+            <Navigation />
+            {children}
+          </div>
+        </LanguageProvider>
         <GoogleAnalytics />
       </body>
     </html>

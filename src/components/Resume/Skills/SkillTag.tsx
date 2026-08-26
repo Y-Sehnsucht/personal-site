@@ -1,15 +1,23 @@
 import type { CSSProperties } from 'react';
 
 import type { Category, Skill } from '@/data/resume/skills';
+import { resumeText } from '@/i18n/resume';
+import type { Locale } from '@/i18n/types';
 import { MAX_COMPETENCY } from '@/lib/utils';
 
 interface SkillTagProps {
   data: Skill;
   categories: Category[];
+  locale?: Locale;
 }
 
-export default function SkillTag({ data, categories }: SkillTagProps) {
+export default function SkillTag({
+  data,
+  categories,
+  locale = 'en',
+}: SkillTagProps) {
   const { category, competency, title } = data;
+  const displayTitle = resumeText(title, locale);
 
   // Get the primary category color
   const categoryColor = categories.find((cat) =>
@@ -32,10 +40,18 @@ export default function SkillTag({ data, categories }: SkillTagProps) {
           '--tag-color': categoryColor,
         } as CSSProperties
       }
-      title={`${title}: ${competency} out of ${MAX_COMPETENCY}`}
-      aria-label={`${title}: proficiency ${competency} out of ${MAX_COMPETENCY}`}
+      title={
+        locale === 'zh-CN'
+          ? `${displayTitle}: 熟练度 ${competency}/${MAX_COMPETENCY}`
+          : `${displayTitle}: ${competency} out of ${MAX_COMPETENCY}`
+      }
+      aria-label={
+        locale === 'zh-CN'
+          ? `${displayTitle}: 熟练度 ${competency}/${MAX_COMPETENCY}`
+          : `${displayTitle}: proficiency ${competency} out of ${MAX_COMPETENCY}`
+      }
     >
-      <span className="skill-tag-name">{title}</span>
+      <span className="skill-tag-name">{displayTitle}</span>
     </span>
   );
 }

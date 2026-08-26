@@ -88,12 +88,11 @@ describe('EmailLink', () => {
       // The blank frame itself.
       expect(shown).not.toBe('');
 
-      // The flash is a *jump* to the complete address from some other alias
-      // already several characters long. Looping re-types the address
-      // legitimately, but that grows "h" -> "hi", so the previous frame is a
-      // single character and this guard leaves it alone.
-      if (previous.length > 1 && previous !== localPart) {
-        expect(shown).not.toBe(localPart);
+      // Re-typing the real address is fine, but it should grow by exactly one
+      // character from the prior frame rather than flashing in whole.
+      if (shown === localPart && previous !== localPart) {
+        expect(localPart.startsWith(previous)).toBe(true);
+        expect(shown.length).toBe(previous.length + 1);
       }
 
       previous = shown;

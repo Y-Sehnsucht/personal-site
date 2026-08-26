@@ -26,8 +26,8 @@ import { ogProfileSnapshot } from './og-profile.mjs';
 // required rather than imported.
 const { ImageResponse } = createRequire(import.meta.url)('next/og');
 
-// The stats page reads the same profile file, so the card cannot silently
-// drift from the public facts elsewhere on the site.
+// The generated card reads the same profile file as the site, so it cannot
+// drift from the public facts elsewhere.
 const profile = JSON.parse(
   await readFile(join(process.cwd(), 'src/data/profile.json'), 'utf8'),
 );
@@ -58,7 +58,7 @@ const HAIRLINE = 'rgba(35, 39, 46, 0.18)';
  * means something while that stays true.
  */
 const READOUT = [
-  { label: 'Countries visited', value: String(profile.countriesVisited) },
+  { label: 'Status', value: 'Undergraduate' },
   { label: 'Computing since', value: String(profile.computingSince) },
   { label: 'Based in', value: profile.currentCity },
 ];
@@ -171,10 +171,14 @@ function card() {
             display: 'flex',
           },
         },
-        h('span', { style: { color: ULTRAMARINE } }, profile.employer),
+        h('span', { style: { color: ULTRAMARINE } }, profile.school),
         // Satori collapses a leading space in a flex child, so the gap before
         // the em dash is set as spacing rather than as whitespace.
-        h('span', { style: { marginLeft: '0.5em' } }, `— ${profile.focus}`),
+        h(
+          'span',
+          { style: { marginLeft: '0.5em' } },
+          `— ${profile.focus.split(',')[0]}`,
+        ),
       ),
     ),
     h(

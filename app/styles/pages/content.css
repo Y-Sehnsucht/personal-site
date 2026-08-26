@@ -1,6 +1,6 @@
 /* ========================================
    CONTENT PAGE STYLES
-   About, Contact, Stats, and Not Found pages
+   About, Contact, and Not Found pages
    ======================================== */
 
 /* ========================================
@@ -8,26 +8,27 @@
    ======================================== */
 
 .about-page {
-  max-width: var(--measure-page);
-  margin: 0 auto;
+  width: 100%;
+  max-width: var(--measure-read);
+  margin-left: 0;
+  margin-right: auto;
 }
 
 .about-header {
-  margin-bottom: var(--spacing-8);
+  margin-bottom: var(--spacing-16);
 }
 
 .about-header .page-title {
   margin-bottom: 0;
-  letter-spacing: -0.04em;
   text-wrap: balance;
 }
 
 .about-content {
-  max-width: var(--measure-read);
-  line-height: 1.7;
+  max-width: none;
+  line-height: var(--leading-normal);
 }
 
-/* Section index — mono labels on a rule, matching the resume. */
+/* Section index 鈥?mono labels on a rule, matching the resume. */
 .about-section-nav {
   position: sticky;
   top: var(--header-height);
@@ -35,8 +36,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem 1.5rem;
-  margin: var(--spacing-10) 0 var(--spacing-6);
-  padding: 0.75rem 0;
+  margin: var(--spacing-16) 0 var(--spacing-12);
+  padding: var(--spacing-5) 0;
   border-top: var(--rule) solid var(--color-border);
   border-bottom: var(--rule) solid var(--color-border);
   border-radius: 0;
@@ -74,20 +75,14 @@
 }
 
 .about-section {
-  margin-top: var(--spacing-12);
+  margin-top: var(--spacing-24);
 }
 
 .about-section h2 {
   scroll-margin-top: calc(var(--header-height) + 5.5rem);
-  margin: 0 0 var(--spacing-5);
-  padding-top: var(--spacing-5);
+  margin: 0 0 var(--spacing-8);
+  padding-top: var(--spacing-6);
   border-top: var(--rule) solid var(--color-fg-bold);
-  font-family: var(--font-display);
-  font-size: var(--text-xl);
-  font-weight: var(--font-weight-bold);
-  line-height: 1.15;
-  letter-spacing: var(--tracking-display);
-  color: var(--color-fg-bold);
 }
 
 .about-content .about-section-heading-link {
@@ -125,7 +120,9 @@
 }
 
 .about-content p {
-  margin: 0 0 var(--spacing-5);
+  margin: 0 0 2.25rem;
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
   color: var(--color-fg);
   text-wrap: pretty;
 }
@@ -135,21 +132,22 @@
 }
 
 .about-intro p {
-  max-width: var(--measure-read);
-  font-size: clamp(1.04rem, 0.7vw + 0.95rem, 1.1rem);
-  line-height: 1.7;
+  max-width: none;
+  font-size: var(--text-lead);
+  line-height: var(--leading-normal);
   color: var(--color-fg-bold);
 }
 
 .about-content ul {
-  margin: var(--spacing-4) 0 var(--spacing-6);
+  margin: var(--spacing-5) 0 var(--spacing-8);
   padding-left: 1.1rem;
 }
 
 .about-content li {
-  margin-bottom: 0.65rem;
+  font-size: var(--text-body);
+  margin-bottom: var(--spacing-4);
   color: var(--color-fg);
-  line-height: 1.75;
+  line-height: var(--leading-normal);
   text-wrap: pretty;
 }
 
@@ -158,7 +156,7 @@
 }
 
 /* ========================================
-   ABOUT — LOG SECTIONS
+   ABOUT 鈥?LOG SECTIONS
    The history and travel lists are a chronological record, so they
    are set as log entries hanging off a spine rather than as bullets.
    ======================================== */
@@ -281,24 +279,47 @@
 
 .contact-page {
   width: 100%;
-  max-width: var(--measure-page);
+  max-width: var(--measure-read);
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-left: 0;
+  margin-right: auto;
+  padding: 0;
+}
+
+.contact-page--centered {
   align-items: center;
+  margin-inline: auto;
+}
+
+.contact-page--centered .contact-header,
+.contact-page--centered .contact-content {
+  text-align: center;
+}
+
+.contact-page--centered .contact-email-link {
   justify-content: center;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+}
+
+.contact-page--centered .contact-divider {
+  margin-inline: auto;
+}
+
+.contact-page--centered .contact-content > .icons {
+  justify-content: center;
 }
 
 .page-main--contact {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .contact-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
+  text-align: left;
+  margin-bottom: var(--spacing-16);
 }
 
 .contact-header .page-title {
@@ -306,8 +327,9 @@
 }
 
 .contact-content {
+  width: 100%;
   max-width: 100%;
-  text-align: center;
+  text-align: left;
 }
 
 /* Email CTA block */
@@ -326,7 +348,7 @@
   display: inline-flex;
   flex-wrap: wrap;
   align-items: baseline;
-  justify-content: center;
+  justify-content: flex-start;
   max-width: 100%;
   padding: 0.875rem 0;
   font-family: var(--font-mono);
@@ -340,7 +362,7 @@
   border-radius: 0;
   border-bottom: var(--rule-strong) solid var(--color-accent);
   text-decoration: none;
-  /* The animated alias runs long — "you-can-email-me-at-literally-anything!"
+  /* The animated alias runs long 鈥?"you-can-email-me-at-literally-anything!"
      pushed 438px of content into a 320px viewport. It has to be allowed to
      break, mid-token if necessary. */
   overflow-wrap: anywhere;
@@ -377,6 +399,7 @@
   font-size: var(--text-2xs);
   letter-spacing: var(--tracking-wide);
   color: var(--color-fg-light);
+  font-weight: var(--font-weight-medium);
   margin: 0;
 }
 
@@ -389,7 +412,7 @@
   color: var(--color-fg-light);
   font-size: var(--text-sm);
   max-width: 280px;
-  margin-left: auto;
+  margin-left: 0;
   margin-right: auto;
 }
 
@@ -404,7 +427,7 @@
 /* Social icons - inline style */
 .contact-content > .icons {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.75rem;
   margin-bottom: 0;
 }
@@ -433,6 +456,11 @@
 }
 
 @media (max-width: 735px) {
+  .about-content p,
+  .about-content li {
+    font-size: var(--text-body-mobile);
+  }
+
   .about-section-nav {
     top: var(--header-height-mobile);
     flex-wrap: nowrap;
@@ -443,10 +471,29 @@
     scrollbar-width: thin;
   }
 
+  .about-header {
+    margin-bottom: 3.25rem;
+  }
+
+  .about-section {
+    margin-top: var(--spacing-16);
+  }
+
+  .about-section h2 {
+    margin-bottom: var(--spacing-6);
+  }
+
+  .about-content p {
+    margin-bottom: var(--spacing-7);
+  }
+
+  .about-content li {
+    margin-bottom: 0.875rem;
+  }
+
   .about-section h2 {
     scroll-margin-top: calc(var(--header-height-mobile) + 4.5rem);
     padding-top: var(--spacing-4);
-    font-size: 1.25rem;
   }
 
   .contact-email-link {
@@ -461,9 +508,9 @@
   }
 
   .about-section--compact li {
-    font-size: var(--text-base);
-    line-height: 1.5;
-    margin-bottom: 0.35rem;
+    font-size: var(--text-body);
+    line-height: var(--leading-normal);
+    margin-bottom: var(--spacing-4);
     break-inside: avoid;
   }
 
@@ -478,95 +525,100 @@
   }
 }
 
-@media (min-width: 980px) {
-  .about-header {
-    margin-bottom: var(--spacing-12);
-  }
-
-  .about-section {
-    margin-top: var(--spacing-16);
-  }
-
-  .about-section h2 {
-    margin-bottom: var(--spacing-5);
-  }
+html[lang='zh-CN'] .about-content {
+  line-height: var(--leading-normal);
 }
 
-/* ========================================
-   STATS PAGE
-   ======================================== */
-
-/* Readings, not a spreadsheet: the label annotates in mono and the
-   value is set large enough to be read off at a glance. */
-.stat-table {
-  border-collapse: separate;
-  border-spacing: 0;
-  width: 100%;
-  background: transparent;
-  border-top: var(--rule) solid var(--color-fg-bold);
+html[lang='zh-CN'] .about-content .about-section-nav-link {
+  letter-spacing: var(--tracking-normal);
+  text-transform: none;
 }
 
-.stat-table tr {
-  background: transparent;
-}
-
-/* Both cells, not just `td`. Labels became `th[scope="row"]` for screen
-   readers, which dropped them out of this rule and left half-width row
-   rules and mismatched alignment. */
-.stat-table th,
-.stat-table td {
-  padding: 1rem 0;
-  background: transparent;
-  border-bottom: var(--rule) solid var(--color-border);
-  vertical-align: baseline;
-}
-
-/* A row label is the information, not annotation about it, so it sits at
-   the interactive/readable size rather than the 11px annotation size. */
-.stat-table-label {
-  width: 40%;
+html[lang='zh-CN'] .about-content p {
+  line-height: var(--leading-normal);
+  font-weight: 450;
   text-align: left;
-  font-family: var(--font-mono);
-  font-size: var(--text-ui);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--tracking-wide);
-  text-transform: uppercase;
-  color: var(--color-fg-light);
 }
 
-.stat-table-value {
-  width: 60%;
-  text-align: right;
-  font-family: var(--font-mono);
-  font-size: var(--text-2xl);
-  font-weight: var(--font-weight-medium);
-  font-variant-numeric: tabular-nums;
-  color: var(--color-fg-bold);
+html[lang='zh-CN'] .about-content li {
+  line-height: var(--leading-normal);
+  font-weight: 450;
+}
+
+html[lang='zh-CN'] .page-title,
+html[lang='zh-CN'] .resume-title {
+  font-family: inherit;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-normal);
   line-height: var(--leading-tight);
-  white-space: nowrap;
 }
 
-.stat-table-value a {
-  color: var(--color-accent);
-  background-image: none;
+html[lang='zh-CN']
+  :is(
+    .about-section h2,
+    .home-projects h2,
+    .home-projects-item h3,
+    .project-card-title,
+    .jobs-container header h3,
+    .degree-container .degree,
+    .achievement-main h2
+  ),
+html[lang='zh-CN'] .resume-page .title h2 {
+  font-family: inherit;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-normal);
 }
 
-.stat-table-value a:hover {
-  color: var(--color-accent-hover);
+html[lang='zh-CN']
+  :is(
+    .nav-link,
+    .language-toggle,
+    .hamburger-ul li a span,
+    .button,
+    .hero-resume-link,
+    .about-section-nav-link,
+    .home-projects-all,
+    .resume-nav-link,
+    .skillbutton,
+    .projects-section-title,
+    .resume-page .title h2,
+    .achievement-certificate,
+    .footer-links-label,
+    .footer-social-label
+  ) {
+  font-family: inherit;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-normal);
+  text-transform: none;
 }
 
-/* The live reading — the same rule as the hero: amber means it moves. */
-.stat-live {
-  color: var(--color-signal);
+html[lang='zh-CN']
+  :is(
+    .home-section-kicker,
+    .project-card-subtitle,
+    .job-position,
+    .skill-group-title,
+    .achievement-level,
+    .contact-hint,
+    .footer-links-label,
+    .footer-social-label
+  ) {
+  font-family: inherit;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-normal);
+  text-transform: none;
 }
 
-.stats-source-note {
-  margin: 0.75rem 0 0;
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  line-height: var(--leading-snug);
-  letter-spacing: var(--tracking-wide);
-  color: var(--color-fg-light);
+html[lang='zh-CN']
+  :is(
+    .home-projects-meta,
+    .project-card-date,
+    .tech-tag,
+    .log-entry-marker,
+    .daterange,
+    .footer-copyright
+  ) {
+  font-weight: var(--font-weight-medium);
 }
 
 /* Screen reader only - visually hidden but accessible */
@@ -582,63 +634,9 @@
   border-width: 0;
 }
 
-/* Stats page layout */
-.stats-page {
-  max-width: var(--measure-read);
-  margin: 0;
-}
-
-.stats-header {
-  text-align: left;
-  margin-bottom: 3rem;
-}
-
-.stats-title {
-  font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: var(--font-weight-black);
-  letter-spacing: var(--tracking-display);
-  margin-bottom: 0.5rem;
-  color: var(--color-fg-bold);
-}
-
-.stats-subtitle {
-  font-size: var(--text-md);
-  color: var(--color-fg-light);
-  margin: 0;
-}
-
-.stats-content {
-  display: flex;
-  flex-direction: column;
-  gap: 3.5rem;
-}
-
-.stats-section-title {
-  font-family: var(--font-mono);
-  font-size: var(--text-2xs);
-  font-weight: var(--font-weight-medium);
-  letter-spacing: var(--tracking-label);
-  text-transform: uppercase;
-  color: var(--color-fg-light);
-  margin-bottom: 0.75rem;
-}
-
-@media (max-width: 640px) {
-  .stat-table-value {
-    font-size: clamp(var(--text-md), 4vw, var(--text-xl));
-  }
-}
-
 @media (max-width: 480px) {
   .contact-email-link {
     font-size: var(--text-lg);
-  }
-
-  .stat-table-value {
-    font-size: var(--text-md);
-    white-space: normal;
-    overflow-wrap: anywhere;
   }
 }
 

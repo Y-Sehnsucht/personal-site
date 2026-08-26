@@ -1,6 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import profile from '@/data/profile.json';
+import { AUTHOR_NAME } from '@/lib/utils';
+
 import Footer from '../../Template/Footer';
 
 describe('Footer', () => {
@@ -11,12 +14,12 @@ describe('Footer', () => {
     expect(footer).toBeInTheDocument();
   });
 
-  it('displays the name and role', () => {
+  it('displays the name and academic role', () => {
     render(<Footer />);
 
-    expect(screen.getByText("Michael D'Angelo")).toBeInTheDocument();
+    expect(screen.getByText(AUTHOR_NAME)).toBeInTheDocument();
     expect(
-      screen.getByText('Member of the Technical Staff at OpenAI'),
+      screen.getByText(`${profile.role} at ${profile.school}`),
     ).toBeInTheDocument();
   });
 
@@ -42,20 +45,26 @@ describe('Footer', () => {
       'href',
       '/about',
     );
+    expect(screen.getByRole('link', { name: /projects/i })).toHaveAttribute(
+      'href',
+      '/projects',
+    );
+    expect(screen.getByRole('link', { name: /achievements/i })).toHaveAttribute(
+      'href',
+      '/achievements',
+    );
     expect(screen.getByRole('link', { name: /resume/i })).toHaveAttribute(
       'href',
       '/resume',
-    );
-    // Labelled "Archive" to match the nav and the page's own heading;
-    // the route stays /projects.
-    expect(screen.getByRole('link', { name: /archive/i })).toHaveAttribute(
-      'href',
-      '/projects',
     );
     expect(screen.getByRole('link', { name: /contact/i })).toHaveAttribute(
       'href',
       '/contact',
     );
+
+    expect(
+      screen.queryByRole('link', { name: /archive/i }),
+    ).not.toBeInTheDocument();
   });
 
   it('renders contact icons section', () => {

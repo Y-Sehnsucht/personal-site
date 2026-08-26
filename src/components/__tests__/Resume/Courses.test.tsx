@@ -8,20 +8,20 @@ const mockCourses = [
   {
     title: 'Machine Learning',
     number: 'CS 229',
-    link: 'http://cs229.stanford.edu/',
-    university: 'Stanford',
+    link: 'https://example.edu/cs229',
+    university: 'Sample University',
   },
   {
     title: 'Deep Learning',
     number: 'CS 230',
-    link: 'http://cs230.stanford.edu/',
-    university: 'Stanford',
+    link: 'https://example.edu/cs230',
+    university: 'Sample University',
   },
   {
     title: 'Algorithms',
     number: 'CS 161',
-    link: 'http://cs161.stanford.edu/',
-    university: 'MIT',
+    link: 'https://example.edu/cs161',
+    university: 'Example Institute',
   },
 ];
 
@@ -93,8 +93,8 @@ describe('Course', () => {
   const mockCourse = {
     title: 'Machine Learning',
     number: 'CS 229',
-    link: 'http://cs229.stanford.edu/',
-    university: 'Stanford',
+    link: 'https://example.edu/cs229',
+    university: 'Sample University',
   };
 
   it('renders course number and title', () => {

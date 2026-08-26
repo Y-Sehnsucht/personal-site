@@ -51,12 +51,24 @@
     background-color: var(--color-bg-alt);
     color: var(--color-fg);
     font-family: var(--font-body);
-    font-size: var(--text-md);
+    font-size: var(--text-body);
     font-weight: var(--font-weight-normal);
     line-height: var(--leading-normal);
     padding-top: var(--header-height);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  html[lang='zh-CN'] body {
+    font-family:
+      'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Source Han Sans SC', system-ui, sans-serif;
+    font-size: var(--text-body);
+    font-weight: 450;
+    line-height: var(--leading-normal);
+    text-align: left;
+    line-break: strict;
+    word-break: normal;
+    overflow-wrap: break-word;
   }
 
   /* Paper grain. The only ambient texture on the page —
@@ -81,7 +93,7 @@
 
   @media (max-width: 735px) {
     body {
-      font-size: var(--text-base);
+      font-size: var(--text-body-mobile);
       padding-top: var(--header-height-mobile);
     }
   }

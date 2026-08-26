@@ -4,13 +4,12 @@
     "height": 630
   },
   "profile": {
-    "name": "Michael D'Angelo",
-    "employer": "OpenAI",
-    "focus": "Promptfoo and Codex Security",
+    "name": "Zijun Yan",
+    "focus": "Software Engineering, Intelligent Agents & LLM Applications, and Algorithms",
     "countriesVisited": 53,
-    "computingSince": 1993,
-    "currentCity": "New York, NY"
+    "computingSince": 2025,
+    "currentCity": "Shanghai, China"
   },
-  "generatorDigest": "69f9406c836e1571b913cecb43e10ae4517ea8749e55735d6e3bc700fb85f241",
-  "imageDigest": "916adc2a96bbdc30d68db9b291927d346cad40e9a12ae7384f8332cd7ed882a2"
+  "generatorDigest": "99c560eb8bd872fa55a8e13b19a1107160fb6318368f3c45c37b9c18378ef942",
+  "imageDigest": "915a96092b5b28986aceeae20841ccbe4f2ca71de8989ca592d43dbfdf71ed06"
 }

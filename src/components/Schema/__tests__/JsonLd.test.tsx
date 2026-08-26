@@ -31,8 +31,8 @@ describe('JsonLd', () => {
   it('handles complex nested data', () => {
     const data = {
       '@context': 'https://schema.org',
-      '@type': 'BlogPosting',
-      headline: 'Test Article',
+      '@type': 'CreativeWork',
+      name: 'Test Work',
       author: {
         '@type': 'Person',
         name: 'Author Name',
@@ -44,7 +44,7 @@ describe('JsonLd', () => {
       'script[type="application/ld+json"]',
     );
     const parsedContent = JSON.parse(script?.innerHTML || '{}');
-    expect(parsedContent['@type']).toBe('BlogPosting');
+    expect(parsedContent['@type']).toBe('CreativeWork');
     expect(parsedContent.author.name).toBe('Author Name');
   });
 

@@ -1,4 +1,8 @@
+'use client';
+
 import type { Position } from '@/data/resume/work';
+import { useLanguage } from '@/i18n/LanguageProvider';
+import { t } from '@/i18n/translations';
 
 import Job, { type JobTier } from './Experience/Job';
 
@@ -51,16 +55,19 @@ export function tierFor(job: Position, positions: Position[]): JobTier {
 }
 
 export default function Experience({ data }: ExperienceProps) {
+  const { locale } = useLanguage();
+
   return (
     <div className="experience">
       <div className="title">
-        <h2>Experience</h2>
+        <h2>{t('resumeProjects', locale)}</h2>
       </div>
       <div className="experience-spine">
         {data.map((job) => (
           <Job
             data={job}
             key={`${job.name}-${job.position}`}
+            locale={locale}
             tier={tierFor(job, data)}
           />
         ))}

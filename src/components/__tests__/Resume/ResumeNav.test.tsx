@@ -14,7 +14,7 @@ describe('ResumeNav', () => {
   it('renders links to all resume sections', () => {
     render(<ResumeNav />);
 
-    expect(screen.getByRole('link', { name: /experience/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /projects/i })).toHaveAttribute(
       'href',
       '#experience',
     );
@@ -50,10 +50,10 @@ describe('ResumeNav', () => {
     expect(nav).toBeInTheDocument();
   });
 
-  it('experience link is active by default', () => {
+  it('projects link is active by default', () => {
     render(<ResumeNav />);
 
-    const experienceLink = screen.getByRole('link', { name: /experience/i });
-    expect(experienceLink).toHaveClass('active');
+    const projectsLink = screen.getByRole('link', { name: /projects/i });
+    expect(projectsLink).toHaveClass('active');
   });
 });

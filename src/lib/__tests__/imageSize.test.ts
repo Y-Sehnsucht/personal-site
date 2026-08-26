@@ -1,11 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import {
-  ImageSizeError,
-  parseImageSize,
-  readImageSize,
-  readPostImageSizes,
-} from '../imageSize';
+import { ImageSizeError, parseImageSize, readImageSize } from '../imageSize';
 
 function png(width: number, height: number): Buffer {
   const buffer = Buffer.alloc(24);
@@ -124,14 +119,6 @@ describe('readImageSize', () => {
     });
   });
 
-  it('reads the WebP encoding used by article assets', () => {
-    expect(
-      readImageSize(
-        '/images/writing/codex-desktop-app-post/codex-app-overview.webp',
-      ),
-    ).toEqual({ width: 1166, height: 656 });
-  });
-
   it.each([
     ['relative.png', 'INVALID_PATH'],
     ['//example.com/image.png', 'INVALID_PATH'],
@@ -148,49 +135,5 @@ describe('readImageSize', () => {
       expect(error).toBeInstanceOf(ImageSizeError);
       expect((error as ImageSizeError).code).toBe(code);
     }
-  });
-});
-
-describe('readPostImageSizes', () => {
-  it('measures root-local Markdown images with every supported title form', () => {
-    const markdown = [
-      '![plain](/og.png)',
-      '![double](/og.png "Social card")',
-      "![single](/og.png 'Social card')",
-      '![parenthesized](</og.png> (Social card))',
-    ].join('\n');
-
-    expect(readPostImageSizes(markdown)).toEqual({
-      '/og.png': { width: 1200, height: 630 },
-    });
-  });
-
-  it('keeps query-bearing src values as renderer lookup keys', () => {
-    expect(
-      readPostImageSizes('![card](/og.png?v=2#preview "Version 2")'),
-    ).toEqual({
-      '/og.png?v=2#preview': { width: 1200, height: 630 },
-    });
-  });
-
-  it('ignores images that cannot be measured from public/', () => {
-    expect(
-      readPostImageSizes(
-        [
-          '![remote](https://example.com/image.png)',
-          '![protocol relative](//example.com/image.png)',
-          '![data](data:image/png;base64,AAAA)',
-          '![relative](image.png)',
-        ].join('\n'),
-      ),
-    ).toEqual({});
-  });
-
-  it('fails the build for a missing root-local Markdown image', () => {
-    expect(() =>
-      readPostImageSizes(
-        '![missing](/images/writing/definitely-missing.png "Missing")',
-      ),
-    ).toThrow(/Local image does not exist/);
   });
 });

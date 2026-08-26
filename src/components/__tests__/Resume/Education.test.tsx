@@ -6,15 +6,15 @@ import Degree from '../../Resume/Education/Degree';
 
 const mockDegrees = [
   {
-    school: 'Stanford University',
+    school: 'East China Normal University',
     degree: 'M.S. Computer Science',
-    link: 'https://stanford.edu',
+    link: 'https://www.ecnu.edu.cn/',
     year: 2020,
   },
   {
-    school: 'MIT',
+    school: 'Shanghai Jiao Tong University',
     degree: 'B.S. Computer Science',
-    link: 'https://mit.edu',
+    link: 'https://www.sjtu.edu.cn/',
     year: 2016,
   },
 ];
@@ -38,19 +38,23 @@ describe('Education', () => {
   it('renders school links', () => {
     render(<Education data={mockDegrees} />);
 
-    const stanfordLink = screen.getByRole('link', { name: /stanford/i });
-    expect(stanfordLink).toHaveAttribute('href', 'https://stanford.edu');
+    const ecnuLink = screen.getByRole('link', {
+      name: /east china normal university/i,
+    });
+    expect(ecnuLink).toHaveAttribute('href', 'https://www.ecnu.edu.cn/');
 
-    const mitLink = screen.getByRole('link', { name: /mit/i });
-    expect(mitLink).toHaveAttribute('href', 'https://mit.edu');
+    const sjtuLink = screen.getByRole('link', {
+      name: /shanghai jiao tong university/i,
+    });
+    expect(sjtuLink).toHaveAttribute('href', 'https://www.sjtu.edu.cn/');
   });
 });
 
 describe('Degree', () => {
   const mockDegree = {
-    school: 'Stanford University',
+    school: 'East China Normal University',
     degree: 'M.S. Computer Science',
-    link: 'https://stanford.edu',
+    link: 'https://www.ecnu.edu.cn/',
     year: 2020,
   };
 
@@ -65,8 +69,10 @@ describe('Degree', () => {
   it('renders school name with link', () => {
     render(<Degree data={mockDegree} />);
 
-    const link = screen.getByRole('link', { name: /stanford/i });
-    expect(link).toHaveAttribute('href', 'https://stanford.edu');
+    const link = screen.getByRole('link', {
+      name: /east china normal university/i,
+    });
+    expect(link).toHaveAttribute('href', 'https://www.ecnu.edu.cn/');
   });
 
   it('displays year', () => {

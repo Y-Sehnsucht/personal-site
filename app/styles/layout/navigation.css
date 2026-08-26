@@ -16,8 +16,8 @@
 
 .logo-text {
   font-family: var(--font-display);
-  font-size: var(--text-lg);
-  font-weight: var(--font-weight-black);
+  font-size: var(--text-logo);
+  font-weight: var(--font-weight-bold);
   color: var(--color-fg-bold);
   letter-spacing: var(--tracking-display);
   line-height: 1;
@@ -27,7 +27,7 @@
    mono, uppercase, wide-tracked, and small. */
 .nav-links {
   display: none;
-  gap: 1.75rem;
+  gap: 2.25rem;
   align-items: center;
 }
 
@@ -39,10 +39,10 @@
 
 .nav-link {
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.625rem 0;
   font-family: var(--font-mono);
-  font-size: var(--text-ui);
-  font-weight: var(--font-weight-medium);
+  font-size: var(--text-nav);
+  font-weight: var(--font-weight-semibold);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-fg-light);
@@ -97,13 +97,13 @@
   gap: 0.75rem;
 }
 
-/* Theme Toggle */
-.theme-toggle {
+/* Header action buttons */
+.theme-toggle,
+.language-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  height: 46px;
   padding: 0;
   background: transparent;
   border: none;
@@ -115,12 +115,25 @@
     background-color var(--duration-fast) var(--ease-out);
 }
 
-.theme-toggle:hover {
+.theme-toggle {
+  width: 46px;
+}
+
+.language-toggle {
+  width: 46px;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+}
+
+.theme-toggle:hover,
+.language-toggle:hover {
   color: var(--color-fg-bold);
   background: var(--color-bg-alt);
 }
 
-.theme-toggle:focus-visible {
+.theme-toggle:focus-visible,
+.language-toggle:focus-visible {
   color: var(--color-accent);
   background: var(--color-bg-alt);
   outline: 2px solid var(--color-accent);
@@ -134,8 +147,8 @@
 }
 
 .theme-toggle-placeholder {
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
 }
 
 /* Hide hamburger on desktop */

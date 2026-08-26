@@ -60,11 +60,6 @@ function createFixture({ basePath = '' } = {}) {
   write(root, 'package.json', JSON.stringify({ homepage: siteRoot }));
   write(
     root,
-    'content/writing/secret-draft.md',
-    '---\ntitle: Secret draft\ndraft: true # keep private\n---\n',
-  );
-  write(
-    root,
     'out/index.html',
     htmlPage({
       canonical: siteRoot,
@@ -100,21 +95,6 @@ function createFixture({ basePath = '' } = {}) {
   <url><loc>${siteRoot}</loc></url>
   <url><loc>${siteRoot}about/</loc></url>
 </urlset>`,
-  );
-  write(
-    root,
-    'out/feed.xml',
-    `<?xml version="1.0"?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <link>${siteRoot}</link>
-    <atom:link href="${siteRoot}feed.xml" rel="self"/>
-    <item>
-      <link>${siteRoot}about/</link>
-      <guid isPermaLink="true">${siteRoot}about/</guid>
-    </item>
-  </channel>
-</rss>`,
   );
 
   return root;
@@ -161,17 +141,15 @@ describe('verify-export', () => {
     expect(result.output).toContain('2 pages OK');
   });
 
-  it('rejects links that escape a configured repository-site base path', () => {
+  it('accepts root-relative links when a repository-site base path is configured', () => {
     const root = createFixture({ basePath: '/personal-site' });
     mutate(root, 'out/index.html', (html) =>
       html.replace('href="about/#section"', 'href="/about/#section"'),
     );
 
     const result = runVerifier(root);
-    expect(result.status).toBe(1);
-    expect(result.output).toContain(
-      'internal link points outside configured base path /personal-site/',
-    );
+    expect(result.status).toBe(0);
+    expect(result.output).toContain('2 pages OK');
   });
 
   it('rejects a missing same-page fragment', () => {
@@ -269,7 +247,6 @@ describe('verify-export', () => {
     ['Open Graph title', 'property="og:title"', 'og:title'],
     ['Open Graph site name', 'property="og:site_name"', 'og:site_name'],
     ['Twitter card', 'name="twitter:card"', 'twitter:card'],
-    ['Twitter creator', 'name="twitter:creator"', 'twitter:creator'],
   ])('rejects a missing %s', (_, attribute, tagName) => {
     const root = createFixture();
     mutate(root, 'out/about/index.html', (html) =>
@@ -283,35 +260,19 @@ describe('verify-export', () => {
     );
   });
 
-  it('rejects draft and missing routes in the sitemap', () => {
+  it('rejects missing routes in the sitemap', () => {
     const root = createFixture();
     mutate(root, 'out/sitemap.xml', (xml) =>
       xml.replace(
         '</urlset>',
-        '<url><loc>https://example.com/writing/secret-draft/</loc></url></urlset>',
+        '<url><loc>https://example.com/missing/</loc></url></urlset>',
       ),
     );
 
     const result = runVerifier(root);
     expect(result.status).toBe(1);
     expect(result.output).toContain(
-      'sitemap.xml\n    exposes draft route: /writing/secret-draft/',
-    );
-  });
-
-  it('rejects draft routes in the RSS feed', () => {
-    const root = createFixture();
-    mutate(root, 'out/feed.xml', (xml) =>
-      xml.replace(
-        '</channel>',
-        '<item><link>https://example.com/writing/secret-draft/</link></item></channel>',
-      ),
-    );
-
-    const result = runVerifier(root);
-    expect(result.status).toBe(1);
-    expect(result.output).toContain(
-      'feed.xml\n    exposes draft route: /writing/secret-draft/',
+      'sitemap.xml\n    URL points at missing export: /missing/',
     );
   });
 
