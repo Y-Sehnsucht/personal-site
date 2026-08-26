@@ -3,6 +3,7 @@
 import achievements from '@/data/achievements';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { copy, t } from '@/i18n/translations';
+import { withBasePath } from '@/lib/assetPath';
 
 const levelZh: Record<string, string> = {
   National: '国家级',
@@ -49,7 +50,7 @@ export default function AchievementsPageContent() {
             {achievement.certificate && (
               <a
                 className="achievement-certificate"
-                href={achievement.certificate}
+                href={withBasePath(achievement.certificate)}
                 target="_blank"
                 rel="noopener noreferrer"
               >
