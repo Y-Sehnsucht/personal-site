@@ -45,7 +45,7 @@
 
 .projects-grid {
   display: grid;
-  gap: 2rem;
+  gap: 1.75rem;
   grid-template-columns: 1fr;
 }
 
@@ -144,12 +144,12 @@
 }
 
 .project-card-content {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .project-card-header {
   position: relative;
-  margin-bottom: var(--spacing-4);
+  margin-bottom: 0.875rem;
 }
 
 .project-card--linked .project-card-header {
@@ -193,7 +193,7 @@
 }
 
 .project-card-desc {
-  font-size: var(--text-body);
+  font-size: var(--text-base);
   color: var(--color-fg);
   margin-bottom: 1.25rem;
   line-height: var(--leading-normal);

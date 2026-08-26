@@ -27,7 +27,7 @@
    mono, uppercase, wide-tracked, and small. */
 .nav-links {
   display: none;
-  gap: 2.25rem;
+  gap: 1.75rem;
   align-items: center;
 }
 
@@ -39,10 +39,10 @@
 
 .nav-link {
   position: relative;
-  padding: 0.625rem 0;
+  padding: 0.5rem 0;
   font-family: var(--font-mono);
   font-size: var(--text-nav);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-fg-light);
@@ -103,7 +103,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 46px;
+  height: 44px;
   padding: 0;
   background: transparent;
   border: none;
@@ -116,11 +116,11 @@
 }
 
 .theme-toggle {
-  width: 46px;
+  width: 44px;
 }
 
 .language-toggle {
-  width: 46px;
+  width: 44px;
   font-family: var(--font-mono);
   font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
@@ -147,8 +147,8 @@
 }
 
 .theme-toggle-placeholder {
-  width: 46px;
-  height: 46px;
+  width: 44px;
+  height: 44px;
 }
 
 /* Hide hamburger on desktop */

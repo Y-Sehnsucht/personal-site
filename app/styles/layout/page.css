@@ -26,7 +26,7 @@
   width: min(100%, var(--measure-page));
   max-width: none;
   margin: 0 auto;
-  padding: 2.5rem 1.5rem 5rem;
+  padding: 2rem 1.5rem;
 }
 
 /* The hero grid needs room for a full-measure readout strip
@@ -45,11 +45,7 @@
 
 @media screen and (min-width: 736px) {
   .page-main {
-    padding: 4.5rem 2rem 6rem;
-  }
-
-  .page-main--hero {
-    padding-top: 1rem;
+    padding: 3rem 2rem;
   }
 }
 
