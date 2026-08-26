@@ -29,12 +29,12 @@
   /* ===================
      LAYOUT DIMENSIONS
      =================== */
-  --header-height: 5.5rem;
-  --header-height-mobile: 4.5rem;
+  --header-height: 4rem;
+  --header-height-mobile: 3.5rem;
 
   /* Three page measures keep routes aligned without forcing component-sized
      details (portraits, status messages, controls) into page-level tokens. */
-  --measure-wide: clamp(76rem, 74vw, 82rem); /* Hero compositions */
-  --measure-page: clamp(68rem, 68vw, 72rem); /* Resume, achievements, footer */
-  --measure-read: 60rem; /* About, contact, and continuous prose */
+  --measure-wide: clamp(70rem, 62.5vw, 80rem); /* Hero compositions */
+  --measure-page: 56rem; /* Resume, achievements, footer */
+  --measure-read: 40rem; /* About, contact, and continuous prose */
 }

@@ -96,6 +96,10 @@
       font-size: var(--text-body-mobile);
       padding-top: var(--header-height-mobile);
     }
+
+    html[lang='zh-CN'] body {
+      font-size: var(--text-body-mobile);
+    }
   }
 
   /* Every measured value on the site is set in mono with

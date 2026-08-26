@@ -10,9 +10,9 @@ describe('layout width tokens', () => {
   it('uses viewport-aware shared page measures', () => {
     const spacing = read('app/styles/tokens/spacing.css');
 
-    expect(spacing).toContain('--measure-read: 60rem');
-    expect(spacing).toContain('--measure-page: clamp(68rem, 68vw, 72rem)');
-    expect(spacing).toContain('--measure-wide: clamp(76rem, 74vw, 82rem)');
+    expect(spacing).toContain('--measure-read: 40rem');
+    expect(spacing).toContain('--measure-page: 56rem');
+    expect(spacing).toContain('--measure-wide: clamp(70rem, 62.5vw, 80rem)');
   });
 
   it('aligns page and footer shells to the same measure without fixed narrow max-widths', () => {
@@ -28,29 +28,33 @@ describe('layout width tokens', () => {
     expect(header).toContain('calc((100vw - var(--measure-page)) / 2 + 2rem)');
   });
 
-  it('uses the enlarged readable type scale', () => {
+  it('uses the reference type scale with readable body text', () => {
     const typography = read('app/styles/tokens/typography.css');
     const baseTypography = read('app/styles/base/typography.css');
+    const reset = read('app/styles/base/reset.css');
     const page = read('app/styles/layout/page.css');
     const resume = read('app/styles/pages/resume.css');
 
-    expect(typography).toContain('--text-2xs: 0.9375rem');
-    expect(typography).toContain('--text-ui: 1rem');
-    expect(typography).toContain('--text-base: 1.5625rem');
-    expect(typography).toContain('--text-md: 1.625rem');
-    expect(typography).toContain('--text-lg: 1.75rem');
-    expect(typography).toContain('--text-xl: 2.25rem');
-    expect(typography).toContain('--text-2xl: 2.75rem');
-    expect(typography).toContain('--text-3xl: 3.625rem');
-    expect(typography).toContain('--text-display: clamp(3.125rem, 9vw, 6rem)');
-    expect(typography).toContain('--text-body-mobile: 1.25rem');
+    expect(typography).toContain('--text-2xs: 0.6875rem');
+    expect(typography).toContain('--text-ui: 0.8125rem');
+    expect(typography).toContain('--text-base: 1rem');
+    expect(typography).toContain('--text-md: 1.125rem');
+    expect(typography).toContain('--text-lg: 1.375rem');
+    expect(typography).toContain('--text-xl: 1.75rem');
+    expect(typography).toContain('--text-2xl: 2.25rem');
+    expect(typography).toContain('--text-3xl: 3rem');
+    expect(typography).toContain('--text-display: clamp(3rem, 9vw, 5.75rem)');
+    expect(typography).toContain('--text-body-mobile: var(--text-base)');
     expect(typography).toContain('--text-body: var(--text-md)');
-    expect(typography).toContain('--text-lead: var(--text-md)');
+    expect(typography).toContain('--text-lead: var(--text-lg)');
     expect(typography).toContain('--text-page-title: var(--text-3xl)');
     expect(typography).toContain('--leading-normal: 1.72');
     expect(baseTypography).toContain('font-size: var(--text-page-title)');
     expect(baseTypography).toContain(
       'font-size: var(--text-page-title-mobile)',
+    );
+    expect(reset).toContain(
+      "html[lang='zh-CN'] body {\n      font-size: var(--text-body-mobile);",
     );
     expect(page).not.toContain('font-size: var(--text-page-title)');
     expect(resume).not.toContain('font-size: var(--text-page-title)');
@@ -74,17 +78,17 @@ describe('layout width tokens', () => {
     expect(content).toContain('margin-left: 0');
   });
 
-  it('uses the enlarged header scale and controls', () => {
+  it('uses the compact reference header scale and controls', () => {
     const spacing = read('app/styles/tokens/spacing.css');
     const navigation = read('app/styles/layout/navigation.css');
 
-    expect(spacing).toContain('--header-height: 5.5rem');
-    expect(spacing).toContain('--header-height-mobile: 4.5rem');
+    expect(spacing).toContain('--header-height: 4rem');
+    expect(spacing).toContain('--header-height-mobile: 3.5rem');
     expect(navigation).toContain('font-size: var(--text-logo)');
     expect(navigation).toContain('font-size: var(--text-nav)');
-    expect(navigation).toContain('font-weight: var(--font-weight-semibold)');
-    expect(navigation).toContain('height: 46px');
-    expect(navigation).toContain('width: 46px');
+    expect(navigation).toContain('font-weight: var(--font-weight-medium)');
+    expect(navigation).toContain('height: 44px');
+    expect(navigation).toContain('width: 44px');
   });
 
   it('keeps About sections vertical at every viewport', () => {
@@ -100,12 +104,11 @@ describe('layout width tokens', () => {
     );
   });
 
-  it('widens Hero copy without changing the upstream grid or portrait width', () => {
+  it('keeps the longer Hero copy measure without changing the grid or portrait width', () => {
     const home = read('app/styles/pages/home.css');
 
     expect(home).toContain('grid-template-columns: minmax(0, 1fr) auto');
     expect(home).toContain('max-width: 62ch');
-    expect(home).not.toContain('max-width: 46ch');
     expect(home).toContain('width: 280px');
   });
 
