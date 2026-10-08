@@ -152,6 +152,20 @@ describe('verify-export', () => {
     expect(result.output).toContain('2 pages OK');
   });
 
+  it('accepts an absolute link to a sibling repository site', () => {
+    const root = createFixture({ basePath: '/personal-site' });
+    mutate(root, 'out/index.html', (html) =>
+      html.replace(
+        'href="about/#section"',
+        'href="https://example.com/scaffoldmind/"',
+      ),
+    );
+
+    const result = runVerifier(root);
+    expect(result.status).toBe(0);
+    expect(result.output).toContain('2 pages OK');
+  });
+
   it('rejects a missing same-page fragment', () => {
     const root = createFixture();
     mutate(root, 'out/index.html', (html) =>

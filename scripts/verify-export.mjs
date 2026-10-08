@@ -231,6 +231,15 @@ function validateInternalTarget(raw, source, label) {
   const url = parseHttpUrl(raw, source.route, source.relativePath, label);
   if (!url || url.origin !== SITE_ORIGIN) return;
 
+  const isAbsoluteUrl = /^[a-z][a-z\d+.-]*:\/\//i.test(raw.trim());
+  if (
+    SITE_BASE_PATH &&
+    isAbsoluteUrl &&
+    routeForPublicPath(url.pathname) === undefined
+  ) {
+    return;
+  }
+
   if (routeForRootRelativePath(url.pathname) === undefined) {
     fail(
       source.relativePath,
