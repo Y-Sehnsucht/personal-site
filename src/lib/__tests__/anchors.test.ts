@@ -36,8 +36,6 @@ describe('createHeadingId', () => {
     ).toEqual([
       ['Academic Interests', 'academic-interests'],
       ['Education and Learning', 'education-and-learning'],
-      ['Projects and Practice', 'projects-and-practice'],
-      ['Competitions and Awards', 'competitions-and-awards'],
       ['I Like', 'i-like'],
       ['Places & Journeys', 'places-and-journeys'],
       ['I Dream Of', 'i-dream-of'],

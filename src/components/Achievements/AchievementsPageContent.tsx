@@ -45,6 +45,9 @@ export default function AchievementsPageContent() {
                   ? (achievement.awardZh ?? achievement.award)
                   : achievement.award}
               </p>
+              {achievement.period ? (
+                <span className="achievement-period">{achievement.period}</span>
+              ) : null}
             </div>
 
             {achievement.certificate && (

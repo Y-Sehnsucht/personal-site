@@ -26,6 +26,12 @@ export default function Cell({ data }: CellProps) {
     locale === 'zh-CN' ? (data.subtitleZh ?? data.subtitle) : data.subtitle;
   const desc = locale === 'zh-CN' ? (data.descZh ?? data.desc) : data.desc;
   const imageSrc = withBasePath(data.image);
+  const cardImages = data.images ?? [
+    {
+      src: data.image,
+      alt: title,
+    },
+  ];
 
   useEffect(() => {
     if (!previewOpen) return;
@@ -51,14 +57,23 @@ export default function Cell({ data }: CellProps) {
 
   const cardContent = (
     <>
-      <div className="project-card-image">
-        <Image
-          src={imageSrc}
-          alt=""
-          width={PROJECT_IMAGE.width}
-          height={PROJECT_IMAGE.height}
-          sizes="(max-width: 600px) 100vw, 50vw"
-        />
+      <div
+        className={`project-card-image project-card-image--${Math.min(cardImages.length, 3)}`}
+      >
+        {cardImages.slice(0, 3).map((image, index) => (
+          <Image
+            key={image.src}
+            src={withBasePath(image.src)}
+            alt=""
+            width={PROJECT_IMAGE.width}
+            height={PROJECT_IMAGE.height}
+            sizes={
+              index === 0
+                ? '(max-width: 600px) 100vw, 50vw'
+                : '(max-width: 600px) 50vw, 25vw'
+            }
+          />
+        ))}
       </div>
 
       <div className="project-card-content">
@@ -98,7 +113,13 @@ export default function Cell({ data }: CellProps) {
       }`}
     >
       {hasLink ? (
-        <a href={data.link} className="project-card-link" aria-label={title}>
+        <a
+          href={data.link}
+          className="project-card-link"
+          aria-label={`${title}${t('opensNewTab', locale)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {cardContent}
         </a>
       ) : (

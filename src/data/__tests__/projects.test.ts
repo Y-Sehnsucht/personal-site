@@ -11,6 +11,7 @@ describe('projects data', () => {
   it('each project has required properties', () => {
     for (const project of projects) {
       expect(project).toHaveProperty('title');
+      expect(project).toHaveProperty('id');
       expect(project).toHaveProperty('image');
       expect(project).toHaveProperty('date');
       expect(project).toHaveProperty('desc');
@@ -92,5 +93,39 @@ describe('projects data', () => {
     expect(zhiyi).toBeDefined();
     expect(zhiyi).not.toHaveProperty('link');
     expect(zhiyi?.image).toBe('/images/projects/zhiyi.jpg');
+    expect(zhiyi?.titleZh).toBe('知翼');
+    expect(zhiyi?.desc).toContain('proposal design');
+  });
+
+  it('states proposal-only projects without implying implementation', () => {
+    const waterQuality = projects.find(
+      (project) => project.id === 'water-quality',
+    );
+
+    expect(waterQuality?.subtitle).toContain('Technical Proposal Design');
+    expect(waterQuality?.desc).toContain('technical proposal');
+    expect(waterQuality?.desc).toContain('device concept design');
+    expect(waterQuality?.date).toBe('2025-11-28');
+  });
+
+  it('keeps CV details next to their canonical project records', () => {
+    const miniVdb = projects.find((project) => project.id === 'vector-index');
+    const elevator = projects.find(
+      (project) => project.id === 'elevator-control',
+    );
+    const maple = projects.find((project) => project.id === 'maple');
+
+    expect(miniVdb?.cv?.supervisor).toBe('王丽苹');
+    expect(miniVdb?.cv?.startDate).toBe('2026-06-01');
+    expect(elevator?.cv?.contextZh).toContain('高端软件开发方法');
+    expect(maple?.cv?.role).toBe('Database and Core API Subtask Owner');
+  });
+
+  it('provides three representative ScaffoldMind screenshots', () => {
+    const scaffoldMind = projects.find(
+      (project) => project.id === 'scaffoldmind',
+    );
+
+    expect(scaffoldMind?.images).toHaveLength(3);
   });
 });

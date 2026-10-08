@@ -53,7 +53,7 @@ describe('Footer', () => {
       'href',
       '/achievements',
     );
-    expect(screen.getByRole('link', { name: /resume/i })).toHaveAttribute(
+    expect(screen.getByRole('link', { name: /^cv$/i })).toHaveAttribute(
       'href',
       '/resume',
     );

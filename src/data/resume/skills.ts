@@ -25,6 +25,11 @@ const skills: Skill[] = [
     competency: 3,
     category: ['Programming Languages'],
   },
+  {
+    title: 'Java',
+    competency: 3,
+    category: ['Programming Languages'],
+  },
 
   //Computer Science
   {
@@ -58,6 +63,33 @@ const skills: Skill[] = [
     title: 'Vector Search & Similarity Retrieval',
     competency: 2,
     category: ['Artificial Intelligence', 'Computer Science'],
+  },
+  {
+    title: 'PyTorch',
+    competency: 2,
+    category: ['Artificial Intelligence'],
+  },
+
+  // Development Tools
+  {
+    title: 'Git / GitHub',
+    competency: 3,
+    category: ['Development Tools'],
+  },
+  {
+    title: 'Linux',
+    competency: 3,
+    category: ['Development Tools'],
+  },
+  {
+    title: 'Docker',
+    competency: 2,
+    category: ['Development Tools'],
+  },
+  {
+    title: 'Unit Testing',
+    competency: 3,
+    category: ['Development Tools'],
   },
 
   // Modeling & Simulation

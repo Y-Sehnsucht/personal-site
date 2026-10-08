@@ -28,7 +28,7 @@ describe('Experience', () => {
     render(<Experience data={mockJobs} />);
 
     expect(
-      screen.getByRole('heading', { name: /experience/i }),
+      screen.getByRole('heading', { name: /projects/i }),
     ).toBeInTheDocument();
   });
 
@@ -62,7 +62,7 @@ describe('Experience', () => {
     render(<Experience data={[]} />);
 
     expect(
-      screen.getByRole('heading', { name: /experience/i }),
+      screen.getByRole('heading', { name: /projects/i }),
     ).toBeInTheDocument();
     // No job articles
     const articles = document.querySelectorAll('.jobs-container');

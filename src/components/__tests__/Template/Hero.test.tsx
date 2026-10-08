@@ -46,8 +46,8 @@ describe('Hero', () => {
     expect(tagline).toHaveTextContent(
       "I'm a sophomore undergraduate student in Software Engineering at East China Normal University.",
     );
-    expect(tagline).toHaveTextContent(/AI-assisted development/i);
-    expect(tagline).toHaveTextContent(/LLM-based agents/i);
+    expect(tagline).toHaveTextContent(/AI-assisted software engineering/i);
+    expect(tagline).toHaveTextContent(/algorithms and reliable systems/i);
 
     expect(tagline).not.toHaveTextContent(/Member of the Technical Staff/i);
     expect(tagline).not.toHaveTextContent(/co-founded/i);
@@ -68,7 +68,7 @@ describe('Hero', () => {
 
     expect(universityLink).toHaveAttribute('href', 'https://www.ecnu.edu.cn/');
     expect(container.querySelector('.hero-tagline')).toHaveTextContent(
-      '华东师范大学软件工程专业大二本科生。当前学习重点包括数据结构与算法、计算机系统、软件设计与工程实践；在此基础上，也关注 AI 辅助开发、基于大模型的智能体，以及可靠、高效的智能系统。',
+      '华东师范大学软件工程专业大二本科生。当前主要关注软件工程与开发工具、AI 辅助软件工程，以及算法与可靠系统，并通过课程和项目持续夯实数据结构、计算机系统与软件设计基础。',
     );
     expect(container.querySelector('.hero-tagline')).not.toHaveTextContent(
       /我目前就读于/,
@@ -93,10 +93,10 @@ describe('Hero', () => {
     expect(aboutButton).toHaveAttribute('href', '/about');
     expect(aboutButton).toHaveClass('button');
 
-    const resumeButton = screen.getByRole('link', { name: /view resume/i });
-    expect(resumeButton).toHaveAttribute('href', '/resume');
-    expect(resumeButton).toHaveClass('hero-resume-link');
-    expect(resumeButton).not.toHaveClass('button');
+    const cvLink = screen.getByRole('link', { name: /view cv/i });
+    expect(cvLink).toHaveAttribute('href', '/resume');
+    expect(cvLink).toHaveClass('hero-resume-link');
+    expect(cvLink).not.toHaveClass('button');
   });
 
   it('has decorative background elements', () => {

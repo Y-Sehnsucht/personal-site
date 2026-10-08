@@ -15,7 +15,7 @@ technical skills, education, and contact information.
 - About
 - Projects
 - Achievements
-- Resume
+- Academic CV
 - Contact
 
 ## Technology

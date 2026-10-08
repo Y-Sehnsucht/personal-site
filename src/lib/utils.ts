@@ -34,7 +34,7 @@ export const SHARE_IMAGE_DIMENSIONS = {
 
 // Canonical one-line bio, shared across page metadata, OpenGraph, and JSON-LD.
 export const SITE_DESCRIPTION =
-  'Software Engineering undergraduate at East China Normal University, interested in algorithms, intelligent agents, LLM applications, and reliable AI systems.';
+  'Software Engineering undergraduate at East China Normal University, interested in developer tools, AI-assisted software engineering, algorithms, and reliable systems.';
 
 // Image dimension constants
 export const PROJECT_IMAGE = {

@@ -6,6 +6,7 @@ import Cell from '../../Projects/Cell';
 
 describe('Cell', () => {
   const mockProject = {
+    id: 'test-project',
     title: 'Test Project',
     subtitle: 'A test subtitle',
     image: '/images/test.jpg',
@@ -22,8 +23,12 @@ describe('Cell', () => {
     vi.stubEnv('NEXT_PUBLIC_BASE_PATH', '/personal-site');
 
     render(<Cell data={mockProject} />);
-    const link = screen.getByRole('link', { name: mockProject.title });
+    const link = screen.getByRole('link', {
+      name: `${mockProject.title} (opens in new tab)`,
+    });
     expect(link).toHaveAttribute('href', mockProject.link);
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
     expect(link).toHaveClass('project-card-link');
     expect(
       document.querySelector('.project-card-affordance'),
@@ -48,6 +53,28 @@ describe('Cell', () => {
     expect(image).toBeInTheDocument();
     expect(image).toHaveAttribute('alt', '');
     expect(image).toHaveAttribute('src', '/personal-site/images/test.jpg');
+  });
+
+  it('renders a compact gallery when a project has multiple screenshots', () => {
+    render(
+      <Cell
+        data={{
+          ...mockProject,
+          images: [
+            { src: '/images/one.jpg', alt: 'First view' },
+            { src: '/images/two.jpg', alt: 'Second view' },
+            { src: '/images/three.jpg', alt: 'Third view' },
+          ],
+        }}
+      />,
+    );
+
+    expect(
+      document.querySelector('.project-card-image--3'),
+    ).toBeInTheDocument();
+    expect(document.querySelectorAll('.project-card-image img')).toHaveLength(
+      3,
+    );
   });
 
   it('does not imply that a static archive card is clickable', () => {

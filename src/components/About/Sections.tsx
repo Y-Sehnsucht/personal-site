@@ -71,6 +71,8 @@ const sectionVariants: Record<string, string> = {
   'Current Focus': 'about-section--compact',
   兴趣与日常: 'about-section--compact',
   城市与经历: 'about-section--log',
+  我所期待的: 'about-section--compact',
+  近期重点: 'about-section--compact',
 };
 
 function splitAboutMarkdown(markdown: string) {

@@ -6,11 +6,12 @@ import { useLanguage } from '@/i18n/LanguageProvider';
 import { t } from '@/i18n/translations';
 
 const sections = [
-  { nameKey: 'resumeProjects', id: 'experience' },
+  { nameKey: 'cvResearchProfile', id: 'research' },
   { nameKey: 'resumeEducation', id: 'education' },
+  { nameKey: 'resumeProjects', id: 'experience' },
+  { nameKey: 'cvAwards', id: 'awards' },
   { nameKey: 'resumeSkills', id: 'skills' },
   { nameKey: 'resumeCourses', id: 'courses' },
-  { nameKey: 'resumeReferences', id: 'references' },
 ] as const;
 
 type SectionId = (typeof sections)[number]['id'];
@@ -19,7 +20,7 @@ type SectionId = (typeof sections)[number]['id'];
 const INTERSECTION_MARGIN = '-20% 0px -75% 0px';
 
 export default function ResumeNav() {
-  const [activeSection, setActiveSection] = useState<SectionId>('experience');
+  const [activeSection, setActiveSection] = useState<SectionId>('research');
   const { locale } = useLanguage();
 
   useEffect(() => {

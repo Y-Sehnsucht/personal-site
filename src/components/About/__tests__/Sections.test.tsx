@@ -158,14 +158,32 @@ Lead paragraph.
     for (const title of [
       '学术兴趣',
       '教育与学习',
-      '项目实践',
-      '竞赛与获奖',
       '兴趣与日常',
       '城市与经历',
+      '我所期待的',
+      '近期重点',
       '后续方向',
     ]) {
       expect(screen.getByRole('heading', { name: title })).toBeInTheDocument();
     }
+  });
+
+  it('renders the missing personal and current-focus sections in Chinese', () => {
+    const { container } = render(<AboutContent markdown={aboutMarkdownZh} />);
+
+    expect(
+      screen.getByRole('heading', { name: '我所期待的' }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', { name: '近期重点' }),
+    ).toBeInTheDocument();
+    expect(getListItemsForSection('我所期待的')).toHaveLength(6);
+    expect(getListItemsForSection('近期重点')).toHaveLength(4);
+
+    const compactSections = container.querySelectorAll(
+      '.about-section--compact',
+    );
+    expect(compactSections.length).toBeGreaterThanOrEqual(3);
   });
 
   it('keeps English and Chinese section headings above their content', () => {
@@ -182,18 +200,16 @@ Lead paragraph.
     }
   });
 
-  it('renders four ordered academic interests in one list for each language', () => {
+  it('renders three ordered academic interests in one list for each language', () => {
     const englishLabels = [
-      'Software Architecture and Backend Engineering.',
-      'Systems and Performance Engineering.',
-      'Retrieval Systems for AI.',
-      'LLM Application Engineering and Evaluation.',
+      'Software engineering and developer tools.',
+      'AI-assisted software engineering.',
+      'Algorithms and reliable systems.',
     ];
     const chineseLabels = [
-      '软件架构与后端工程。',
-      '系统与性能工程。',
-      '面向 AI 的检索系统。',
-      'LLM 应用工程与评测。',
+      '软件工程与开发工具。',
+      'AI 辅助软件工程。',
+      '算法与可靠系统。',
     ];
 
     const { rerender } = render(<AboutContent markdown={aboutMarkdown} />);
@@ -204,7 +220,7 @@ Lead paragraph.
     const englishItems = getListItemsForSection('Academic Interests');
 
     expect(englishSection).not.toHaveClass('about-section--compact');
-    expect(englishItems).toHaveLength(4);
+    expect(englishItems).toHaveLength(3);
     englishLabels.forEach((label, index) => {
       expect(englishItems[index]?.startsWith(label)).toBe(true);
     });
@@ -215,7 +231,7 @@ Lead paragraph.
     const chineseItems = getListItemsForSection('学术兴趣');
 
     expect(chineseSection).not.toHaveClass('about-section--compact');
-    expect(chineseItems).toHaveLength(4);
+    expect(chineseItems).toHaveLength(3);
     chineseLabels.forEach((label, index) => {
       expect(chineseItems[index]?.startsWith(label)).toBe(true);
     });

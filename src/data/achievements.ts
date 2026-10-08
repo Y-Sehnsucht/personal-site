@@ -5,9 +5,20 @@ export interface Achievement {
   awardZh?: string;
   level: 'National' | 'Municipal' | 'University' | 'Organization';
   certificate?: string;
+  period?: string;
+  cv?: boolean;
 }
 
 const achievements: Achievement[] = [
+  {
+    title: 'Undergraduate Excellence Scholarship',
+    titleZh: '本科生优秀奖学金',
+    award: 'First Class',
+    awardZh: '一等',
+    level: 'University',
+    period: '2025-2026',
+    cv: true,
+  },
   {
     title: '18th Advanced Robotics and Simulation Technology Competition',
     titleZh: '第十八届先进机器人及仿真技术大赛',
@@ -15,6 +26,8 @@ const achievements: Achievement[] = [
     awardZh: '国家三等奖',
     level: 'National',
     certificate: '/images/achievements/rst-national-third.jpg',
+    period: '2025.11',
+    cv: true,
   },
   {
     title: '18th Advanced Robotics and Simulation Technology Competition',
@@ -23,6 +36,7 @@ const achievements: Achievement[] = [
     awardZh: '上海市二等奖',
     level: 'Municipal',
     certificate: '/images/achievements/rst-shanghai-second.jpg',
+    period: '2025.11',
   },
   {
     title:
@@ -31,6 +45,7 @@ const achievements: Achievement[] = [
     award: 'Shanghai Second Prize',
     awardZh: '上海市二等奖',
     level: 'Municipal',
+    period: '2026',
   },
   {
     title:
@@ -39,6 +54,8 @@ const achievements: Achievement[] = [
     award: 'Silver Award',
     awardZh: '银奖',
     level: 'University',
+    period: '2026.06',
+    cv: true,
   },
   {
     title:
@@ -47,6 +64,7 @@ const achievements: Achievement[] = [
     award: 'Third Prize',
     awardZh: '三等奖',
     level: 'University',
+    period: '2026',
   },
   {
     title: '2025 ECNU Coder Freshman Programming Challenge',
@@ -55,6 +73,8 @@ const achievements: Achievement[] = [
     awardZh: '三等奖',
     level: 'University',
     certificate: '/images/achievements/ecnu-coder-2025.jpg',
+    period: '2025',
+    cv: true,
   },
   {
     title: 'Boyuan Information Technology Club Owner-Pro (2026)',
@@ -62,6 +82,8 @@ const achievements: Achievement[] = [
     award: 'Third Prize',
     awardZh: '三等奖',
     level: 'Organization',
+    period: '2026.03',
+    cv: true,
   },
 ];
 
