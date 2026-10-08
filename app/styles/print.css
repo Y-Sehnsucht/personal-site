@@ -102,6 +102,32 @@
     max-width: none;
   }
 
+  .resume-kicker {
+    font-size: 8pt;
+    margin-bottom: 0.2rem;
+  }
+
+  .resume-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 0.75rem;
+  }
+
+  .resume-metrics > div,
+  .resume-metrics > div + div {
+    padding: 0.45rem 0.6rem;
+  }
+
+  .resume-metrics > div:first-child {
+    padding-left: 0;
+  }
+
+  .resume-metrics dt,
+  .resume-metrics dd,
+  .research-notes dt,
+  .research-notes dd {
+    font-size: 8.5pt;
+  }
+
   .resume-content {
     gap: 1.5rem;
     padding-top: 1rem;
@@ -110,6 +136,8 @@
   /* Keep a role and its bullets on one page wherever the page allows. */
   .jobs-container,
   .degree-container,
+  .research-interest,
+  .cv-awards-list li,
   .about-section--log li,
   .course-container {
     break-inside: avoid;
@@ -174,6 +202,27 @@
   .summary,
   .jobs-container--lead .summary {
     font-size: 10pt;
+  }
+
+  .research-objective,
+  .research-interest p,
+  .research-notes dd {
+    font-size: 9.5pt;
+  }
+
+  .research-interest {
+    padding: 0.55rem 0;
+  }
+
+  .research-notes {
+    margin-top: 0.75rem;
+    gap: 1rem;
+  }
+
+  .degree-details,
+  .cv-awards-list li {
+    padding-top: 0.55rem;
+    padding-bottom: 0.55rem;
   }
 
   /* Section headers should not be stranded at the foot of a page. */

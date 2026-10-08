@@ -20,8 +20,32 @@ export default function Job({
   locale = 'en',
   tier = 'primary',
 }: JobProps) {
-  const { name, position, url, startDate, endDate, summary, highlights } = data;
+  const {
+    name,
+    nameZh,
+    position,
+    positionZh,
+    context,
+    contextZh,
+    supervisor,
+    url,
+    startDate,
+    endDate,
+    summary,
+    summaryZh,
+    highlights,
+    highlightsZh,
+  } = data;
   const isCurrent = !endDate;
+  const localizedName = locale === 'zh-CN' ? (nameZh ?? name) : name;
+  const localizedPosition =
+    locale === 'zh-CN' ? (positionZh ?? position) : position;
+  const localizedContext =
+    locale === 'zh-CN' ? (contextZh ?? context) : context;
+  const localizedSummary =
+    locale === 'zh-CN' ? (summaryZh ?? summary) : summary;
+  const localizedHighlights =
+    locale === 'zh-CN' ? (highlightsZh ?? highlights) : highlights;
 
   return (
     <article
@@ -55,18 +79,30 @@ export default function Job({
           <h3>
             {url ? (
               <a href={url} className="job-company">
-                {resumeText(name, locale)}
+                {localizedName}
               </a>
             ) : (
-              <span className="job-company">{resumeText(name, locale)}</span>
+              <span className="job-company">{localizedName}</span>
             )}
-            <span className="job-position">{resumeText(position, locale)}</span>
+            <span className="job-position">{localizedPosition}</span>
           </h3>
+          {localizedContext ? (
+            <p className="job-context">
+              {localizedContext}
+              {supervisor ? (
+                <>
+                  <span aria-hidden="true"> · </span>
+                  {locale === 'zh-CN' ? '指导教师：' : 'Supervisor: '}
+                  {supervisor}
+                </>
+              ) : null}
+            </p>
+          ) : null}
         </header>
-        {summary ? <JobSummary summary={resumeText(summary, locale)} /> : null}
-        {highlights ? (
+        {localizedSummary ? <JobSummary summary={localizedSummary} /> : null}
+        {localizedHighlights ? (
           <ul className="points">
-            {highlights.map((highlight) => (
+            {localizedHighlights.map((highlight) => (
               <li key={highlight}>{resumeText(highlight, locale)}</li>
             ))}
           </ul>

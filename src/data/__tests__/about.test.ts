@@ -14,15 +14,17 @@ describe('about data', () => {
     expect(aboutMarkdown).toContain('Software Engineering');
   });
 
-  it('contains academic interests and projects', () => {
+  it('contains the research interests without duplicating project records', () => {
     expect(aboutMarkdown).toContain('# Academic Interests');
-    expect(aboutMarkdown).toContain('# Projects and Practice');
-    expect(aboutMarkdown).toContain('[Projects](/projects/)');
+    expect(aboutMarkdown).toContain('Software engineering and developer tools');
+    expect(aboutMarkdown).toContain('AI-assisted software engineering');
+    expect(aboutMarkdown).toContain('Algorithms and reliable systems');
+    expect(aboutMarkdown).not.toContain('# Projects and Practice');
   });
 
-  it('links to the achievements page', () => {
-    expect(aboutMarkdown).toContain('# Competitions and Awards');
-    expect(aboutMarkdown).toContain('[Achievements](/achievements/)');
+  it('leaves full project and award inventories to their dedicated pages', () => {
+    expect(aboutMarkdown).not.toContain('# Competitions and Awards');
+    expect(aboutMarkdown).not.toContain('[Achievements](/achievements/)');
   });
 
   it('retains personal sections', () => {
@@ -44,23 +46,27 @@ describe('about data', () => {
   it('contains natural Chinese about sections without untranslated headings', () => {
     expect(aboutMarkdownZh).toContain('# 学术兴趣');
     expect(aboutMarkdownZh).toContain('# 教育与学习');
-    expect(aboutMarkdownZh).toContain('# 项目实践');
-    expect(aboutMarkdownZh).toContain('# 竞赛与获奖');
     expect(aboutMarkdownZh).toContain('# 兴趣与日常');
     expect(aboutMarkdownZh).toContain('# 城市与经历');
+    expect(aboutMarkdownZh).toContain('# 我所期待的');
+    expect(aboutMarkdownZh).toContain('# 近期重点');
     expect(aboutMarkdownZh).toContain('# 后续方向');
     expect(aboutMarkdownZh).not.toContain('# Academic Interests');
   });
 
-  it('keeps the requested Chinese future direction and real technology names', () => {
+  it('keeps the same number of substantive sections in both languages', () => {
+    const sectionCount = (markdown: string) =>
+      markdown.match(/^# (?!Intro$).+/gm)?.length ?? 0;
+
+    expect(sectionCount(aboutMarkdownZh)).toBe(sectionCount(aboutMarkdown));
+  });
+
+  it('keeps the Chinese future direction focused and honest', () => {
     expect(aboutMarkdownZh).toContain(
-      '后续将继续加强软件设计、系统、算法与工程实践训练，并进一步探索 AI 在软件开发中的实际应用',
+      '软件工程与开发工具、AI 辅助软件工程、算法与可靠系统',
     );
-    expect(aboutMarkdownZh).toContain('ScaffoldMind');
-    expect(aboutMarkdownZh).toContain('Maple');
-    expect(aboutMarkdownZh).toContain('CSAPP');
-    expect(aboutMarkdownZh).toContain('Spring Boot');
     expect(aboutMarkdownZh).toContain('Simulink');
     expect(aboutMarkdownZh).toContain('PID');
+    expect(aboutMarkdownZh).not.toContain('# 项目实践');
   });
 });

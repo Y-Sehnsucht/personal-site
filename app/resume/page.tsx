@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 
+import Awards from '@/components/Resume/Awards';
 import Courses from '@/components/Resume/Courses';
 import Education from '@/components/Resume/Education';
 import Experience from '@/components/Resume/Experience';
-import References from '@/components/Resume/References';
+import ResearchProfile from '@/components/Resume/ResearchProfile';
 import ResumeHeader from '@/components/Resume/ResumeHeader';
 import ResumeNav from '@/components/Resume/ResumeNav';
 import Skills from '@/components/Resume/Skills';
@@ -16,8 +17,8 @@ import { createPageMetadata } from '@/lib/metadata';
 import { AUTHOR_NAME } from '@/lib/utils';
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Resume',
-  description: `${AUTHOR_NAME}'s academic resume, including education, selected projects, coursework, and technical skills.`,
+  title: 'Academic CV',
+  description: `${AUTHOR_NAME}'s academic CV, including research interests, education, selected projects, awards, coursework, and technical skills.`,
   path: '/resume/',
 });
 
@@ -30,12 +31,20 @@ export default function ResumePage() {
         <ResumeNav />
 
         <div className="resume-content">
-          <section id="experience" className="resume-section">
-            <Experience data={work} />
+          <section id="research" className="resume-section">
+            <ResearchProfile />
           </section>
 
           <section id="education" className="resume-section">
             <Education data={degrees} />
+          </section>
+
+          <section id="experience" className="resume-section">
+            <Experience data={work} />
+          </section>
+
+          <section id="awards" className="resume-section">
+            <Awards />
           </section>
 
           <section id="skills" className="resume-section">
@@ -44,10 +53,6 @@ export default function ResumePage() {
 
           <section id="courses" className="resume-section">
             <Courses data={courses} />
-          </section>
-
-          <section id="references" className="resume-section">
-            <References />
           </section>
         </div>
       </section>

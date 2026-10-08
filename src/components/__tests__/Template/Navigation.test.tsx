@@ -55,7 +55,7 @@ describe('Navigation', () => {
     expect(
       screen.getByRole('link', { name: /achievements/i }),
     ).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /resume/i })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /^cv$/i })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /contact/i })).toBeInTheDocument();
 
     expect(
@@ -85,8 +85,8 @@ describe('Navigation', () => {
     mockPathname.mockReturnValue('/resume/skills');
     render(<Navigation />);
 
-    const resumeLink = screen.getByRole('link', { name: /resume/i });
-    expect(resumeLink).toHaveClass('active');
+    const cvLink = screen.getByRole('link', { name: /^cv$/i });
+    expect(cvLink).toHaveClass('active');
   });
 
   it('renders theme toggle and hamburger menu', () => {

@@ -57,10 +57,8 @@ describe('work data', () => {
     }
   });
 
-  it('has at least one current position', () => {
-    const currentPositions = work.filter((job) => !job.endDate);
-
-    expect(currentPositions.length).toBeGreaterThanOrEqual(1);
+  it('does not present completed course projects as current work', () => {
+    expect(work.every((job) => Boolean(job.endDate))).toBe(true);
   });
 
   it('highlights are arrays when present', () => {
@@ -72,16 +70,34 @@ describe('work data', () => {
     }
   });
 
-  it('has positions from different years', () => {
-    const years = work.map((job) => new Date(job.startDate).getFullYear());
-    const uniqueYears = new Set(years);
-
-    expect(uniqueYears.size).toBeGreaterThan(1);
+  it('preserves the verified project date ranges', () => {
+    expect(work.map(({ startDate, endDate }) => [startDate, endDate])).toEqual([
+      ['2026-05-25', '2026-06-03'],
+      ['2026-06-01', '2026-06-30'],
+      ['2026-07-01', '2026-07-31'],
+      ['2026-01-29', '2026-03-07'],
+    ]);
   });
 
   it('project names are non-empty', () => {
     for (const job of work) {
       expect(job.name.trim().length).toBeGreaterThan(0);
+    }
+  });
+
+  it('selects the four projects most relevant to an academic CV', () => {
+    expect(work.map((job) => job.name)).toEqual([
+      'ScaffoldMind',
+      'Mini-VDB: Dynamic Vector Index and Exact Top-K Retrieval',
+      'Intelligent Elevator Collaborative Modeling and Simulation',
+      'Maple',
+    ]);
+  });
+
+  it('keeps bilingual summaries and highlights aligned', () => {
+    for (const job of work) {
+      expect(job.summaryZh).toBeTruthy();
+      expect(job.highlightsZh?.length).toBe(job.highlights?.length);
     }
   });
 });

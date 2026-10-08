@@ -26,7 +26,7 @@ const routes: Route[] = [
     path: '/achievements',
   },
   {
-    label: 'Resume',
+    label: 'CV',
     path: '/resume',
   },
   {

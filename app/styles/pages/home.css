@@ -123,6 +123,9 @@ html[lang='zh-CN'] .hero-tagline {
 /* Portrait 鈥?squared off. A circular avatar is the one shape this
    layout cannot use without reading as a profile card. */
 .hero-portrait {
+  --portrait-crop-scale: 1.25;
+  --portrait-crop-origin: 50% 36%;
+
   position: relative;
   width: 280px;
   max-width: 100%;
@@ -135,7 +138,18 @@ html[lang='zh-CN'] .hero-tagline {
 .hero-portrait img {
   display: block;
   width: 100%;
-  height: auto;
+}
+
+.hero-portrait .theme-portrait {
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.hero-portrait img {
+  height: 100%;
+  object-fit: cover;
+  transform: scale(var(--portrait-crop-scale));
+  transform-origin: var(--portrait-crop-origin);
 }
 
 /* The source portrait sits on a white field. Multiply drops that field

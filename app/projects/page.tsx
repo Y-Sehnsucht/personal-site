@@ -14,10 +14,10 @@ import { AUTHOR_NAME } from '@/lib/utils';
 
 const PROJECTS_URL = `${SITE_URL}/projects/`;
 
-const PROJECTS_DESCRIPTION = `Early projects and experiments from ${AUTHOR_NAME} (2015 and earlier).`;
+const PROJECTS_DESCRIPTION = `Selected software engineering, algorithms, modeling, and technical-design projects by ${AUTHOR_NAME}.`;
 
 export const metadata: Metadata = createPageMetadata({
-  title: 'Archive',
+  title: 'Projects',
   description: PROJECTS_DESCRIPTION,
   path: '/projects/',
 });
@@ -29,13 +29,13 @@ export default function ProjectsPage() {
         nodes={[
           collectionPageNode({
             url: PROJECTS_URL,
-            name: 'Archive',
+            name: 'Projects',
             description: PROJECTS_DESCRIPTION,
             hasBreadcrumb: true,
           }),
           breadcrumbNode(PROJECTS_URL, [
             { name: 'Home', url: HOME_URL },
-            { name: 'Archive', url: PROJECTS_URL },
+            { name: 'Projects', url: PROJECTS_URL },
           ]),
         ]}
       />

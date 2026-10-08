@@ -558,6 +558,7 @@ html[lang='zh-CN']
     .about-section h2,
     .home-projects h2,
     .home-projects-item h3,
+    .projects-section-title,
     .project-card-title,
     .jobs-container header h3,
     .degree-container .degree,
@@ -580,8 +581,6 @@ html[lang='zh-CN']
     .home-projects-all,
     .resume-nav-link,
     .skillbutton,
-    .projects-section-title,
-    .resume-page .title h2,
     .achievement-certificate,
     .footer-links-label,
     .footer-social-label

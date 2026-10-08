@@ -118,6 +118,24 @@
   background: var(--color-surface-subtle);
 }
 
+.project-card-image--2,
+.project-card-image--3 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: var(--rule);
+  background: var(--color-border);
+}
+
+.project-card-image--2 img:first-child,
+.project-card-image--3 img:first-child {
+  grid-row: 1 / -1;
+}
+
+.project-card-image--2 img:nth-child(2) {
+  grid-row: 1 / -1;
+}
+
 /* Archive imagery is held back in greyscale and only develops on
    hover, so a page of screenshots does not shout over the resume. */
 .project-card-image img {
@@ -126,6 +144,13 @@
   object-fit: contain;
   filter: grayscale(1) contrast(1.05);
   transition: filter var(--duration-normal) var(--ease-out);
+}
+
+.project-card-image--2 img,
+.project-card-image--3 img {
+  min-width: 0;
+  min-height: 0;
+  object-fit: cover;
 }
 
 .project-card--linked:hover .project-card-image img,
@@ -185,7 +210,7 @@
 
 .project-card-subtitle {
   font-family: var(--font-mono);
-  font-size: var(--text-2xs);
+  font-size: var(--text-ui);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
   color: var(--color-fg-light);
@@ -208,7 +233,7 @@
 
 .project-card-date {
   font-family: var(--font-mono);
-  font-size: var(--text-2xs);
+  font-size: var(--text-ui);
   font-variant-numeric: tabular-nums;
   letter-spacing: var(--tracking-wide);
   color: var(--color-fg-light);
@@ -387,7 +412,7 @@
   margin: 0;
   padding-top: 0.35em;
   font-family: var(--font-mono);
-  font-size: var(--text-2xs);
+  font-size: var(--text-ui);
   font-variant-numeric: tabular-nums;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
@@ -430,10 +455,19 @@
 
 .job-position {
   font-family: var(--font-mono);
-  font-size: var(--text-2xs);
+  font-size: var(--text-ui);
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--tracking-label);
   text-transform: uppercase;
+  color: var(--color-fg-light);
+}
+
+.job-context {
+  margin: -0.2rem 0 0.85rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-ui);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--leading-normal);
   color: var(--color-fg-light);
 }
 
