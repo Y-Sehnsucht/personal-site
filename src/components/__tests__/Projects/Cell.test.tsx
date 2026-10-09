@@ -135,6 +135,53 @@ describe('Cell', () => {
     });
   });
 
+  it('navigates a multi-image preview with controls and arrow keys', () => {
+    render(
+      <Cell
+        data={{
+          ...mockProject,
+          link: undefined,
+          images: [
+            {
+              src: '/images/one.jpg',
+              alt: 'First model',
+              title: 'Dynamics model',
+              caption: 'First caption',
+            },
+            {
+              src: '/images/two.jpg',
+              alt: 'Second model',
+              title: 'Controller model',
+              caption: 'Second caption',
+            },
+          ],
+        }}
+      />,
+    );
+
+    fireEvent.click(
+      screen.getByRole('button', {
+        name: `Preview image: ${mockProject.title}`,
+      }),
+    );
+
+    expect(
+      screen.getByRole('img', { name: 'First model' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('First caption')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'Next image' }));
+    expect(
+      screen.getByRole('img', { name: 'Second model' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Second caption')).toBeInTheDocument();
+
+    fireEvent.keyDown(document, { key: 'ArrowLeft' });
+    expect(
+      screen.getByRole('img', { name: 'First model' }),
+    ).toBeInTheDocument();
+  });
+
   it('opens the Zhiyi image dialog without rendering or visiting its former link', () => {
     const zhiyi = projects.find((project) => project.title === 'Zhiyi');
     const initialUrl = window.location.href;

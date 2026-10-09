@@ -20,18 +20,34 @@ export default function Cell({ data }: CellProps) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const titleId = useId();
   const [previewOpen, setPreviewOpen] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
   const hasLink = Boolean(data.link);
   const title = locale === 'zh-CN' ? (data.titleZh ?? data.title) : data.title;
   const subtitle =
     locale === 'zh-CN' ? (data.subtitleZh ?? data.subtitle) : data.subtitle;
   const desc = locale === 'zh-CN' ? (data.descZh ?? data.desc) : data.desc;
-  const imageSrc = withBasePath(data.image);
-  const cardImages = data.images ?? [
-    {
-      src: data.image,
-      alt: title,
-    },
-  ];
+  const cardImages = data.images?.length
+    ? data.images
+    : [
+        {
+          src: data.image,
+          alt: title,
+        },
+      ];
+  const activeImage = cardImages[activeImageIndex] ?? cardImages[0];
+  const activeImageAlt =
+    locale === 'zh-CN'
+      ? (activeImage.altZh ?? activeImage.alt)
+      : activeImage.alt;
+  const activeImageTitle =
+    locale === 'zh-CN'
+      ? (activeImage.titleZh ?? activeImage.title)
+      : activeImage.title;
+  const activeImageCaption =
+    locale === 'zh-CN'
+      ? (activeImage.captionZh ?? activeImage.caption)
+      : activeImage.caption;
+  const hasGallery = cardImages.length > 1;
 
   useEffect(() => {
     if (!previewOpen) return;
@@ -43,6 +59,16 @@ export default function Cell({ data }: CellProps) {
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setPreviewOpen(false);
+      } else if (event.key === 'ArrowLeft' && hasGallery) {
+        event.preventDefault();
+        setActiveImageIndex((current) =>
+          current === 0 ? cardImages.length - 1 : current - 1,
+        );
+      } else if (event.key === 'ArrowRight' && hasGallery) {
+        event.preventDefault();
+        setActiveImageIndex((current) =>
+          current === cardImages.length - 1 ? 0 : current + 1,
+        );
       }
     };
 
@@ -53,7 +79,19 @@ export default function Cell({ data }: CellProps) {
       document.removeEventListener('keydown', onKeyDown);
       triggerRef.current?.focus();
     };
-  }, [previewOpen]);
+  }, [cardImages.length, hasGallery, previewOpen]);
+
+  const showPreviousImage = () => {
+    setActiveImageIndex((current) =>
+      current === 0 ? cardImages.length - 1 : current - 1,
+    );
+  };
+
+  const showNextImage = () => {
+    setActiveImageIndex((current) =>
+      current === cardImages.length - 1 ? 0 : current + 1,
+    );
+  };
 
   const cardContent = (
     <>
@@ -128,7 +166,10 @@ export default function Cell({ data }: CellProps) {
           ref={triggerRef}
           className="project-card-link project-card-preview-button"
           aria-label={`${t('previewImage', locale)}: ${title}`}
-          onClick={() => setPreviewOpen(true)}
+          onClick={() => {
+            setActiveImageIndex(0);
+            setPreviewOpen(true);
+          }}
         >
           {cardContent}
         </button>
@@ -151,7 +192,14 @@ export default function Cell({ data }: CellProps) {
             aria-labelledby={titleId}
           >
             <header className="project-preview-header">
-              <h2 id={titleId}>{title}</h2>
+              <div>
+                <h2 id={titleId}>{title}</h2>
+                {hasGallery && (
+                  <p aria-live="polite">
+                    {activeImageIndex + 1} / {cardImages.length}
+                  </p>
+                )}
+              </div>
               <button
                 type="button"
                 ref={closeRef}
@@ -164,13 +212,82 @@ export default function Cell({ data }: CellProps) {
             </header>
             <div className="project-preview-image-wrap">
               <Image
-                src={imageSrc}
-                alt={title}
+                src={withBasePath(activeImage.src)}
+                alt={activeImageAlt}
                 fill
                 sizes="100vw"
                 className="project-preview-image"
               />
+              {hasGallery && (
+                <>
+                  <button
+                    type="button"
+                    className="project-preview-nav project-preview-nav--previous"
+                    onClick={showPreviousImage}
+                    aria-label={t('previousImage', locale)}
+                    title={t('previousImage', locale)}
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    className="project-preview-nav project-preview-nav--next"
+                    onClick={showNextImage}
+                    aria-label={t('nextImage', locale)}
+                    title={t('nextImage', locale)}
+                  >
+                    ›
+                  </button>
+                </>
+              )}
             </div>
+            {(activeImageTitle || activeImageCaption || hasGallery) && (
+              <footer className="project-preview-details">
+                {(activeImageTitle || activeImageCaption) && (
+                  <div className="project-preview-copy">
+                    {activeImageTitle && <h3>{activeImageTitle}</h3>}
+                    {activeImageCaption && <p>{activeImageCaption}</p>}
+                  </div>
+                )}
+                {hasGallery && (
+                  <div
+                    className="project-preview-thumbnails"
+                    aria-label={t('projectImageDialog', locale)}
+                  >
+                    {cardImages.map((image, index) => {
+                      const imageTitle =
+                        locale === 'zh-CN'
+                          ? (image.titleZh ??
+                            image.title ??
+                            image.altZh ??
+                            image.alt)
+                          : (image.title ?? image.alt);
+
+                      return (
+                        <button
+                          key={image.src}
+                          type="button"
+                          className="project-preview-thumbnail"
+                          aria-current={
+                            index === activeImageIndex ? 'true' : undefined
+                          }
+                          aria-label={`${t('selectImage', locale)} ${index + 1}: ${imageTitle}`}
+                          onClick={() => setActiveImageIndex(index)}
+                        >
+                          <Image
+                            src={withBasePath(image.src)}
+                            alt=""
+                            width={120}
+                            height={76}
+                            sizes="120px"
+                          />
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+              </footer>
+            )}
           </section>
         </div>
       )}

@@ -37,6 +37,9 @@ export const uiText = {
   projectImageDialog: { en: 'Project image preview', zh: '项目图片预览' },
   closePreview: { en: 'Close image preview', zh: '关闭图片预览' },
   previewImage: { en: 'Preview image', zh: '预览图片' },
+  previousImage: { en: 'Previous image', zh: '上一张图片' },
+  nextImage: { en: 'Next image', zh: '下一张图片' },
+  selectImage: { en: 'View image', zh: '查看图片' },
   resume: { en: 'Academic CV', zh: '学术简历' },
   resumeSummary: {
     en: 'I am a Software Engineering undergraduate at East China Normal University and expect to graduate in 2029. My interests include software engineering and developer tools, AI-assisted software engineering, and algorithms and reliable systems. I am seeking a long-term undergraduate research or research assistant opportunity.',

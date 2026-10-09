@@ -2,6 +2,10 @@ export interface ProjectImage {
   src: string;
   alt: string;
   altZh?: string;
+  title?: string;
+  titleZh?: string;
+  caption?: string;
+  captionZh?: string;
 }
 
 export interface CvProjectDetails {
@@ -133,6 +137,63 @@ const data: Project[] = [
     subtitle: 'Continuous Dynamics & PID Control',
     subtitleZh: '连续动力学与 PID 控制',
     image: '/images/projects/elevator-control.jpg',
+    images: [
+      {
+        src: '/images/projects/elevator-dynamics.webp',
+        alt: 'Simulink ElevatorDynamics subsystem for the elevator model',
+        altZh: '电梯模型的 Simulink ElevatorDynamics 子系统',
+        title: 'ElevatorDynamics module',
+        titleZh: 'ElevatorDynamics 模块',
+        caption:
+          'I modeled the car, counterweight, load, gravity, friction, braking, and the integration from acceleration to velocity and position.',
+        captionZh:
+          '我建立了轿厢、对重、载荷、重力、摩擦与制动力模型，并完成从加速度到速度和位置的积分关系。',
+      },
+      {
+        src: '/images/projects/elevator-feedback-controller.webp',
+        alt: 'Simulink FeedbackController subsystem with PID feedback',
+        altZh: '包含 PID 反馈的 Simulink FeedbackController 子系统',
+        title: 'FeedbackController module',
+        titleZh: 'FeedbackController 模块',
+        caption:
+          'I implemented position-error proportional and integral control together with velocity-error derivative feedback.',
+        captionZh:
+          '我使用位置误差构建比例与积分控制，并以速度误差实现微分反馈。',
+      },
+      {
+        src: '/images/projects/elevator-load-compensation.webp',
+        alt: 'Simulink LoadCompensation subsystem for feed-forward control',
+        altZh: '用于前馈控制的 Simulink LoadCompensation 子系统',
+        title: 'LoadCompensation module',
+        titleZh: 'LoadCompensation 模块',
+        caption:
+          'I combined gravity, acceleration, and friction compensation to account for changes in load and motion state.',
+        captionZh:
+          '我组合重力、加速度与摩擦补偿，使控制输入能够响应载荷与运动状态的变化。',
+      },
+      {
+        src: '/images/projects/elevator-half-load-comparison.webp',
+        alt: 'Half-load comparison of standard PID and compensated PID metrics',
+        altZh: '半载工况下普通 PID 与补偿 PID 的指标对比',
+        title: 'Half-load controller comparison',
+        titleZh: '半载控制指标对比',
+        caption:
+          'In the half-load simulation, compensation reduced final position error from 0.0163 m to 0.0062 m and maximum error from 0.1174 m to 0.0699 m.',
+        captionZh:
+          '在半载仿真中，补偿控制将最终位置误差从 0.0163 m 降至 0.0062 m，并将最大误差从 0.1174 m 降至 0.0699 m。',
+      },
+      {
+        src: '/images/projects/elevator-load-adaptation.webp',
+        alt: 'Compensated controller results under empty, half, and full loads',
+        altZh: '补偿控制在空载、半载和满载工况下的结果',
+        title: 'Adaptation across load conditions',
+        titleZh: '不同载荷下的适应性',
+        caption:
+          'I evaluated the compensated controller under empty-, half-, and full-load conditions; final leveling error remained below 0.01 m in all three simulations.',
+        captionZh:
+          '我分别验证了空载、半载和满载工况，三组仿真的最终平层误差均保持在 0.01 m 以内。',
+      },
+    ],
     date: '2026-07-31',
     desc: 'Owned the continuous-dynamics and control subtask in a five-person SysML and Simulink course project. Built the car, counterweight, load, friction, brake, feedback-PID, feed-forward compensation, saturation, and simulation models. My contribution focused on control modeling and simulation.',
     descZh:
