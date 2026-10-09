@@ -145,7 +145,11 @@ def header(*, continued: bool = False) -> list:
         )
         subtitle = "SOFTWARE ENGINEERING UNDERGRADUATE"
 
-    left = [Paragraph("Zijun Yan", name_style), Paragraph(subtitle, kicker)]
+    left = [
+        Paragraph("Zijun Yan", name_style),
+        Spacer(1, 1.2 * mm),
+        Paragraph(subtitle, kicker),
+    ]
     table = Table([[left, right]], colWidths=[118 * mm, 49 * mm])
     table.setStyle(
         TableStyle(
