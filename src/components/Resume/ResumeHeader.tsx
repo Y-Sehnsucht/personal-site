@@ -5,6 +5,7 @@ import profile from '@/data/profile.json';
 import { useLanguage } from '@/i18n/LanguageProvider';
 import { t } from '@/i18n/translations';
 import { SITE_URL } from '@/lib/utils';
+import CvPdfActions from './CvPdfActions';
 
 export default function ResumeHeader() {
   const { locale } = useLanguage();
@@ -17,6 +18,8 @@ export default function ResumeHeader() {
         {locale === 'zh-CN' ? '颜子竣' : profile.name}
       </h1>
       <p className="resume-summary">{t('resumeSummary', locale)}</p>
+
+      <CvPdfActions />
 
       <dl className="resume-metrics">
         {academicMetrics.map((metric) => (
