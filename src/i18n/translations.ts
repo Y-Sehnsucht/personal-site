@@ -46,6 +46,18 @@ export const uiText = {
     zh: '我是华东师范大学软件工程专业本科生，预计于 2029 年毕业。目前主要关注软件工程与开发工具、AI 辅助软件工程，以及算法与可靠系统，希望长期参与本科科研或科研助理工作。',
   },
   resumeSections: { en: 'CV sections', zh: '学术简历目录' },
+  previewCvPdf: { en: 'Preview PDF', zh: '预览 PDF' },
+  downloadCvPdf: { en: 'Download PDF', zh: '下载 PDF' },
+  cvPdfDialog: { en: 'Zijun Yan - PDF CV', zh: '颜子竣 - PDF 学术简历' },
+  closeCvPdf: { en: 'Close PDF preview', zh: '关闭 PDF 预览' },
+  openCvPdfNewTab: {
+    en: 'Open PDF in a new tab',
+    zh: '在新标签页打开 PDF',
+  },
+  cvPdfFallback: {
+    en: 'PDF preview unavailable?',
+    zh: '无法显示 PDF 预览？',
+  },
   cvResearchProfile: { en: 'Research Profile', zh: '科研方向' },
   cvAvailability: { en: 'Availability', zh: '可投入时间' },
   cvAwards: { en: 'Selected Awards', zh: '代表性奖项' },

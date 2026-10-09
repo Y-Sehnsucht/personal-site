@@ -59,6 +59,11 @@
     display: none !important;
   }
 
+  .resume-pdf-actions,
+  .resume-pdf-overlay {
+    display: none !important;
+  }
+
   .page-main,
   .page-main--hero,
   .resume-page,

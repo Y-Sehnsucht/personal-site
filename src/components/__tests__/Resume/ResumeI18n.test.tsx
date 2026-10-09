@@ -43,6 +43,13 @@ describe('Resume Chinese localization', () => {
       'href',
       '#experience',
     );
+    expect(
+      screen.getByRole('button', { name: '预览 PDF' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: '下载 PDF' })).toHaveAttribute(
+      'href',
+      '/files/zijun-yan-cv.pdf',
+    );
     expect(screen.getByRole('link', { name: '教育经历' })).toHaveAttribute(
       'href',
       '#education',
