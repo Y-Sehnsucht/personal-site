@@ -41,7 +41,7 @@ const data: Project[] = [
     title: 'ScaffoldMind',
     subtitle: 'Independent Full-Stack Learning Workspace',
     subtitleZh: '独立开发的全栈学习工作区',
-    link: 'https://github.com/Y-Sehnsucht/scaffoldmind',
+    link: 'https://y-sehnsucht.github.io/scaffoldmind/',
     image: '/images/projects/scaffoldmind.jpg',
     images: [
       {

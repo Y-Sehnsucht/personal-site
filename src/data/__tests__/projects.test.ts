@@ -127,5 +127,8 @@ describe('projects data', () => {
     );
 
     expect(scaffoldMind?.images).toHaveLength(3);
+    expect(scaffoldMind?.link).toBe(
+      'https://y-sehnsucht.github.io/scaffoldmind/',
+    );
   });
 });
