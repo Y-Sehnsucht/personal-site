@@ -131,4 +131,20 @@ describe('projects data', () => {
       'https://y-sehnsucht.github.io/scaffoldmind/',
     );
   });
+
+  it('provides five independently produced elevator modeling results', () => {
+    const elevator = projects.find(
+      (project) => project.id === 'elevator-control',
+    );
+
+    expect(elevator?.images).toHaveLength(5);
+    expect(elevator?.images?.map((image) => image.title)).toEqual([
+      'ElevatorDynamics module',
+      'FeedbackController module',
+      'LoadCompensation module',
+      'Half-load controller comparison',
+      'Adaptation across load conditions',
+    ]);
+    expect(elevator?.images?.every((image) => image.captionZh)).toBe(true);
+  });
 });
